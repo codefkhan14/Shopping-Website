@@ -1,0 +1,40 @@
+.navtopbanner {
+  /* background-color: rgba(255, 221, 0, 0.661); */
+  background-color: rgb(34, 34, 34);
+  height: 40px;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: white;
+  padding: 0 30px;
+}
+
+.navtopbanner3 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 230px;
+}
+.navtopbanner3 a {
+  text-align: center;
+  font-size: 15px;
+}
+.navtopbanner3 a:hover {
+  color: rgb(186, 186, 186);
+}
+@media screen and (max-width: 1150px) {
+  .navtopbanner1 {
+    display: none;
+  }
+
+  .navtopbanner3 {
+    display: none;
+  }
+
+  .navtopbanner {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+  }
+}
