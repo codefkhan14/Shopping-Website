@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { API_BASE_URL } from "../config";
 
 function SignUpForm() {
   const navigate = useNavigate();
@@ -29,6 +29,7 @@ function SignUpForm() {
     });
   };
 
+  const registerapi = `${API_BASE_URL}/register`;
   const SubmitForm = async (e) => {
     e.preventDefault();
     const { name, password, cpassword, email } = user;
@@ -41,13 +42,13 @@ function SignUpForm() {
     }
 
     try {
-      const response = await axios.post("http://localhost:5000/register", user);
-      console.log(response.data);
+      const response = await axios.post(registerapi, user);
+      // console.log(response.data);
       window.alert("User Reigster Successfull");
       toast.success("Register Successfully", toastOption);
       navigate("/account/login");
     } catch (err) {
-      console.log(err);
+      console.log("sign up frontend", err);
       toast.error(err.response.data.error, toastOption);
     }
     return true;

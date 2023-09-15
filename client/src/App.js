@@ -6,64 +6,70 @@ import axios from "axios";
 import Login from "./routes/Login";
 import SignUp from "./routes/SignUp";
 import Account from "./routes/Account";
-
+import { API_BASE_URL } from "./config";
 function App() {
+  const allProductapi = `${API_BASE_URL}/api/allProductdata/`;
+  const sareeapi = `${API_BASE_URL}/api/sareedata/`;
+  const dupattaapi = `${API_BASE_URL}/api/dupattadata/`;
+  const dressapi = `${API_BASE_URL}/api/dressdata/`;
+  const lehangaapi = `${API_BASE_URL}/api/lehangadata/`;
+  
   const [allProductsData, setAllProductsData] = useState([]);
   useEffect(() => {
     axios
-      .get("http://localhost:5000/api/allProductdata/")
+      .get(allProductapi)
       .then((response) => {
         setAllProductsData(response.data);
       })
       .catch((err) => {
-        console.log("erro aa", err);
+        console.log("product error", err);
       });
   });
 
   const [sareeData, setSareeData] = useState([]);
   useEffect(() => {
     axios
-      .get("http://localhost:5000/api/sareedata/")
+      .get(sareeapi)
       .then((response) => {
         setSareeData(response.data);
       })
       .catch((err) => {
-        console.log(err);
+        console.log("product error", err);
       });
   });
 
   const [dupattaData, setDupattaData] = useState([]);
   useEffect(() => {
     axios
-      .get("http://localhost:5000/api/dupattadata/")
+      .get(dupattaapi)
       .then((response) => {
         setDupattaData(response.data);
       })
       .catch((err) => {
-        console.log(err);
+        console.log("product error", err);
       });
   });
 
   const [dressData, setDressData] = useState([]);
   useEffect(() => {
     axios
-      .get("http://localhost:5000/api/dressdata/")
+      .get(dressapi)
       .then((response) => {
         setDressData(response.data);
       })
       .catch((err) => {
-        console.log(err);
+        console.log("product error", err);
       });
   });
   const [lehangaData, setLehangaData] = useState([]);
   useEffect(() => {
     axios
-      .get("http://localhost:5000/api/lehangadata/")
+      .get(lehangaapi)
       .then((response) => {
         setLehangaData(response.data);
       })
       .catch((err) => {
-        console.log(err);
+        console.log("product error", err);
       });
   });
   return (

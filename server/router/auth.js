@@ -5,8 +5,6 @@ const jwt = require("jsonwebtoken");
 const cookieParser = require("cookie-parser");
 const app = express();
 app.use(cookieParser());
-// const authenticate = require('../middleware/authenticate')
-const querystring = require("querystring");
 const allProductdata = require("../productdata/allproductdata");
 const sareeData = require("../productdata/saree");
 const dupattaData = require("../productdata/dupatta");
@@ -43,7 +41,7 @@ router.post("/register", async (req, res) => {
     await user.save();
     res.status(201).json({ message: "User register succefully" });
   } catch (error) {
-    console.log(error);
+    console.log("register form error", error);
   }
 });
 
@@ -66,18 +64,6 @@ router.post("/login", async (req, res) => {
           expiresIn: expTime,
           audience: process.env.JWT_AUD,
         });
-        // console.log(this._id);
-        // res.cookie('myCo', token, {
-        //   maxAge: 3600000, // Cookie expires in 1 hour
-        //   httpOnly: true
-        //    // Cookie is accessible only through HTTP, not JavaScript
-        //   // Other optional cookie settings can be added here
-        // });
-        // res.send('Cookie set!');
-        //  res.cookie('bandhejcookie', token)
-        // res.cookie('token', token, { path: '/login', httpOnly: true, maxAge: 3600000 }); // This sets a cookie named "token" with a one-hour expiration
-
-        //  res.json("goi succss");
        
         let finalData = {
           data: {
@@ -89,16 +75,16 @@ router.post("/login", async (req, res) => {
           expireTime: expTime,
         };
 
-        // console.log(userLogin._id.toString());
+       
 
-        return res.status(201).json(finalData);
-        // return res.status(201).json("login succesully");
+        // return res.status(201).json(finalData);
+        return res.status(201).json("login succesully");
       }
     } else {
       return res.status(400).json({ error: "Invalid credidential" });
     }
   } catch (error) {
-    console.log(error);
+    console.log("login form ", error);
   }
 });
 router.post('/profile',async (req,res)=>{
@@ -109,7 +95,7 @@ router.post('/profile',async (req,res)=>{
     const userDetails = await User.findOne({ _id: userId });
   return res.status(201).json(userDetails);
   } catch (error) {
-    console.error('Error decoding token:', error);
+    console.error('Error Profile section', error);
   }
 
 

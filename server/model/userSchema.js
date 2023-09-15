@@ -13,14 +13,6 @@ const userSchema = new mongoose.Schema({
     type: String,
     require: true,
   },
-  // tokens: [
-  //   {
-  //     token: {
-  //       type: String,
-  //       require: true,
-  //     },
-  //   },
-  // ],
 });
 //    hashing password
 userSchema.pre("save", async function (next) {
