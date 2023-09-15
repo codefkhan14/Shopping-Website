@@ -140,7 +140,7 @@ import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Account from "./Account";
-import { API_BASE_URL } from "../config";
+// import { API_BASE_URL } from "../config";
 
 function LoginForm() {
   const navigate = useNavigate();
@@ -165,7 +165,7 @@ function LoginForm() {
       [e.target.name]: e.target.value,
     });
   };
-  const loginapi = `${API_BASE_URL}/login`;
+  const loginapi = "https://bandhejhub.onrender.com/login";
   const SubmitForm = async (e) => {
     e.preventDefault();
     const { password, email } = user;
@@ -177,6 +177,7 @@ function LoginForm() {
     try {
       const response = await axios.post(loginapi, user);
       const token = response.data.token;
+      
       navigate("/");
 
       localStorage.setItem("token", token);

@@ -8,7 +8,7 @@ function Login() {
     <>
       <TopHeader />
       <Navbar />
-      <LoginForm/>
+      <LoginForm />
       <Footer />
     </>
   );

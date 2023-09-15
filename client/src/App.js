@@ -6,13 +6,19 @@ import axios from "axios";
 import Login from "./routes/Login";
 import SignUp from "./routes/SignUp";
 import Account from "./routes/Account";
-import { API_BASE_URL } from "./config";
+// import { API_BASE_URL } from "./config";
 function App() {
-  const allProductapi = `${API_BASE_URL}/api/allProductdata/`;
-  const sareeapi = `${API_BASE_URL}/api/sareedata/`;
-  const dupattaapi = `${API_BASE_URL}/api/dupattadata/`;
-  const dressapi = `${API_BASE_URL}/api/dressdata/`;
-  const lehangaapi = `${API_BASE_URL}/api/lehangadata/`;
+  const allProductapi = "https://bandhejhub.onrender.com/api/allProductdata/";
+  // const allProductapi = "http://localhost:5000/api/allProductdata/";
+  // const allProductapi = `${API_BASE_URL}/api/allProductdata/`;
+  // const sareeapi = `${API_BASE_URL}/api/sareedata/`;
+  const sareeapi = "https://bandhejhub.onrender.com/api/sareedata/";
+  // const dupattaapi = `${API_BASE_URL}/api/dupattadata/`;
+  const dupattaapi = "https://bandhejhub.onrender.com/api/dupattadata/";
+  // const dressapi = `${API_BASE_URL}/api/dressdata/`;
+  const dressapi = "https://bandhejhub.onrender.com/api/dressdata/";
+  // const lehangaapi = `${API_BASE_URL}/api/lehangadata/`;
+  const lehangaapi = "https://bandhejhub.onrender.com/api/lehangadata/";
   
   const [allProductsData, setAllProductsData] = useState([]);
   useEffect(() => {

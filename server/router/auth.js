@@ -24,12 +24,12 @@ router.get("/api/dupattadata/", (req, res) => {
   res.json(dupattaData);
 });
 router.get("/api/dressdata/", (req, res) => {
-  res.json(dressData);
+  res.json(dressData); 
 });
 router.get("/api/lehangadata/", (req, res) => {
   res.json(lehangaData);
 });
-
+   
 router.post("/register", async (req, res) => {
   const { name, email, password } = req.body;
   try {
@@ -77,8 +77,8 @@ router.post("/login", async (req, res) => {
 
        
 
-        // return res.status(201).json(finalData);
-        return res.status(201).json("login succesully");
+        return res.status(201).json(finalData);
+        // return res.status(201).json("login succesully");
       }
     } else {
       return res.status(400).json({ error: "Invalid credidential" });
@@ -87,10 +87,12 @@ router.post("/login", async (req, res) => {
     console.log("login form ", error);
   }
 });
-router.post('/profile',async (req,res)=>{
+router.post('/profile',async (req,res)=>{ 
   const { cookie } = req.body;
   try {
     const decodedToken = jwt.verify(cookie, process.env.SECRET_KEY);
+    console.log(cookie);
+    console.log(decodedToken);
     const userId = decodedToken.id;
     const userDetails = await User.findOne({ _id: userId });
   return res.status(201).json(userDetails);
@@ -102,7 +104,7 @@ router.post('/profile',async (req,res)=>{
 })
 
 
-
+ 
 
 
 module.exports = router;

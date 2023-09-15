@@ -37,18 +37,17 @@ const Product = ({ product }) => {
   );
 };
 
-const ProductList = ({allProductsData}) => {
+const ProductList = ({ allProductsData }) => {
   return (
     <div className="product-list-container">
-     <div className="product-list">
-        {allProductsData  && allProductsData.map((product, index) => (
-          <Product key={index} product={product}/>
-           
-        ))}
+      <div className="product-list">
+        {allProductsData &&
+          allProductsData.map((product, index) => (
+            <Product key={index} product={product} />
+          ))}
       </div>
     </div>
   );
 };
 
 export default ProductList;
- 
