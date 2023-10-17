@@ -6,20 +6,51 @@ import axios from "axios";
 import Login from "./routes/Login";
 import SignUp from "./routes/SignUp";
 import Account from "./routes/Account";
+import Cart from "./routes/Cart";
+import noteContext from "./context/Context";
+
 // import { API_BASE_URL } from "./config";
 function App() {
-  const allProductapi = "https://bandhejhub.onrender.com/api/allProductdata/";
-  // const allProductapi = "http://localhost:5000/api/allProductdata/";
+  const [itemCount, setItemCount] = useState(0);
+  useEffect(() => {
+
+    const myCookie = localStorage.getItem("token");
+    if (myCookie) {
+      axios
+        .post("http://localhost:5000/cart/data", { cookie: myCookie })
+        .then((response) => {
+         setItemCount(response.data.length);
+        })
+        .catch((error) => {
+          console.log("Profile Frontend error", error);
+        });
+    } else {
+      console.log("coookie not find");
+    }
+  }, []);
+
+
+
+
+
+
+
+
+
+
+
+  // const allProductapi = "https://bandhejhub.onrender.com/api/allProductdata/";
+  const allProductapi = "http://localhost:5000/api/allProductdata/";
   // const allProductapi = `${API_BASE_URL}/api/allProductdata/`;
   // const sareeapi = `${API_BASE_URL}/api/sareedata/`;
-  const sareeapi = "https://bandhejhub.onrender.com/api/sareedata/";
+  const sareeapi = "http://localhost:5000/api/sareedata/";
   // const dupattaapi = `${API_BASE_URL}/api/dupattadata/`;
-  const dupattaapi = "https://bandhejhub.onrender.com/api/dupattadata/";
+  const dupattaapi = "http://localhost:5000/api/dupattadata/";
   // const dressapi = `${API_BASE_URL}/api/dressdata/`;
-  const dressapi = "https://bandhejhub.onrender.com/api/dressdata/";
+  const dressapi = "http://localhost:5000/api/dressdata/";
   // const lehangaapi = `${API_BASE_URL}/api/lehangadata/`;
-  const lehangaapi = "https://bandhejhub.onrender.com/api/lehangadata/";
-  
+  const lehangaapi = "http://localhost:5000/api/lehangadata/";
+
   const [allProductsData, setAllProductsData] = useState([]);
   useEffect(() => {
     axios
@@ -80,37 +111,40 @@ function App() {
   });
   return (
     <>
-      <BrowserRouter>
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <Home
-                allProductsData={allProductsData}
-                sareeData={sareeData}
-                dupattaData={dupattaData}
-                dressData={dressData}
-                lehangaData={lehangaData}
-              />
-            }
-          />
-          <Route
-            path="/product/:category/:id"
-            element={
-              <BuyPage
-                allProductsData={allProductsData}
-                sareeData={sareeData}
-                dupattaData={dupattaData}
-                dressData={dressData}
-                lehangaData={lehangaData}
-              />
-            }
-          />
-          <Route path="/account/login" element={<Login />} />
-          <Route path="/account/register" element={<SignUp />} />
-          <Route path="/account" element={<Account />} />
-        </Routes>
-      </BrowserRouter>
+      <noteContext.Provider value={{ itemCount, setItemCount }}>
+        <BrowserRouter>
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <Home
+                  allProductsData={allProductsData}
+                  sareeData={sareeData}
+                  dupattaData={dupattaData}
+                  dressData={dressData}
+                  lehangaData={lehangaData}
+                />
+              }
+            />
+            <Route
+              path="/product/:category/:id"
+              element={
+                <BuyPage
+                  allProductsData={allProductsData}
+                  sareeData={sareeData}
+                  dupattaData={dupattaData}
+                  dressData={dressData}
+                  lehangaData={lehangaData}
+                />
+              }
+            />
+            <Route path="/account/login" element={<Login />} />
+            <Route path="/account/register" element={<SignUp />} />
+            <Route path="/account" element={<Account />} />
+            <Route path="/cart" element={<Cart />} />
+          </Routes>
+        </BrowserRouter>
+      </noteContext.Provider>
     </>
   );
 }

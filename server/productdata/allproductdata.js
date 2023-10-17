@@ -5,7 +5,7 @@ const allProductsData = [
     name: "Bandhani Silk Heavy Jari Banarasi Saree",
     price: 10,
     image:
-      "https://www.rajasthanishilp.com/uploads/rajasthanishilp/products/1-1-682089_l.jpg",
+      "https://ethnicrace.com/wp-content/uploads/2022/09/photo_2022-09-19_18-46-47-2.jpg",
     whitelisted: true,
     description:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut ipsam voluptas commodi earum obcaecati, explicabo sequi incidunt provident maiores quidem, cum accusamus consequuntur aliquid sint rem, id eligendi tempora. Aliquid"
   },
@@ -33,7 +33,7 @@ const allProductsData = [
     name: "Bandhani Silk Heavy Jari Banarasi Saree",
     price: 10,
     image:
-      "https://www.rajasthanishilp.com/uploads/rajasthanishilp/products/1-1-682089_l.jpg",
+      "https://ethnicrace.com/wp-content/uploads/2022/09/photo_2022-09-19_18-46-47-2.jpg",
     whitelisted: true,
   },
 
@@ -43,7 +43,7 @@ const allProductsData = [
     name: "Bandhani Silk Heavy Jari Banarasi Saree",
     price: 10,
     image:
-      "https://www.rajasthanishilp.com/uploads/rajasthanishilp/products/1-1-682089_l.jpg",
+      "https://ethnicrace.com/wp-content/uploads/2022/09/photo_2022-09-19_18-46-47-2.jpg",
     whitelisted: true,
   },
   {
@@ -52,7 +52,7 @@ const allProductsData = [
     name: "Bandhani Silk Heavy Jari Banarasi Saree",
     price: 10,
     image:
-      "https://www.rajasthanishilp.com/uploads/rajasthanishilp/products/1-1-682089_l.jpg",
+      "https://ethnicrace.com/wp-content/uploads/2022/09/photo_2022-09-19_18-46-47-2.jpg",
     whitelisted: true,
   },
   {
@@ -61,7 +61,7 @@ const allProductsData = [
     name: "Bandhani Silk Heavy Jari Banarasi Saree",
     price: 10,
     image:
-      "https://www.rajasthanishilp.com/uploads/rajasthanishilp/products/1-1-682089_l.jpg",
+      "https://ethnicrace.com/wp-content/uploads/2022/09/photo_2022-09-19_18-46-47-2.jpg",
     whitelisted: true,
   },
   {
@@ -79,7 +79,7 @@ const allProductsData = [
     name: "Bandhani Silk Heavy Jari Banarasi Saree",
     price: 10,
     image:
-      "https://www.rajasthanishilp.com/uploads/rajasthanishilp/products/1-1-682089_l.jpg",
+      "https://ethnicrace.com/wp-content/uploads/2022/09/photo_2022-09-19_18-46-47-2.jpg",
     whitelisted: true,
   },
   {

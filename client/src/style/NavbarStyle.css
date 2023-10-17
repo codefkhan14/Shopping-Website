@@ -97,6 +97,20 @@
 .nav-items ul li a:hover {
   color: rgb(99, 99, 99);
 }
+.nav-item-cart {
+  position: relative;
+}
+.nav-item-cart span{
+  position: absolute;
+  top: -12px; /* Adjust the position as needed */
+  right: -5px; /* Adjust the position as needed */
+  background-color: black; /* Background color for the count */
+  color: #fff; /* Text color for the count */
+  border-radius: 50%; /* Make it a circle */
+  padding: 3px 6px; /* Adjust padding as needed */
+  font-size: 11px; /* Adjust the font size as needed */
+  font-weight: bold;
+}
 .brand-name a {
   margin-left: 155px;
   font-weight: 400;

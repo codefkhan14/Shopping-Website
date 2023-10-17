@@ -13,6 +13,14 @@ const userSchema = new mongoose.Schema({
     type: String,
     require: true,
   },
+  cart:[
+    {
+      name:String,
+      quantity:Number,
+      price:Number,
+      category:String,
+    }
+  ]
 });
 //    hashing password
 userSchema.pre("save", async function (next) {

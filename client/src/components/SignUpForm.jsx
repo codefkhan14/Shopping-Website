@@ -42,7 +42,7 @@ function SignUpForm() {
     }
 
     try {
-      const response = await axios.post("https://bandhejhub.onrender.com/register", user);
+      const response = await axios.post("http://localhost:5000/register", user);
       console.log(response.data);
       window.alert("User Reigster Successfull");
       toast.success("Register Successfully", toastOption);

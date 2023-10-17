@@ -1,12 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "../style/NavbarStyle.css";
 import { TfiSearch, TfiHeart } from "react-icons/tfi";
 import { CiMenuFries } from "react-icons/ci";
 import { PiShoppingCart } from "react-icons/pi";
 import { PiUserCircleLight } from "react-icons/pi";
 import { RxCross1 } from "react-icons/rx";
+
 import { Link } from "react-router-dom";
+import noteContext from '../context/Context';
+
 function Navbar() {
+  const {itemCount, setItemCount} = useContext(noteContext)
+// console.log(itemCount);
   const [stickyClass, setStickyClass] = useState('');
   const [Menuclick, setMenuclick] = useState(true);
   const [catclick, setCatclick] = useState(false);
@@ -138,10 +143,10 @@ function Navbar() {
               {/* <span>Whitelist</span> */}
             </li>
             <li className="nav-item-cart">
-              <a href="">
+              <Link to="/cart">
                 <PiShoppingCart />
-              </a>
-                {/* <span>Cart</span> */}
+              </Link>
+                <span>{itemCount}</span>
             </li>
           </ul>
         </div>

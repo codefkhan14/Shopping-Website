@@ -5,7 +5,7 @@ const sareeData = [
     name: "Bandhani Silk Heavy Jari Banarasi Saree",
     price: 10,
     image:
-      "https://www.rajasthanishilp.com/uploads/rajasthanishilp/products/22-1-784256_m.jpg",
+      "https://assets0.mirraw.com/images/9145444/S1820-3_zoom.jpg?1624090114",
   },
   {
     id: 18,
@@ -13,7 +13,7 @@ const sareeData = [
     name: "Bandhani Silk Heavy Jari Banarasi Saree",
     price: 10,
     image:
-      "https://www.rajasthanishilp.com/uploads/rajasthanishilp/products/22-1-784256_m.jpg",
+      "https://blog.indianweddingsaree.com/wp-content/uploads/2018/06/Bandhani-Sarees.jpg",
   },
   {
     id: 19,
@@ -21,7 +21,7 @@ const sareeData = [
     name: "Bandhani Silk Heavy Jari Banarasi Saree",
     price: 10,
     image:
-      "https://www.rajasthanishilp.com/uploads/rajasthanishilp/products/22-1-784256_m.jpg",
+      "https://assets0.mirraw.com/images/9145444/S1820-3_zoom.jpg?1624090114",
   },
   {
     id: 20,
@@ -29,7 +29,7 @@ const sareeData = [
     name: "Bandhani Silk Heavy Jari Banarasi Saree",
     price: 10,
     image:
-      "https://www.rajasthanishilp.com/uploads/rajasthanishilp/products/22-1-784256_m.jpg",
+      "https://blog.indianweddingsaree.com/wp-content/uploads/2018/06/Bandhani-Sarees.jpg",
   },
   {
     id: 21,
@@ -37,7 +37,7 @@ const sareeData = [
     name: "Bandhani Silk Heavy Jari Banarasi Saree",
     price: 10,
     image:
-      "https://www.rajasthanishilp.com/uploads/rajasthanishilp/products/22-1-784256_m.jpg",
+      "https://assets0.mirraw.com/images/9145444/S1820-3_zoom.jpg?1624090114",
   },
 ];
 
