@@ -8,7 +8,8 @@ import SignUp from "./routes/SignUp";
 import Account from "./routes/Account";
 import Cart from "./routes/Cart";
 import noteContext from "./context/Context";
-
+import backend_ref from "./components/Backend_ref";
+console.log(backend_ref);
 // import { API_BASE_URL } from "./config";
 function App() {
   const [itemCount, setItemCount] = useState(0);
@@ -34,22 +35,22 @@ function App() {
 
 
 
+ 
 
 
-
-
+  
 
   // const allProductapi = "https://bandhejhub.onrender.com/api/allProductdata/";
-  const allProductapi = "http://localhost:5000/api/allProductdata/";
+  const allProductapi = backend_ref+"/api/allProductdata/";
   // const allProductapi = `${API_BASE_URL}/api/allProductdata/`;
   // const sareeapi = `${API_BASE_URL}/api/sareedata/`;
-  const sareeapi = "http://localhost:5000/api/sareedata/";
+  const sareeapi = backend_ref+"/api/sareedata/";
   // const dupattaapi = `${API_BASE_URL}/api/dupattadata/`;
-  const dupattaapi = "http://localhost:5000/api/dupattadata/";
+  const dupattaapi = backend_ref+"/api/dupattadata/";
   // const dressapi = `${API_BASE_URL}/api/dressdata/`;
-  const dressapi = "http://localhost:5000/api/dressdata/";
+  const dressapi = backend_ref+"/api/dressdata/";
   // const lehangaapi = `${API_BASE_URL}/api/lehangadata/`;
-  const lehangaapi = "http://localhost:5000/api/lehangadata/";
+  const lehangaapi = backend_ref+"/api/lehangadata/";
 
   const [allProductsData, setAllProductsData] = useState([]);
   useEffect(() => {
@@ -61,7 +62,7 @@ function App() {
       .catch((err) => {
         console.log("product error", err);
       });
-  });
+  },[]);
 
   const [sareeData, setSareeData] = useState([]);
   useEffect(() => {
@@ -73,7 +74,7 @@ function App() {
       .catch((err) => {
         console.log("product error", err);
       });
-  });
+  },[]);
 
   const [dupattaData, setDupattaData] = useState([]);
   useEffect(() => {
@@ -85,7 +86,7 @@ function App() {
       .catch((err) => {
         console.log("product error", err);
       });
-  });
+  },[]);
 
   const [dressData, setDressData] = useState([]);
   useEffect(() => {
@@ -97,7 +98,7 @@ function App() {
       .catch((err) => {
         console.log("product error", err);
       });
-  });
+  },[]);
   const [lehangaData, setLehangaData] = useState([]);
   useEffect(() => {
     axios
@@ -108,7 +109,7 @@ function App() {
       .catch((err) => {
         console.log("product error", err);
       });
-  });
+  },[]);
   return (
     <>
       <noteContext.Provider value={{ itemCount, setItemCount }}>
