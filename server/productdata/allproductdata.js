@@ -91,6 +91,15 @@ const allProductsData = [
       "https://m.media-amazon.com/images/I/81b+Tf52HSL._AC_UY1100_.jpg",
     whitelisted: true,
   },
+  {
+    id: 11,
+    category: "Dupatta",
+    name: "Bandhani Silk Heavy Jari Banarasi Saree",
+    price: 10,
+    image:
+      "https://m.media-amazon.com/images/I/81b+Tf52HSL._AC_UY1100_.jpg",
+    whitelisted: true,
+  },
 ];
 
 module.exports = allProductsData;
