@@ -2,11 +2,7 @@
 
 INTER is an inclusive computer science club that promoting a collaborative environment for individuals to interact, learn, and enhance their technical skills.
 
-# [Visit the site](# Inter : A Club Website
-
-INTER is an inclusive computer science club that promoting a collaborative environment for individuals to interact, learn, and enhance their technical skills.
-
-# [Visit the site](https://interccslub.netlify.app/)
+# [Visit the site](https://bandhejhub.netlify.app/)
 
 ## Features
 
