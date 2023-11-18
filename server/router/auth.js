@@ -6,7 +6,6 @@ const cookieParser = require("cookie-parser");
 const app = express();
 app.use(cookieParser());
 
-
 const allProductdata = require("../productdata/allproductdata");
 const sareeData = require("../productdata/saree");
 const dupattaData = require("../productdata/dupatta");
@@ -32,8 +31,6 @@ router.get("/api/lehangadata/", (req, res) => {
   res.json(lehangaData);
 });
 
-
-
 router.post("/register", async (req, res) => {
   const { name, email, password } = req.body;
   try {
@@ -48,7 +45,6 @@ router.post("/register", async (req, res) => {
     console.log("register form error", error);
   }
 });
-
 
 router.post("/login", async (req, res) => {
   const { email, password } = req.body;
@@ -102,32 +98,26 @@ router.post("/profile", async (req, res) => {
 });
 
 router.post("/cart", async (req, res) => {
-  const { name, category, price, quantity,cookie } = req.body;
+  const { name, category, price, quantity, cookie } = req.body;
   const cartItem = {
     name: name,
     category: category,
     price: price,
-    quantity: quantity
+    quantity: quantity,
   };
   try {
     const payload = jwt.verify(cookie, process.env.SECRET_KEY);
-  const userId = payload.id; 
-  console.log("user id is",userId);
+    const userId = payload.id;
+    console.log("user id is", userId);
 
-  const user = await User.findOne({ _id: userId });
-  await User.updateOne(
-    { _id: userId },
-    {$push : {cart:cartItem}}
-  )
-  res.status(200).json({ message: 'Cart item added successfully' });
-  } 
-  catch (error) {
+    const user = await User.findOne({ _id: userId });
+    await User.updateOne({ _id: userId }, { $push: { cart: cartItem } });
+    res.status(200).json({ message: "Cart item added successfully" });
+  } catch (error) {
     console.log("cart error", error);
   }
-  
-
 });
-router.post('/cart/data', async (req,res)=>{
+router.post("/cart/data", async (req, res) => {
   const { cookie } = req.body;
   try {
     const decodedToken = jwt.verify(cookie, process.env.SECRET_KEY);
@@ -139,7 +129,6 @@ router.post('/cart/data', async (req,res)=>{
   } catch (error) {
     console.error("Error Profile section", error);
   }
-})
-
+});
 
 module.exports = router;
