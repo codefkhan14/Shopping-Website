@@ -5,6 +5,8 @@ const jwt = require("jsonwebtoken");
 const cookieParser = require("cookie-parser");
 const app = express();
 app.use(cookieParser());
+
+
 const allProductdata = require("../productdata/allproductdata");
 const sareeData = require("../productdata/saree");
 const dupattaData = require("../productdata/dupatta");
@@ -30,6 +32,8 @@ router.get("/api/lehangadata/", (req, res) => {
   res.json(lehangaData);
 });
 
+
+
 router.post("/register", async (req, res) => {
   const { name, email, password } = req.body;
   try {
@@ -44,6 +48,7 @@ router.post("/register", async (req, res) => {
     console.log("register form error", error);
   }
 });
+
 
 router.post("/login", async (req, res) => {
   const { email, password } = req.body;

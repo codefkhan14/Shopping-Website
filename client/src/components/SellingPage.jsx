@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import { TfiHeart } from "react-icons/tfi";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
-import noteContext from '../context/Context';
+import noteContext from "../context/Context";
 
 function SellingPage({
   allProductsData,
@@ -13,8 +13,8 @@ function SellingPage({
   dressData,
   lehangaData,
 }) {
-  const {itemCount, setItemCount} = useContext(noteContext)
-  let itemCountInc  = itemCount;
+  const { itemCount, setItemCount } = useContext(noteContext);
+  let itemCountInc = itemCount;
   const toastOption = {
     password: "buttom-right",
     autoClose: 8000,
@@ -37,46 +37,41 @@ function SellingPage({
     alert(`You purchased ${product.name} for $${product.price}`);
   };
   const myCookie = localStorage.getItem("token");
-  const handleAddToCart = async ()=>{
-    const {category, price,name} = product;
+  const handleAddToCart = async () => {
+    const { category, price, name } = product;
     const addToCartData = {
-      name : name,
-      category : category,
+      name: name,
+      category: category,
       price: price,
-      quantity:quantity,
-      cookie:myCookie,
+      quantity: quantity,
+      cookie: myCookie,
+    };
 
-    }
-
-    console.log("cookie is",myCookie);
-    if(myCookie===null){
-
+    console.log("cookie is", myCookie);
+    if (myCookie === null) {
       toast.error("Plase Login for add product in cart", toastOption);
-      
 
       console.log("please login first");
+    } else {
+      try {
+        const response = await axios.post(
+          "http://localhost:5000/cart",
+          addToCartData
+        );
+        toast.success("Add To Cart Product Successfully", toastOption);
+        itemCountInc++;
+        console.log("item count", itemCountInc);
+        setItemCount(itemCountInc);
+      } catch (error) {
+        console.log("frontend add to cart error", error);
+      }
     }
-    else{
-    try {
-      const response= await axios.post('http://localhost:5000/cart',addToCartData)
-      toast.success("Add To Cart Product Successfully", toastOption);
-      itemCountInc++;
-      console.log("item count", itemCountInc);
-      setItemCount(itemCountInc);
-      
-    } catch (error) {
-      console.log("frontend add to cart error", error);
-    }
-  }
-
-
-
-  }
+  };
 
   const handleQuantityChange = (e) => {
     const value = parseInt(e.target.value);
     setQuantity(value);
-  }; 
+  };
 
   const increaseQuantity = () => {
     setQuantity((prevQuantity) => prevQuantity + 1);
@@ -136,7 +131,6 @@ function SellingPage({
       </div>
       <ToastContainer />
     </>
-
   );
 }
 
