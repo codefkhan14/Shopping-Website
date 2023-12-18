@@ -31,22 +31,44 @@ router.get("/api/lehangadata/", (req, res) => {
   res.json(lehangaData);
 });
 
-router.post("/register", async (req, res) => {
-  const { name, email, password } = req.body;
+router.post("/user/register", async (req, res) => {
+  const { name, email, phone, password } = req.body;
   try {
     const userExist = await User.findOne({ email: email });
     if (userExist) {
       return res.status(422).json({ error: "Email already exist" });
     }
-    const user = new User({ name: name, email: email, password: password });
+    const user = new User({
+      name: name,
+      email: email,
+      phone: phone,
+      password: password,
+    });
     await user.save();
-    res.status(201).json({ message: "User register succefully" });
+
+    let expTime = "30days";
+    let payload = { id: user?._id };
+    let token = jwt.sign(payload, process.env.SECRET_KEY, {
+      expiresIn: expTime,
+      audience: process.env.JWT_AUD,
+    });
+    let finalData = {
+      user: {
+        name: user?.name,
+        email: user?.email,
+        phone: user?.phone,
+      },
+
+      token: token,
+      expireTime: expTime,
+    };
+    return res.status(201).json(finalData);
   } catch (error) {
     console.log("register form error", error);
   }
 });
 
-router.post("/login", async (req, res) => {
+router.post("/user/login", async (req, res) => {
   const { email, password } = req.body;
 
   try {
@@ -55,7 +77,7 @@ router.post("/login", async (req, res) => {
       const isMatch = await bcrypt.compare(password, userLogin.password);
 
       if (!isMatch) {
-        return res.status(400).json({ error: "Invalid credidential" });
+        return res.status(400).json({ error: "Invalid Credidential" });
       } else {
         let expTime = "30 days";
         console.log(userLogin._id);
@@ -66,7 +88,7 @@ router.post("/login", async (req, res) => {
         });
 
         let finalData = {
-          data: {
+          user: {
             name: userLogin.name,
             email: userLogin.email,
           },
@@ -77,12 +99,14 @@ router.post("/login", async (req, res) => {
         return res.status(201).json(finalData);
       }
     } else {
-      return res.status(400).json({ error: "Invalid credidential" });
+      return res.status(400).json({ error: "Invalid Credidential" });
     }
   } catch (error) {
     console.log("login form ", error);
   }
 });
+
+
 router.post("/profile", async (req, res) => {
   const { cookie } = req.body;
   try {

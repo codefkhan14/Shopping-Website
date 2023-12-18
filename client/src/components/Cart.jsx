@@ -4,9 +4,9 @@ import noteContext from '../context/Context';
 
 import { RiDeleteBin6Line } from "react-icons/ri";
 import "../style/Cart.css";
+import { UserContext } from "../context/userContext";
 const Cart = () => {
-
-  const {setItemCount} = useContext(noteContext)
+   const {setItemCount} = useContext(UserContext);
   const [cartData, setCartData] = useState(null);
   useEffect(() => {
     const myCookie = localStorage.getItem("token");

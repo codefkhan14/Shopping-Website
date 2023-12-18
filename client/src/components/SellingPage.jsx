@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import { TfiHeart } from "react-icons/tfi";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
-import noteContext from "../context/Context";
+import { UserContext } from "../context/userContext";
 
 function SellingPage({
   allProductsData,
@@ -13,7 +13,7 @@ function SellingPage({
   dressData,
   lehangaData,
 }) {
-  const { itemCount, setItemCount } = useContext(noteContext);
+  const { itemCount, setItemCount } = useContext(UserContext);
   let itemCountInc = itemCount;
   const toastOption = {
     password: "buttom-right",

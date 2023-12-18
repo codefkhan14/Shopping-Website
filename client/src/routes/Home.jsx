@@ -16,7 +16,6 @@ function Home({
       <TopHeader />
       <Navbar />
       <Product
-
         heading="Top Trending"
         summary="Collections Of Most Selling Items "
         allProductsData={allProductsData}

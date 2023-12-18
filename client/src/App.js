@@ -7,26 +7,11 @@ import Login from "./routes/Login";
 import SignUp from "./routes/SignUp";
 import Account from "./routes/Account";
 import Cart from "./routes/Cart";
-import noteContext from "./context/Context";
 import backend_ref from "./components/Backend_ref";
+import { UserProvider } from "./context/userContext";
 console.log(backend_ref);
 function App() {
-  const [itemCount, setItemCount] = useState(0);
-  useEffect(() => {
-    const myCookie = localStorage.getItem("token");
-    if (myCookie) {
-      axios
-        .post("http://localhost:5000/cart/data", { cookie: myCookie })
-        .then((response) => {
-          setItemCount(response.data.length);
-        })
-        .catch((error) => {
-          console.log("Profile Frontend error", error);
-        });
-    } else {
-      console.log("coookie not find");
-    }
-  }, []);
+
 
   const allProductapi = backend_ref + "/api/allProductdata/";
   const sareeapi = backend_ref + "/api/sareedata/";
@@ -94,7 +79,8 @@ function App() {
   }, []);
   return (
     <>
-      <noteContext.Provider value={{ itemCount, setItemCount }}>
+      <UserProvider>
+
         <BrowserRouter>
           <Routes>
             <Route
@@ -127,7 +113,8 @@ function App() {
             <Route path="/cart" element={<Cart />} />
           </Routes>
         </BrowserRouter>
-      </noteContext.Provider>
+      </UserProvider>
+
     </>
   );
 }

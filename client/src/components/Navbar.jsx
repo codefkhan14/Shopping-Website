@@ -8,10 +8,10 @@ import { RxCross1 } from "react-icons/rx";
 
 import { Link } from "react-router-dom";
 import noteContext from '../context/Context';
+import { UserContext } from "../context/userContext";
 
 function Navbar() {
-  const {itemCount, setItemCount} = useContext(noteContext)
-// console.log(itemCount);
+  const {itemCount, setItemCount} = useContext(UserContext)
   const [stickyClass, setStickyClass] = useState('');
   const [Menuclick, setMenuclick] = useState(true);
   const [catclick, setCatclick] = useState(false);

@@ -1,15 +1,18 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { USER_REGISTER } from "./Apis";
 // import { API_BASE_URL } from "../config";
 
 function SignUpForm() {
   const navigate = useNavigate();
-  const [user, setUser] = useState({
+  const [userData, setUserData] = useState({
     name: "",
     email: "",
+    phone: "",
     password: "",
     cpassword: "",
   });
@@ -23,33 +26,28 @@ function SignUpForm() {
   };
 
   const handleInput = (e) => {
-    setUser({
-      ...user,
+    setUserData({
+      ...userData,
       [e.target.name]: e.target.value,
     });
   };
 
-  // const registerapi = "https://bandhejhub.onrender.com/register";
   const SubmitForm = async (e) => {
     e.preventDefault();
-    const { name, password, cpassword, email } = user;
-    if (!name || !email || !password || !cpassword) {
-      toast.error("Please fill all field", toastOption);
-      return false;
-    } else if (password !== cpassword) {
+    if (userData?.password !== userData?.cpassword) {
       toast.error("Password and Confirm Password Must be Same.", toastOption);
       return false;
     }
 
     try {
-      const response = await axios.post("http://localhost:5000/register", user);
+      const response = await axios.post(USER_REGISTER, userData);
       console.log(response.data);
       window.alert("User Reigster Successfull");
-      toast.success("Register Successfully", toastOption);
-      navigate("/account/login");
-    } catch (err) {
-      console.log("sign up frontend", err);
-      toast.error(err.response.data.error, toastOption);
+      navigate("/");
+      localStorage.setItem("BandhejHub", JSON.stringify(response.data));
+    } catch (error) {
+      console.log("register error", error);
+      toast.error(error.response.data.error, toastOption);
     }
     return true;
   };
@@ -63,7 +61,8 @@ function SignUpForm() {
             placeholder="Full Name"
             className="loginforminput"
             name="name"
-            value={user.name}
+            value={userData?.name}
+            required
             onChange={handleInput}
           />
           <input
@@ -71,7 +70,17 @@ function SignUpForm() {
             placeholder="Email ID"
             className="loginforminput"
             name="email"
-            value={user.email}
+            value={userData?.email}
+            required
+            onChange={handleInput}
+          />
+          <input
+            type="text"
+            placeholder="Phone"
+            className="loginforminput"
+            name="phone"
+            value={userData?.phone}
+            required
             onChange={handleInput}
           />
           <input
@@ -79,7 +88,8 @@ function SignUpForm() {
             placeholder="Password"
             className="loginforminput"
             name="password"
-            value={user.password}
+            value={userData?.password}
+            required
             onChange={handleInput}
           />
           <input
@@ -87,7 +97,8 @@ function SignUpForm() {
             placeholder="Confirm Password"
             className="loginforminput"
             name="cpassword"
-            value={user.cpassword}
+            value={userData?.cpassword}
+            required
             onChange={handleInput}
           />
 
