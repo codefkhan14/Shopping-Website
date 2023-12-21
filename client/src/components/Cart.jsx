@@ -1,31 +1,11 @@
-import React, { useState, useEffect, useContext } from "react";
-import axios from "axios";
-import noteContext from '../context/Context';
-
+import React, { useContext } from "react";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import "../style/Cart.css";
 import { UserContext } from "../context/userContext";
+
 const Cart = () => {
-   const {setItemCount} = useContext(UserContext);
-  const [cartData, setCartData] = useState(null);
-  useEffect(() => {
-    const myCookie = localStorage.getItem("token");
-    console.log("cookie in accoutn page ", myCookie);
-    if (myCookie) {
-      axios
-        .post("http://localhost:5000/cart/data", { cookie: myCookie })
-        .then((response) => {
-          // console.log(response.data.length);
-         setItemCount(response.data.length);
-          setCartData(response.data);
-        })
-        .catch((error) => {
-          console.log("Profile Frontend error", error);
-        });
-    } else {
-      console.log("coookie not find");
-    }
-  }, []);
+  const { cartData } = useContext(UserContext);
+
   return (
     <div className="cart-section">
       <h2>Your Cart</h2>

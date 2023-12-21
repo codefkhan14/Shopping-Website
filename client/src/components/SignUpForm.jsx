@@ -18,7 +18,7 @@ function SignUpForm() {
   });
 
   const toastOption = {
-    password: "buttom-right",
+    position: "bottom-right",
     autoClose: 8000,
     pauseOnHover: true,
     draggable: true,
@@ -41,12 +41,10 @@ function SignUpForm() {
 
     try {
       const response = await axios.post(USER_REGISTER, userData);
-      console.log(response.data);
       window.alert("User Reigster Successfull");
-      navigate("/");
       localStorage.setItem("BandhejHub", JSON.stringify(response.data));
+      window.location.href = "/"; // Redirect using anchor tag
     } catch (error) {
-      console.log("register error", error);
       toast.error(error.response.data.error, toastOption);
     }
     return true;

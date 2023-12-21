@@ -1,9 +1,14 @@
 import axios from "axios";
 import { createContext, useEffect, useState } from "react";
+import { GET_CART_DATA } from "../components/Apis";
 export const UserContext = createContext();
 export const UserProvider = ({ children }) => {
   // FETCH USER DATA
-  const [userInfo, setUserInfo] = useState([]);
+  const [userInfo, setUserInfo] = useState(null);
+  const [itemCount, setItemCount] = useState(0);
+  const [cartData, setCartData] = useState(null);
+
+  // STORE USER INFO
   useEffect(() => {
     const storeUserData = localStorage.getItem("BandhejHub");
     if (storeUserData) {
@@ -12,28 +17,34 @@ export const UserProvider = ({ children }) => {
     }
   }, []);
 
-  const [itemCount, setItemCount] = useState(0);
+  // GET CART DATA
   useEffect(() => {
-    const myCookie = localStorage.getItem("token");
-    if (myCookie) {
-      axios
-        .post("http://localhost:5000/cart/data", { cookie: myCookie })
-        .then((response) => {
-          setItemCount(response.data.length);
-        })
-        .catch((error) => {
-          console.log("Profile Frontend error", error);
-        });
-    } else {
-      console.log("coookie not find");
+    const fetchData = async () => {
+      try {
+        const requestBody = {
+          userId: userInfo?.user?.userId,
+        };
+
+        const response = await axios.post(GET_CART_DATA, requestBody);
+        setCartData(response?.data);
+        setItemCount(response.data.length);
+      } catch (error) {
+        console.log("get cart data error", error);
+      }
+    };
+
+    if (userInfo?.token) {
+      fetchData();
     }
-  }, []);
+  }, [userInfo, itemCount]);
+
   return (
     <UserContext.Provider
       value={{
         userInfo,
         itemCount,
         setItemCount,
+        cartData,
       }}
     >
       {children}

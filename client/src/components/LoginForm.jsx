@@ -1,24 +1,19 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import "../style/LoginForm.css";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import axios from "axios";
-
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { UserContext } from "../context/userContext";
 import { USER_LOGIN } from "./Apis";
 
 function LoginForm() {
-  const { itemCount, setItemCount } = useContext(UserContext);
-
-  const navigate = useNavigate();
   const [userData, setUserData] = useState({
     email: "",
     password: "",
   });
 
   const toastOption = {
-    password: "buttom-right",
+    position: "bottom-right",
     autoClose: 8000,
     pauseOnHover: true,
     draggable: true,
@@ -36,15 +31,12 @@ function LoginForm() {
 
     try {
       const response = await axios.post(USER_LOGIN, userData);
-      console.log(response.data);
       window.alert("User Login Successfull");
-      navigate("/");
       localStorage.setItem("BandhejHub", JSON.stringify(response.data));
+      window.location.href = "/";
 
-      setItemCount(itemCount);
       toast.success("Login Successfully", toastOption);
     } catch (error) {
-      console.log("login error", error);
       toast.error(error.response.data.error, toastOption);
     }
 

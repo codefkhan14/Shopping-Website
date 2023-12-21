@@ -5,6 +5,7 @@ import { TfiHeart } from "react-icons/tfi";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import { UserContext } from "../context/userContext";
+import { ADD_TO_CART } from "./Apis";
 
 function SellingPage({
   allProductsData,
@@ -13,10 +14,10 @@ function SellingPage({
   dressData,
   lehangaData,
 }) {
-  const { itemCount, setItemCount } = useContext(UserContext);
+  const { itemCount, setItemCount, userInfo } = useContext(UserContext);
   let itemCountInc = itemCount;
   const toastOption = {
-    password: "buttom-right",
+    position: "bottom-right",
     autoClose: 8000,
     pauseOnHover: true,
     draggable: true,
@@ -32,11 +33,11 @@ function SellingPage({
   if (!product) {
     return <div>Product not found.</div>;
   }
-
+  // PURCHASE PRODUCT
   const handlePurchase = async () => {
     alert(`You purchased ${product.name} for $${product.price}`);
   };
-  const myCookie = localStorage.getItem("token");
+  // ADD TO CART
   const handleAddToCart = async () => {
     const { category, price, name } = product;
     const addToCartData = {
@@ -44,30 +45,24 @@ function SellingPage({
       category: category,
       price: price,
       quantity: quantity,
-      cookie: myCookie,
+      userId: userInfo?.user?.userId,
     };
 
-    console.log("cookie is", myCookie);
-    if (myCookie === null) {
+    if (!userInfo) {
       toast.error("Plase Login for add product in cart", toastOption);
-
-      console.log("please login first");
     } else {
       try {
-        const response = await axios.post(
-          "http://localhost:5000/cart",
-          addToCartData
-        );
-        toast.success("Add To Cart Product Successfully", toastOption);
+        const response = await axios.post(ADD_TO_CART, addToCartData);
+        toast.success(response.data.message, toastOption);
         itemCountInc++;
-        console.log("item count", itemCountInc);
         setItemCount(itemCountInc);
       } catch (error) {
-        console.log("frontend add to cart error", error);
+        console.log("add to cart error", error);
       }
     }
   };
 
+  // QUANTITY SET UP
   const handleQuantityChange = (e) => {
     const value = parseInt(e.target.value);
     setQuantity(value);

@@ -1,16 +1,12 @@
-import React, { useContext, useEffect, useState } from "react";
-import axios from "axios";
-
-import { useNavigate } from "react-router-dom";
+import React, { useContext } from "react";
 import "../style/Account.css";
 import { UserContext } from "../context/userContext";
 function Account() {
-  const { userInfo, setItemCount } = useContext(UserContext);
+  const { userInfo } = useContext(UserContext);
 
-  const navigate = useNavigate();
   const handleSignOut = () => {
     localStorage.removeItem("BandhejHub");
-    navigate("/");
+    window.location.href = "/"; // Redirect using anchor tag
   };
 
   return (

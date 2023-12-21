@@ -9,10 +9,7 @@ import Account from "./routes/Account";
 import Cart from "./routes/Cart";
 import backend_ref from "./components/Backend_ref";
 import { UserProvider } from "./context/userContext";
-console.log(backend_ref);
 function App() {
-
-
   const allProductapi = backend_ref + "/api/allProductdata/";
   const sareeapi = backend_ref + "/api/sareedata/";
   const dupattaapi = backend_ref + "/api/dupattadata/";
@@ -80,7 +77,6 @@ function App() {
   return (
     <>
       <UserProvider>
-
         <BrowserRouter>
           <Routes>
             <Route
@@ -114,7 +110,6 @@ function App() {
           </Routes>
         </BrowserRouter>
       </UserProvider>
-
     </>
   );
 }

@@ -7,27 +7,26 @@ import { PiUserCircleLight } from "react-icons/pi";
 import { RxCross1 } from "react-icons/rx";
 
 import { Link } from "react-router-dom";
-import noteContext from '../context/Context';
 import { UserContext } from "../context/userContext";
 
 function Navbar() {
-  const {itemCount, setItemCount} = useContext(UserContext)
-  const [stickyClass, setStickyClass] = useState('');
+  const { itemCount } = useContext(UserContext);
+  const [stickyClass, setStickyClass] = useState("");
   const [Menuclick, setMenuclick] = useState(true);
   const [catclick, setCatclick] = useState(false);
   const [clickMenu, setClickMenu] = useState(false);
   useEffect(() => {
-    window.addEventListener('scroll', stickNavbar);
-    return () => window.removeEventListener('scroll', stickNavbar);
+    window.addEventListener("scroll", stickNavbar);
+    return () => window.removeEventListener("scroll", stickNavbar);
   }, []);
   const stickNavbar = () => {
     if (window !== undefined) {
       let windowHeight = window.scrollY;
-      windowHeight > 120 ? setStickyClass('sticky-nav-come') : setStickyClass('');
-  
+      windowHeight > 120
+        ? setStickyClass("sticky-nav-come")
+        : setStickyClass("");
     }
   };
-
 
   const ClickMenuIcons = () => {
     setClickMenu(!clickMenu);
@@ -95,7 +94,6 @@ function Navbar() {
             <ul className={catclick ? "category-list" : "category-list active"}>
               <li>
                 <a href="">Saree</a>
-                
               </li>
               <li>
                 <a href="">Dupatta</a>
@@ -121,24 +119,21 @@ function Navbar() {
         </div>
         <div className="nav-items">
           <ul>
-          <li className="nav-item-search">
+            <li className="nav-item-search">
               <a href="">
                 <TfiSearch />
               </a>
               {/* <span>Search</span> */}
             </li>
             <li className="nav-item-user">
-              
               <Link to="/account/login" style={{ fontSize: "25px" }}>
                 <PiUserCircleLight />
-
               </Link>
               {/* <span>User</span> */}
             </li>
             <li className="nav-item-whitlist">
               <a href="">
                 <TfiHeart />
-
               </a>
               {/* <span>Whitelist</span> */}
             </li>
@@ -146,7 +141,7 @@ function Navbar() {
               <Link to="/cart">
                 <PiShoppingCart />
               </Link>
-                <span>{itemCount}</span>
+              <span>{itemCount}</span>
             </li>
           </ul>
         </div>

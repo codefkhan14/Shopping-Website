@@ -54,6 +54,7 @@ router.post("/user/register", async (req, res) => {
     });
     let finalData = {
       user: {
+        userId: user?._id,
         name: user?.name,
         email: user?.email,
         phone: user?.phone,
@@ -64,7 +65,7 @@ router.post("/user/register", async (req, res) => {
     };
     return res.status(201).json(finalData);
   } catch (error) {
-    console.log("register form error", error);
+    return res.status(401).json(error);
   }
 });
 
@@ -80,7 +81,6 @@ router.post("/user/login", async (req, res) => {
         return res.status(400).json({ error: "Invalid Credidential" });
       } else {
         let expTime = "30 days";
-        console.log(userLogin._id);
         let payload = { id: userLogin._id };
         let token = jwt.sign(payload, process.env.SECRET_KEY, {
           expiresIn: expTime,
@@ -89,8 +89,9 @@ router.post("/user/login", async (req, res) => {
 
         let finalData = {
           user: {
-            name: userLogin.name,
-            email: userLogin.email,
+            userId: userLogin?._id,
+            name: userLogin?.name,
+            email: userLogin?.email,
           },
 
           token: token,
@@ -102,56 +103,43 @@ router.post("/user/login", async (req, res) => {
       return res.status(400).json({ error: "Invalid Credidential" });
     }
   } catch (error) {
-    console.log("login form ", error);
+    return res.status(401).json(error);
   }
 });
 
-
-router.post("/profile", async (req, res) => {
-  const { cookie } = req.body;
-  try {
-    const decodedToken = jwt.verify(cookie, process.env.SECRET_KEY);
-    console.log(cookie);
-    console.log(decodedToken);
-    const userId = decodedToken.id;
-    const userDetails = await User.findOne({ _id: userId });
-    return res.status(201).json(userDetails);
-  } catch (error) {
-    console.error("Error Profile section", error);
-  }
-});
-
-router.post("/cart", async (req, res) => {
-  const { name, category, price, quantity, cookie } = req.body;
+router.post("/user/addtocart", async (req, res) => {
+  const { name, category, price, quantity, userId } = req.body;
   const cartItem = {
     name: name,
     category: category,
     price: price,
     quantity: quantity,
   };
-  try {
-    const payload = jwt.verify(cookie, process.env.SECRET_KEY);
-    const userId = payload.id;
-    console.log("user id is", userId);
 
-    const user = await User.findOne({ _id: userId });
+  try {
     await User.updateOne({ _id: userId }, { $push: { cart: cartItem } });
-    res.status(200).json({ message: "Cart item added successfully" });
+    let response = {
+      message: "Cart item added successfully",
+      result: {
+        name: name,
+        category: category,
+        price: price,
+        quantity: quantity,
+      },
+    };
+    res.status(200).json(response);
   } catch (error) {
-    console.log("cart error", error);
+    return res.status(401).json(error);
   }
 });
-router.post("/cart/data", async (req, res) => {
-  const { cookie } = req.body;
+router.post("/user/cart", async (req, res) => {
+  const { userId } = req.body;
   try {
-    const decodedToken = jwt.verify(cookie, process.env.SECRET_KEY);
-    console.log(cookie);
-    console.log(decodedToken);
-    const userId = decodedToken.id;
     const userDetails = await User.findOne({ _id: userId });
+
     return res.status(201).json(userDetails.cart);
   } catch (error) {
-    console.error("Error Profile section", error);
+    return res.status(401).json(error);
   }
 });
 
