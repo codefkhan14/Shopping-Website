@@ -108,10 +108,11 @@ router.post("/user/login", async (req, res) => {
 });
 
 router.post("/user/addtocart", async (req, res) => {
-  const { name, category, price, quantity, userId } = req.body;
+  const { name, category, price, quantity, userId, image } = req.body;
   const cartItem = {
     name: name,
     category: category,
+    image: image,
     price: price,
     quantity: quantity,
   };
@@ -125,6 +126,7 @@ router.post("/user/addtocart", async (req, res) => {
         category: category,
         price: price,
         quantity: quantity,
+        image: image,
       },
     };
     res.status(200).json(response);
@@ -143,4 +145,20 @@ router.post("/user/cart", async (req, res) => {
   }
 });
 
+router.post("/user/removefromcart", async (req, res) => {
+  const { postId, userId } = req.body; // Assuming postId is used to identify the item to remove
+
+  try {
+    await User.findOneAndUpdate(
+      { _id: userId },
+      { $pull: { cart: { _id: postId } } },
+      { new: true }
+    );
+
+    res.status(200).json({ message: "Item removed from cart" });
+  } catch (error) {
+    console.log("Error removing item from cart:", error);
+    res.status(500).json({ error: "Internal server error" });
+  }
+});
 module.exports = router;

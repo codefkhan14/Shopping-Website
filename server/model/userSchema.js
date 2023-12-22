@@ -23,6 +23,7 @@ const userSchema = new mongoose.Schema({
       quantity: Number,
       price: Number,
       category: String,
+      image: String,
     },
   ],
 });

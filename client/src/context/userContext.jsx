@@ -7,6 +7,7 @@ export const UserProvider = ({ children }) => {
   const [userInfo, setUserInfo] = useState(null);
   const [itemCount, setItemCount] = useState(0);
   const [cartData, setCartData] = useState(null);
+  const [removeCartData, setRemoveCartData] = useState(null);
 
   // STORE USER INFO
   useEffect(() => {
@@ -17,6 +18,7 @@ export const UserProvider = ({ children }) => {
     }
   }, []);
 
+  
   // GET CART DATA
   useEffect(() => {
     const fetchData = async () => {
@@ -36,7 +38,7 @@ export const UserProvider = ({ children }) => {
     if (userInfo?.token) {
       fetchData();
     }
-  }, [userInfo, itemCount]);
+  }, [userInfo, itemCount, removeCartData]);
 
   return (
     <UserContext.Provider
@@ -45,6 +47,7 @@ export const UserProvider = ({ children }) => {
         itemCount,
         setItemCount,
         cartData,
+        setRemoveCartData,
       }}
     >
       {children}

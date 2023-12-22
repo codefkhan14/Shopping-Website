@@ -39,11 +39,12 @@ function SellingPage({
   };
   // ADD TO CART
   const handleAddToCart = async () => {
-    const { category, price, name } = product;
+    const { category, price, name, image } = product;
     const addToCartData = {
       name: name,
       category: category,
       price: price,
+      image: image,
       quantity: quantity,
       userId: userInfo?.user?.userId,
     };
