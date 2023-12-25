@@ -9,7 +9,7 @@ function Product({ heading, allProductsData, summary }) {
         <h2>{heading}</h2>
         <p>{summary}</p>
         <ProductList allProductsData={allProductsData} />
-        <a href="ViewSaree.html">
+        <a>
           <button className="view-btn">View all →</button>
         </a>
       </div>

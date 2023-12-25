@@ -13,6 +13,8 @@ const dressData = require("../productdata/dress");
 const lehangaData = require("../productdata/lehanga");
 
 const User = require("../model/userSchema");
+const Product = require("../model/productSchema");
+
 require("../database/connection");
 
 router.get("/api/allProductdata/", (req, res) => {
@@ -161,4 +163,72 @@ router.post("/user/removefromcart", async (req, res) => {
     res.status(500).json({ error: "Internal server error" });
   }
 });
+
+router.post("/admin/addproduct", async (req, res) => {
+  const { name, category, price, description, image, tag } = req.body;
+  try {
+    const product = new Product({
+      name: name,
+      category: category,
+      price: price,
+      description: description,
+      image: image,
+      tag: tag,
+    });
+    await product.save();
+    let finalData = {
+      message: "add product successfull",
+
+      product: {
+        name: name,
+        category: category,
+        price: price,
+        description: description,
+        image: image,
+        tag: tag,
+      },
+    };
+    return res.status(201).json(finalData);
+  } catch (error) {
+    return res.status(401).json(error);
+  }
+});
+
+router.post("/user/getproductbyid", async (req, res) => {
+  const { category } = req.body;
+  try {
+    const product = await Product.find({ category: category });
+    return res.status(200).json(product);
+  } catch (error) {
+    return res.status(401).json(error);
+  }
+});
+router.post("/user/getproductbytag", async (req, res) => {
+  const { tag } = req.body;
+  try {
+    const product = await Product.find({ tag: tag });
+    return res.status(200).json(product);
+  } catch (error) {
+    return res.status(401).json(error);
+  }
+});
+
+// router.post('/user/updatename', async (req,res)=>{
+//   try {
+//     const { userId, name } = req.body;
+//     // const { userId, name } = req.body;
+//     console.log(userId)
+
+//     const updatedUser = await User.findByIdAndUpdate(userId, { name }, { new: true });
+
+//     if (!updatedUser) {
+//         return res.status(404).json({ error: 'User not found' });
+//     }
+
+//     res.json(updatedUser);
+// } catch (e) {
+//     console.error(e);
+//     res.status(500).json({ error: e.message });
+// }
+// })
 module.exports = router;

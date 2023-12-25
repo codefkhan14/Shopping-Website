@@ -11,6 +11,7 @@ app.use(express.json());
 
 require("./database/connection");
 require("./model/userSchema");
+require("./model/productSchema");
 app.use(require("./router/auth"));
 
 app.listen(process.env.PORT || 5000);
