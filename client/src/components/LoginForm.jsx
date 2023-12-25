@@ -15,7 +15,7 @@ function LoginForm() {
   const toastOption = {
     position: "bottom-right",
     autoClose: 8000,
-    pauseOnHover: true,
+    pauseOnHover: true, 
     draggable: true,
     theme: "dark",
   };

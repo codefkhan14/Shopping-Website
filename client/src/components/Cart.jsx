@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { REMOVE_CART_DATA } from "./Apis";
 
 const Cart = () => {
   const { cartData, userInfo, setRemoveCartData } = useContext(UserContext);
@@ -32,11 +33,7 @@ const Cart = () => {
         postId: postId,
         userId: userInfo?.user?.userId,
       };
-      const response = await axios.post(
-        "http://localhost:8000/user/removefromcart",
-        requestBody
-      );
-      console.log(response.data);
+      const response = await axios.post(REMOVE_CART_DATA, requestBody);
       setRemoveCartData(response.data);
       toast.success(response.data.message, toastOption);
     } catch (error) {

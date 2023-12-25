@@ -28,7 +28,7 @@ export const UserProvider = ({ children }) => {
         };
 
         const response = await axios.post(GET_CART_DATA, requestBody);
-        setCartData(response?.data);
+        setCartData(response?.data.reverse());
         setItemCount(response.data.length);
       } catch (error) {
         console.log("get cart data error", error);

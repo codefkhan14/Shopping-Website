@@ -1,16 +1,92 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import TopHeader from "../components/TopHeader";
 import Navbar from "../components/Navbar";
 import Product from "../components/Product";
 import Footer from "../components/Footer";
+import axios from "axios";
+import {
+  GET_PRODUCT_BY_TAG,
+  GET_PRODUCT_BY_CATEGORY,
+} from "../components/Apis";
 
-function Home({
-  allProductsData,
-  sareeData,
-  dupattaData,
-  dressData,
-  lehangaData,
-}) {
+function Home() {
+  const [topTrending, setTopTrending] = useState(null);
+  useEffect(() => {
+    const getProductByTag = async () => {
+      try {
+        const requestBody = {
+          tag: "Top Trending",
+        };
+        const response = await axios.post(GET_PRODUCT_BY_TAG, requestBody);
+        setTopTrending(response.data);
+      } catch (error) {
+        console.log("top trending data error", error);
+      }
+    };
+    getProductByTag();
+  }, []);
+
+  const [sareeData, setSareeData] = useState(null);
+  useEffect(() => {
+    const getProductBySaree = async () => {
+      try {
+        const requestBody = {
+          category: "Saree",
+        };
+        const response = await axios.post(GET_PRODUCT_BY_CATEGORY, requestBody);
+        setSareeData(response.data);
+      } catch (error) {
+        console.log("saree data error", error);
+      }
+    };
+    getProductBySaree();
+  }, []);
+  const [dupattaData, setDupattaData] = useState(null);
+  useEffect(() => {
+    const getProductByDupatta = async () => {
+      try {
+        const requestBody = {
+          category: "Dupatta",
+        };
+        const response = await axios.post(GET_PRODUCT_BY_CATEGORY, requestBody);
+        setDupattaData(response.data);
+      } catch (error) {
+        console.log("dupatta data error", error);
+      }
+    };
+    getProductByDupatta();
+  }, []);
+
+  const [dressData, setDressData] = useState(null);
+  useEffect(() => {
+    const getProductByDress = async () => {
+      try {
+        const requestBody = {
+          category: "Dress",
+        };
+        const response = await axios.post(GET_PRODUCT_BY_CATEGORY, requestBody);
+        setDressData(response.data);
+      } catch (error) {
+        console.log("dress data error", error);
+      }
+    };
+    getProductByDress();
+  }, []);
+  const [lehangaData, setLehangaData] = useState(null);
+  useEffect(() => {
+    const getProductByLehanga = async () => {
+      try {
+        const requestBody = {
+          category: "Lehanga",
+        };
+        const response = await axios.post(GET_PRODUCT_BY_CATEGORY, requestBody);
+        setLehangaData(response.data);
+      } catch (error) {
+        console.log("Lehanga data error", error);
+      }
+    };
+    getProductByLehanga();
+  }, []);
   return (
     <>
       <TopHeader />
@@ -18,7 +94,7 @@ function Home({
       <Product
         heading="Top Trending"
         summary="Collections Of Most Selling Items "
-        allProductsData={allProductsData}
+        allProductsData={topTrending}
       />
       <Product
         heading="bandhani saree"

@@ -1,20 +1,15 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "../style/SellingPageStyle.css";
 import { useParams } from "react-router-dom";
 import { TfiHeart } from "react-icons/tfi";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import { UserContext } from "../context/userContext";
-import { ADD_TO_CART } from "./Apis";
+import { ADD_TO_CART, GET_PRODUCT_BY_ID } from "./Apis";
 
-function SellingPage({
-  allProductsData,
-  sareeData,
-  dupattaData,
-  dressData,
-  lehangaData,
-}) {
+function SellingPage({}) {
   const { itemCount, setItemCount, userInfo } = useContext(UserContext);
+  const [quantity, setQuantity] = useState(1);
   let itemCountInc = itemCount;
   const toastOption = {
     position: "bottom-right",
@@ -23,23 +18,32 @@ function SellingPage({
     draggable: true,
     theme: "dark",
   };
-  const [quantity, setQuantity] = useState(1);
-  let { id } = useParams();
-  let product = allProductsData.find((p) => p.id === parseInt(id));
-  if (!product) product = sareeData.find((p) => p.id === parseInt(id));
-  if (!product) product = dupattaData.find((p) => p.id === parseInt(id));
-  if (!product) product = dressData.find((p) => p.id === parseInt(id));
-  if (!product) product = lehangaData.find((p) => p.id === parseInt(id));
-  if (!product) {
-    return <div>Product not found.</div>;
-  }
+
+  const { id } = useParams();
+  const [productInfo, setProductInfo] = useState(null);
+
+  useEffect(() => {
+    const getProductById = async () => {
+      try {
+        const requestBody = {
+          productId: id,
+        };
+        const response = await axios.post(GET_PRODUCT_BY_ID, requestBody);
+        setProductInfo(response.data);
+      } catch (error) {
+        console.log("top trending data error", error);
+      }
+    };
+    getProductById();
+  }, [id]);
+
   // PURCHASE PRODUCT
   const handlePurchase = async () => {
-    alert(`You purchased ${product.name} for $${product.price}`);
+    alert(`You purchased ${productInfo?.name} for $${productInfo?.price}`);
   };
   // ADD TO CART
   const handleAddToCart = async () => {
-    const { category, price, name, image } = product;
+    const { category, price, name, image } = productInfo;
     const addToCartData = {
       name: name,
       category: category,
@@ -82,18 +86,18 @@ function SellingPage({
       <div className="product-details-containerr">
         <div className="product-image-containerr">
           <img
-            src={product.image}
-            alt={product.name}
+            src={productInfo?.image}
+            alt={productInfo?.name}
             className="product-imagee"
           />
         </div>
 
         <div className="product-detailss">
-          <p>Home/{product.category}</p>
+          <p>Home/{productInfo?.category}</p>
           <p>In Stock</p>
-          <h2>{product.name}</h2>
+          <h2>{productInfo?.name}</h2>
           <p>
-            Price: ${product.price} (<i>Including all texes</i>)
+            Price: ₹{productInfo?.price} (<i>Including all texes</i>)
           </p>
 
           <div className="quantity-container">
@@ -122,9 +126,10 @@ function SellingPage({
           </button>
           <hr />
           <h3>Discription</h3>
-          <p>{product.description}</p>
+          <p>{productInfo?.description}</p>
         </div>
       </div>
+
       <ToastContainer />
     </>
   );

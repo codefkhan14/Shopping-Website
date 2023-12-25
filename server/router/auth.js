@@ -6,32 +6,10 @@ const cookieParser = require("cookie-parser");
 const app = express();
 app.use(cookieParser());
 
-const allProductdata = require("../productdata/allproductdata");
-const sareeData = require("../productdata/saree");
-const dupattaData = require("../productdata/dupatta");
-const dressData = require("../productdata/dress");
-const lehangaData = require("../productdata/lehanga");
-
 const User = require("../model/userSchema");
 const Product = require("../model/productSchema");
 
 require("../database/connection");
-
-router.get("/api/allProductdata/", (req, res) => {
-  res.json(allProductdata);
-});
-router.get("/api/sareedata/", (req, res) => {
-  res.json(sareeData);
-});
-router.get("/api/dupattadata/", (req, res) => {
-  res.json(dupattaData);
-});
-router.get("/api/dressdata/", (req, res) => {
-  res.json(dressData);
-});
-router.get("/api/lehangadata/", (req, res) => {
-  res.json(lehangaData);
-});
 
 router.post("/user/register", async (req, res) => {
   const { name, email, phone, password } = req.body;
@@ -194,7 +172,7 @@ router.post("/admin/addproduct", async (req, res) => {
   }
 });
 
-router.post("/user/getproductbyid", async (req, res) => {
+router.post("/user/getproductbycategory", async (req, res) => {
   const { category } = req.body;
   try {
     const product = await Product.find({ category: category });
@@ -207,6 +185,15 @@ router.post("/user/getproductbytag", async (req, res) => {
   const { tag } = req.body;
   try {
     const product = await Product.find({ tag: tag });
+    return res.status(200).json(product);
+  } catch (error) {
+    return res.status(401).json(error);
+  }
+});
+router.post("/user/getproductbyid", async (req, res) => {
+  const { productId } = req.body;
+  try {
+    const product = await Product.findOne({ _id: productId });
     return res.status(200).json(product);
   } catch (error) {
     return res.status(401).json(error);
