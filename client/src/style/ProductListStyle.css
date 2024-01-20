@@ -1,0 +1,271 @@
+.product-list-container {
+  text-align: center;
+  padding: 50px 0;
+}
+
+.product-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.product-card {
+  position: relative;
+  border: 1px solid #eaeaea;
+  border-radius: 8px;
+  background-color: #fff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  width: 300px;
+  margin: 5px;
+  transition: transform 0.3s ease-in-out;
+  overflow: hidden;
+}
+.product-card:hover {
+  transform: translateY(-5px);
+}
+
+.product-image-container {
+  border-bottom: 1px solid #eaeaea;
+}
+.product-card:hover:hover .whitelist-icon {
+  display: block;
+}
+.product-card:hover:hover .addcart-icon {
+  display: block;
+}
+.product-card:hover:hover .view-icon {
+  display: block;
+}
+
+.product-image {
+  width: 100%;
+  height: 430px;
+  object-fit: cover;
+}
+
+.whitelist-icon {
+  position: absolute;
+
+  top: 10px;
+  right: 10px;
+  color: black;
+  background-color: white;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 10px 10px 2px;
+  border-radius: 100%;
+  display: none;
+}
+.addcart-icon {
+  position: absolute;
+  top: 60px;
+  right: 10px;
+  color: black;
+  background-color: white;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 10px 10px 2px;
+  border-radius: 100%;
+  display: none;
+}
+.view-icon {
+  position: absolute;
+  top: 110px;
+  right: 10px;
+  color: black;
+  background-color: white;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 10px 10px 2px;
+  border-radius: 100%;
+  display: none;
+}
+
+.product-info {
+  padding: 5px 10px;
+  text-align: start;
+}
+
+.product-info span {
+  color: rgb(167, 167, 167);
+}
+
+.product-info p {
+  font-size: 16px;
+  color: rgb(73, 73, 73);
+}
+.product-price {
+  font-size: 17px;
+  color: rgb(73, 73, 73);
+}
+@media screen and (max-width: 1280px) {
+  .product-card {
+    width: 250px;
+  }
+  .product-image {
+    height: 350px;
+  }
+}
+@media screen and (max-width: 1040px) {
+  .product-card {
+    width: 230px;
+  }
+  .product-image {
+    height: 330px;
+  }
+}
+@media screen and (max-width: 720px) {
+  .whitelist-icon {
+    font-size: 15px;
+  }
+  .addcart-icon {
+    font-size: 15px;
+    top: 50px;
+  }
+  .view-icon {
+    font-size: 15px;
+    top: 90px;
+  }
+  .product-info p {
+    margin: 2px 0;
+    font-size: 15px;
+  }
+
+  .product-price {
+    font-size: 14px;
+  }
+
+  .product-card {
+    width: 200px;
+  }
+  .product-image {
+    height: 310px;
+  }
+}
+@media screen and (max-width: 630px) {
+  .whitelist-icon {
+    font-size: 13px;
+  }
+  .addcart-icon {
+    font-size: 13px;
+    top: 50px;
+  }
+  .view-icon {
+    font-size: 13px;
+    top: 90px;
+  }
+  .product-card {
+    width: 180px;
+    margin: 5px 2px;
+  }
+  .product-image {
+    height: 280px;
+  }
+}
+@media screen and (max-width: 555px) {
+  .product-card {
+    width: 270px;
+  }
+  .product-image {
+    height: 390px;
+  }
+}
+@media screen and (max-width: 550px) {
+  .product-card {
+    width: 260px;
+  }
+  .product-image {
+    height: 390px;
+  }
+}
+@media screen and (max-width: 530px) {
+  .product-card {
+    width: 240px;
+  }
+  .product-image {
+    height: 370px;
+  }
+}
+@media screen and (max-width: 490px) {
+  .product-card {
+    width: 210px;
+  }
+  .product-image {
+    height: 300px;
+  }
+}
+
+@media screen and (max-width: 430px) {
+  .product-info {
+    padding: 1px 10px;
+    text-align: start;
+  }
+  .product-info p {
+    margin: 2px 0;
+    font-size: 12px;
+  }
+
+  .product-price {
+    font-size: 10px;
+  }
+  .product-info span {
+    font-size: 10px;
+  }
+  .product-card {
+    width: 190px;
+  }
+  .product-image {
+    height: 280px;
+  }
+}
+@media screen and (max-width: 390px) {
+  .whitelist-icon {
+    font-size: 11px;
+    padding: 8px 8px 1px;
+  }
+  .addcart-icon {
+    font-size: 11px;
+    top: 40px;
+    padding: 8px 8px 1px;
+  }
+  .view-icon {
+    font-size: 11px;
+    top: 70px;
+
+    padding: 8px 8px 1px;
+  }
+  .product-card {
+    width: 170px;
+  }
+  .product-image {
+    height: 260px;
+  }
+}
+@media screen and (max-width: 350px) {
+  .product-card {
+    width: 150px;
+  }
+  .product-image {
+    height: 220px;
+  }
+}
+@media screen and (max-width: 310px) {
+  .product-card {
+    width: 130px;
+  }
+  .product-image {
+    height: 190px;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .whitelist-icon {
+    display: block;
+  }
+  .addcart-icon {
+    display: block;
+  }
+  .view-icon {
+    display: block;
+  }
+}

@@ -1,0 +1,140 @@
+.cart-main-section {
+  display: flex;
+  padding: 50px 0;
+  justify-content: space-around;
+
+}
+.cart-data-not-available{
+  color:black;
+  font-size: 20px;
+  font-weight: bold;
+
+}
+
+.cart-section {
+  max-width: 900px;
+}
+
+.cart-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.cart-heading h2 {
+  text-align: center;
+  padding-bottom: 40px;
+  font-weight: bold;
+  font-size: 18px;
+  text-transform: none;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  max-width: 900px;
+  margin: auto;
+}
+
+th {
+  padding: 8px;
+  text-align: center;
+}
+
+td {
+  padding: 8px;
+  text-align: center;
+}
+
+.cart-images-detail {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cart-images-detail img {
+  width: 55px;
+}
+
+.cart-detail {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.cart-detail td:nth-child(2) {
+  font-size: 12px;
+  text-align: left;
+  color: rgb(116, 113, 113);
+}
+
+.cart-content {
+  margin: 20px;
+}
+
+th {
+  background-color: rgb(0, 0, 0);
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+tr:hover {
+  background-color: #e0e0e0;
+}
+
+/* ORDER SUMMARY  */
+.cart-summary {
+  width: 100%;
+  max-width: 300px;
+}
+
+.cart-summary h2 {
+  text-align: center;
+  padding-bottom: 40px;
+  font-weight: bold;
+  font-size: 18px;
+  text-transform: none;
+}
+
+.cart-amount {
+  /* border: 2px solid green; */
+  padding: 20px;
+  background-color: rgb(245, 245, 245);
+  margin-top: 50px;
+  text-align: left;
+}
+
+.cart-amount-rupee {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.cart-amount h3 {
+  text-align: center;
+  padding-bottom: 40px;
+  font-weight: bold;
+  font-size: 15px;
+  text-transform: none;
+}
+
+.cart-amount-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.cart-amount-buttons button {
+  cursor: pointer;
+  background-color: black;
+  color: white;
+  font-weight: bold;
+  padding: 10px 10px;
+  border: none;
+  outline: none;
+  border-radius: 8px;
+  font-size: 12px;
+
+
+}

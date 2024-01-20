@@ -1,0 +1,251 @@
+.navbar-item {
+  display: flex;
+  align-items: center;
+  padding: 25px 60px;
+  justify-content: space-between;
+}
+
+.sticky-nav-come {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  box-shadow: 0px 0px 7px black;
+  background-color: white;
+  z-index: 10;
+  /* transition: .5s; */
+}
+.menu i {
+  font-size: 26px;
+  color: black;
+  cursor: pointer;
+}
+.menu i:hover {
+  color: rgb(99, 99, 99);
+}
+.nav-items ul {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-items ul li {
+  list-style: none;
+  padding: 0 10px;
+  position: relative;
+}
+.nav-item-search a.active::after,
+.nav-item-search a:hover::after {
+  content: "Search";
+  position: absolute;
+  bottom: -24px;
+  color: white;
+  left: 20px;
+  line-height: 24px;
+  height: 25px;
+  width: 48px;
+  font-size: 13px;
+  text-align: center;
+  background-color: rgb(71, 71, 71);
+}
+.nav-item-user a.active::after,
+.nav-item-user a:hover::after {
+  content: "User";
+  position: absolute;
+  bottom: -17px;
+  color: white;
+  left: 20px;
+  height: 20px;
+  width: 40px;
+  font-size: 13px;
+  text-align: center;
+  background-color: rgb(71, 71, 71);
+}
+.nav-item-whitlist a.active::after,
+.nav-item-whitlist a:hover::after {
+  content: "whitlist";
+  position: absolute;
+  bottom: -25px;
+  color: white;
+  left: 20px;
+  line-height: 25px;
+  height: 25px;
+  width: 50px;
+  font-size: 13px;
+  text-align: center;
+  background-color: rgb(71, 71, 71);
+}
+
+.nav-item-cart a.active::after,
+.nav-item-cart a:hover::after {
+  content: "Cart";
+  position: absolute;
+  bottom: -17px;
+  color: white;
+  left: 20px;
+  height: 20px;
+  width: 38px;
+  font-size: 13px;
+  text-align: center;
+  background-color: rgb(71, 71, 71);
+}
+
+.nav-items ul li a {
+  font-size: 20px;
+  color: black;
+}
+.nav-items ul li a:hover {
+  color: rgb(99, 99, 99);
+}
+.nav-item-cart {
+  position: relative;
+}
+.nav-item-cart span{
+  position: absolute;
+  top: -12px; /* Adjust the position as needed */
+  right: -5px; /* Adjust the position as needed */
+  background-color: black; /* Background color for the count */
+  color: #fff; /* Text color for the count */
+  border-radius: 50%; /* Make it a circle */
+  padding: 3px 6px; /* Adjust padding as needed */
+  font-size: 11px; /* Adjust the font size as needed */
+  font-weight: bold;
+}
+.brand-name a {
+  margin-left: 155px;
+  font-weight: 400;
+  color: black;
+  text-transform: uppercase;
+  font-size: 23px;
+  letter-spacing: 0.8px;
+}
+
+
+.nav-menu { 
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  background-color: rgb(255, 255, 255);
+  left: -100%;
+  top: 0px;
+  width: 300px;
+  z-index: 10;
+  margin: 0;
+  padding: 0;
+  position: fixed;
+  height: 100%;
+  transition: 0.5s;
+}
+.nav-menu li {
+  list-style: none;
+  padding: 20px;
+  position: relative;
+  border-bottom: 1px solid rgb(202, 202, 202);
+  width: 100%;
+  transition: 0.3s;
+}
+.nav-menu li:hover {
+  transition: 0.3s;
+  background-color: rgb(241, 235, 235);
+}
+.nav-menu li a {
+  text-decoration: none;
+  font-size: 17px;
+  color: black;
+  font-weight: 400;
+}
+
+.nav-menu.active {
+  left: 0;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+  box-shadow: 0 0 0 10000px rgba(0, 0, 0, 0.5);
+}
+.nav-menu li p {
+  line-height: 1.5;
+}
+
+.menu-list {
+  display: block;
+  width: 100%;
+}
+
+.menu-list.active {
+  display: none;
+}
+.category-list {
+  display: block;
+  width: 100%;
+}
+
+.category-list.active {
+  display: none;
+}
+.btn-list-navbar button {
+  padding: 13px 15px;
+  border-radius: 10px;
+  margin-inline-end: 10px;
+  color: grey;
+  border: 1px solid grey;
+}
+.btn-list-navbar button:hover {
+  background-color: rgb(225, 225, 225);
+}
+
+@media screen and (max-width: 650px) {
+  .navbar-item {
+    padding: 25px 30px;
+  }
+  .nav-menu li{
+    padding: 13px;
+  }
+  .nav-item-user {
+    display: none;
+
+  }
+  .nav-item-whitlist {
+    display: none;
+  }
+  .brand-name a {
+    margin-left: 65px;
+  }
+  .nav-menu{
+   width: 230px;
+  }
+  .nav-menu li a{
+   font-size: 15px;
+  }
+  .btn-list-navbar button {
+    padding: 10px 10px;
+    font-size: 10px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .brand-name a {
+    display: none;
+  }
+  .navbar-item {
+    padding: 15px 30px;
+  }
+  .nav-menu li{
+    padding: 8px;
+  }
+  .menu i{
+    font-size: 18px ;
+  }
+  .nav-items ul li a {
+    font-size: 18px;
+   
+  }
+  .nav-menu{
+    width: 180px;
+   }
+   .nav-menu li a{
+    font-size: 12px;
+   }
+   .btn-list-navbar button {
+    padding: 6px 4px;
+    font-size: 9px;
+  }
+}
