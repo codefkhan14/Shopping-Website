@@ -6,8 +6,7 @@ import "../style/ProductListStyle.css";
 import { TfiHeart, TfiEye } from "react-icons/tfi";
 import { PiShoppingCart } from "react-icons/pi";
 
-function Product({ heading, allProductsData, summary }) {
-  console.log(allProductsData);
+function Product({ heading, allProductsData, summary, query }) {
   return (
     <div>
       <div className="app-container">
@@ -16,7 +15,7 @@ function Product({ heading, allProductsData, summary }) {
 
         <div className="product-list-container">
           <div className="product-list">
-          {allProductsData?.slice(0, 6).map((item, index) => (
+            {allProductsData?.slice(0, 6).map((item, index) => (
               <div className="product-card" key={index}>
                 <i className="whitelist-icon">
                   <TfiHeart />
@@ -52,12 +51,12 @@ function Product({ heading, allProductsData, summary }) {
           </div>
         </div>
 
-        <Link to={allProductsData?.[0]?.category || '/'}>
+        <Link to={query ? `/${query.replace(/\s+/g, "-")}` : "/"}>
           <button className="view-btn">View all →</button>
         </Link>
       </div>
     </div>
-  ); 
+  );
 }
 
 export default Product;

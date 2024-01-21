@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useCallback, useContext, useEffect, useState } from "react";
 import "../style/NavbarStyle.css";
 import { TfiSearch, TfiHeart } from "react-icons/tfi";
 import { CiMenuFries } from "react-icons/ci";
@@ -6,15 +6,17 @@ import { PiShoppingCart } from "react-icons/pi";
 import { PiUserCircleLight } from "react-icons/pi";
 import { RxCross1 } from "react-icons/rx";
 
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { UserContext } from "../context/userContext";
 
 function Navbar() {
+  const navigate = useNavigate();
   const { itemCount } = useContext(UserContext);
   const [stickyClass, setStickyClass] = useState("");
-  const [Menuclick, setMenuclick] = useState(true);
-  const [catclick, setCatclick] = useState(false);
+  //  FOR MENU ICON CLICK HIDE AND SHOW
   const [clickMenu, setClickMenu] = useState(false);
+  const [listChange, setListChange] = useState(true);
+
   useEffect(() => {
     window.addEventListener("scroll", stickNavbar);
     return () => window.removeEventListener("scroll", stickNavbar);
@@ -31,111 +33,166 @@ function Navbar() {
   const ClickMenuIcons = () => {
     setClickMenu(!clickMenu);
   };
-  const menuClick = () => {
-    setCatclick(false);
-    setMenuclick(true);
+
+  const clickList = (value) => {
+    if (value === "/") navigate("/");
+    else {
+      navigate(`/${value}`);
+    }
+
+    setClickMenu(!clickMenu);
   };
-  const categoryClick = () => {
-    setCatclick(true);
-    setMenuclick(false);
+
+  const ListChange = (value) => {
+    if (value === "1") setListChange(true);
+    else if (value === "2") setListChange(false);
   };
+
+  const [userLogin, setUserLogin] = useState(false);
+  const getUser = useCallback(async () => {
+    let userExist = await localStorage.getItem("BandhejHub");
+    if (userExist) {
+      setUserLogin(true);
+    }
+  }, []);
+  useEffect(() => {
+    getUser();
+  }, [getUser]);
 
   return (
     <>
       <div className={`navbar-item ${stickyClass}`}>
-        <div className="menu">
-          <i onClick={ClickMenuIcons}>
-            <CiMenuFries />
-          </i>
-          <ul className={clickMenu ? "nav-menu active" : "nav-menu"}>
-            <li onClick={ClickMenuIcons}>
-              <RxCross1 />
-            </li>
-            <li className="btn-list-navbar">
-              <button onClick={menuClick}>Menu</button>
-              <button onClick={categoryClick}>Categories</button>
-            </li>
-            <ul className={Menuclick ? "menu-list" : "menu-list active"}>
-              <li>
-                <a href="">All items</a>
-              </li>
-              <li>
-                <a href="">New items</a>
-              </li>
-              <li>
-                <a href="">Offered Item</a>
-              </li>
-              <li>
-                <a href="">Super Sale</a>
-              </li>
-              <li>
-                <a href="">Bloge</a>
-              </li>
-              <li>
-                <a href="">Search</a>
-              </li>
-              <li>
-                <a href="">Whitelist</a>
-              </li>
-              <li>
-                <a href="">Login/Register</a>
-              </li>
-              <li>
-                <a href="">Cart</a>
-              </li>
+        <div className="navside-bar">
+          <div className="navbar-menu-icon">
+            <i onClick={ClickMenuIcons}>
+              <CiMenuFries />
+            </i>
+          </div>
 
-              <li>
-                <p>
-                  Need Help? <br /> +9177409456 <br />
-                  customercare@gmail.com
-                </p>
-              </li>
-            </ul>
-            <ul className={catclick ? "category-list" : "category-list active"}>
-              <li>
-                <a href="">Saree</a>
-              </li>
-              <li>
-                <a href="">Dupatta</a>
-              </li>
-              <li>
-                <a href="">Suit</a>
-              </li>
-              <li>
-                <a href="">Lehanga</a>
-              </li>
-              <li>
-                <a href="">Kurtis</a>
-              </li>
-              <li>
-                <a href="">All Products</a>
-              </li>
-            </ul>
-          </ul>
+          <div className={clickMenu ? "nav-menu active" : "nav-menu"}>
+            <div 
+            onClick={ClickMenuIcons} className="navside-bar-menu-list">
+              <i>
+              <RxCross1 />
+
+              </i>
+            </div>
+
+            <div className="btn-list-navbar navside-bar-menu-list">
+              <button onClick={() => ListChange("1")}>Menu</button>
+              <button onClick={() => ListChange("2")}>Categories</button>
+            </div>
+
+            {listChange ? (
+              <div className="menu-list">
+                <div
+                  className="navside-bar-menu-list"
+                  onClick={() => clickList("/")}
+                >
+                  All Products
+                </div>
+                <div className="navside-bar-menu-list">Offered Item</div>
+                <div
+                  className="navside-bar-menu-list"
+                  onClick={() => clickList("Top-Trending")}
+                >
+                  Top Trending Item
+                </div>
+                <div
+                  className="navside-bar-menu-list"
+                  onClick={() => clickList("Recomanded")}
+                >
+                  Recommanded Item
+                </div>
+                <div className="navside-bar-menu-list">Super Sale</div>
+                <div className="navside-bar-menu-list">Blogs</div>
+                <div className="navside-bar-menu-list">Search</div>
+                <div className="navside-bar-menu-list">Wishlist</div>
+                <div
+                  className="navside-bar-menu-list"
+                  onClick={() => clickList("cart")}
+                >
+                  Cart
+                </div>
+                {userLogin ? (
+                  <div
+                    className="navside-bar-menu-list"
+                    onClick={() => clickList("account")}
+                  >
+                    Account
+                  </div>
+                ) : (
+                  <div
+                    className="navside-bar-menu-list"
+                    onClick={() => clickList("account/login")}
+                  >
+                    Login/Register
+                  </div>
+                )}
+                <div
+                  className="navside-bar-menu-list"
+                  style={{ cursor: "auto" }}
+                >
+                  <p>
+                    Need Help? <br /> +9177409456 <br />
+                    customercare@gmail.com
+                  </p>
+                </div>
+              </div>
+            ) : (
+              <div className="category-list">
+                <div
+                  className="navside-bar-menu-list"
+                  onClick={() => clickList("/")}
+                >
+                  All Products
+                </div>
+                <div className="navside-bar-menu-list"  onClick={() => clickList("Saree")}>
+                  Saree
+                </div>
+                <div
+                  className="navside-bar-menu-list"
+                  onClick={() => clickList("Dupatta")}
+                >
+                  Dupatta
+                </div>
+                <div
+                  className="navside-bar-menu-list"
+                  onClick={() => clickList("Lehanga")}
+                >
+                  Lehanga
+                </div>
+                <div
+                  className="navside-bar-menu-list"
+                  onClick={() => clickList("Dress")}
+                >
+                  Dress
+                </div>
+              </div>
+            )}
+          </div>
         </div>
+
         <div className="brand-name">
-          {/* <a href="">𝓑𝓪𝓷𝓭𝓱𝓮𝓳 𝓱𝓾𝓫</a> */}
           <Link to="/">𝕭𝖆𝖓𝖉𝖍𝖊𝖏 𝕳𝖚𝖇</Link>
         </div>
+
         <div className="nav-items">
           <ul>
             <li className="nav-item-search">
               <a href="">
                 <TfiSearch />
               </a>
-              {/* <span>Search</span> */}
             </li>
             <li className="nav-item-user">
               <Link to="/account/login" style={{ fontSize: "25px" }}>
                 <PiUserCircleLight />
               </Link>
-              {/* <span>User</span> */}
             </li>
             <li className="nav-item-whitlist">
               <a href="">
                 <TfiHeart />
               </a>
-              {/* <span>Whitelist</span> */}
             </li>
             <li className="nav-item-cart">
               <Link to="/cart">

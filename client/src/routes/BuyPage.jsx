@@ -12,7 +12,7 @@ function BuyPage() {
     const getProductByTag = async () => {
       try {
         const requestBody = {
-          tag: "Recommended",
+          tag: "Recomanded",
         };
         const response = await axios.post(GET_PRODUCT_BY_TAG, requestBody);
         setRecommended(response.data);
@@ -27,7 +27,12 @@ function BuyPage() {
       <TopHeader />
       <Navbar />
       <SellingPage />
-      <Product heading="Recomonded Products" summary="Collections Of Top Trending Bandhani lehanga With Different Colors"  allProductsData={recommended} />
+      <Product
+        heading="Recomonded Products"
+        summary="Collections Of Recommended Bandhani lehanga With Different Colors"
+        allProductsData={recommended}
+        query="Recomanded"
+      />
       <Footer />
     </>
   );

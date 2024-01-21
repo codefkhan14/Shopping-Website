@@ -14,7 +14,7 @@ require("./model/userSchema");
 require("./model/productSchema");
 app.use(require("./router/auth"));
 
-app.listen(process.env.PORT || 8000);
+app.listen(process.env.PORT || 5000);
 
 function pingLink() {
   const linkToPing = "https://bandhejhub.onrender.com/api/allProductdata"; // Replace with the link you want to ping

@@ -7,6 +7,7 @@ import SignUp from "./routes/SignUp";
 import Account from "./routes/Account";
 import Cart from "./routes/Cart";
 import { UserProvider } from "./context/userContext";
+import FullProductRoute from "./routes/FullProductRoute";
 function App() {
   return (
     <>
@@ -19,7 +20,7 @@ function App() {
             <Route path="/account/register" element={<SignUp />} />
             <Route path="/account" element={<Account />} />
             <Route path="/cart" element={<Cart />} />
-            {/* <Route path="/:category" element={<Cart />} /> */}
+            <Route path="/:category" element={<FullProductRoute />} />
           </Routes>
         </BrowserRouter>
       </UserProvider>

@@ -15,14 +15,8 @@
   z-index: 10;
   /* transition: .5s; */
 }
-.menu i {
-  font-size: 26px;
-  color: black;
-  cursor: pointer;
-}
-.menu i:hover {
-  color: rgb(99, 99, 99);
-}
+
+/*  RIGHT SIDE ICONS   */
 .nav-items ul {
   display: flex;
   align-items: center;
@@ -34,6 +28,7 @@
   padding: 0 10px;
   position: relative;
 }
+
 .nav-item-search a.active::after,
 .nav-item-search a:hover::after {
   content: "Search";
@@ -48,6 +43,7 @@
   text-align: center;
   background-color: rgb(71, 71, 71);
 }
+
 .nav-item-user a.active::after,
 .nav-item-user a:hover::after {
   content: "User";
@@ -61,6 +57,7 @@
   text-align: center;
   background-color: rgb(71, 71, 71);
 }
+
 .nav-item-whitlist a.active::after,
 .nav-item-whitlist a:hover::after {
   content: "whitlist";
@@ -94,23 +91,28 @@
   font-size: 20px;
   color: black;
 }
+
 .nav-items ul li a:hover {
   color: rgb(99, 99, 99);
 }
+
 .nav-item-cart {
   position: relative;
 }
-.nav-item-cart span{
+
+.nav-item-cart span {
   position: absolute;
-  top: -12px; /* Adjust the position as needed */
-  right: -5px; /* Adjust the position as needed */
-  background-color: black; /* Background color for the count */
-  color: #fff; /* Text color for the count */
-  border-radius: 50%; /* Make it a circle */
-  padding: 3px 6px; /* Adjust padding as needed */
-  font-size: 11px; /* Adjust the font size as needed */
+  top: -12px;
+  right: -5px;
+  background-color: black;
+  color: #fff;
+  border-radius: 50%;
+  padding: 3px 6px;
+  font-size: 11px;
   font-weight: bold;
 }
+
+/* MIDDLE BRAND NAME  */
 .brand-name a {
   margin-left: 155px;
   font-weight: 400;
@@ -120,8 +122,19 @@
   letter-spacing: 0.8px;
 }
 
+/* SIDE NAVBAR LIST */
 
-.nav-menu { 
+.navbar-menu-icon i {
+  font-size: 26px;
+  color: black;
+  cursor: pointer;
+}
+
+.navbar-menu-icon i:hover {
+  color: rgb(99, 99, 99);
+}
+
+.nav-menu {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -136,23 +149,20 @@
   height: 100%;
   transition: 0.5s;
 }
-.nav-menu li {
-  list-style: none;
+
+.nav-menu .navside-bar-menu-list {
   padding: 20px;
   position: relative;
   border-bottom: 1px solid rgb(202, 202, 202);
   width: 100%;
   transition: 0.3s;
 }
-.nav-menu li:hover {
+.navside-bar-menu-list i{
+  cursor: pointer;
+}
+.nav-menu .navside-bar-menu-list:hover {
   transition: 0.3s;
   background-color: rgb(241, 235, 235);
-}
-.nav-menu li a {
-  text-decoration: none;
-  font-size: 17px;
-  color: black;
-  font-weight: 400;
 }
 
 .nav-menu.active {
@@ -161,7 +171,8 @@
   scroll-behavior: smooth;
   box-shadow: 0 0 0 10000px rgba(0, 0, 0, 0.5);
 }
-.nav-menu li p {
+
+.nav-menu .navside-bar-menu-list p {
   line-height: 1.5;
 }
 
@@ -170,17 +181,22 @@
   width: 100%;
 }
 
-.menu-list.active {
-  display: none;
+.menu-list div {
+  cursor: pointer;
 }
+
+
 .category-list {
   display: block;
   width: 100%;
 }
 
-.category-list.active {
-  display: none;
+.category-list div {
+  cursor: pointer;
 }
+
+
+
 .btn-list-navbar button {
   padding: 13px 15px;
   border-radius: 10px;
@@ -188,6 +204,7 @@
   color: grey;
   border: 1px solid grey;
 }
+
 .btn-list-navbar button:hover {
   background-color: rgb(225, 225, 225);
 }
@@ -196,25 +213,32 @@
   .navbar-item {
     padding: 25px 30px;
   }
-  .nav-menu li{
+
+  .nav-menu li {
     padding: 13px;
   }
+
   .nav-item-user {
     display: none;
 
   }
+
   .nav-item-whitlist {
     display: none;
   }
+
   .brand-name a {
     margin-left: 65px;
   }
-  .nav-menu{
-   width: 230px;
+
+  .nav-menu {
+    width: 230px;
   }
-  .nav-menu li a{
-   font-size: 15px;
+
+  .nav-menu li a {
+    font-size: 15px;
   }
+
   .btn-list-navbar button {
     padding: 10px 10px;
     font-size: 10px;
@@ -225,26 +249,33 @@
   .brand-name a {
     display: none;
   }
+
   .navbar-item {
     padding: 15px 30px;
   }
-  .nav-menu li{
+
+  .nav-menu li {
     padding: 8px;
   }
-  .menu i{
-    font-size: 18px ;
+
+  .menu i {
+    font-size: 18px;
   }
+
   .nav-items ul li a {
     font-size: 18px;
-   
+
   }
-  .nav-menu{
+
+  .nav-menu {
     width: 180px;
-   }
-   .nav-menu li a{
+  }
+
+  .nav-menu li a {
     font-size: 12px;
-   }
-   .btn-list-navbar button {
+  }
+
+  .btn-list-navbar button {
     padding: 6px 4px;
     font-size: 9px;
   }
