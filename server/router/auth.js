@@ -11,6 +11,10 @@ const Product = require("../model/productSchema");
 
 require("../database/connection");
 
+router.get('/furkan',(req,res)=>{
+  res.send("how are you")
+})
+
 router.post("/user/register", async (req, res) => {
   const { name, email, phone, password } = req.body;
   try {
