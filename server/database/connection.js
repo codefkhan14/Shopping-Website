@@ -11,10 +11,20 @@
 //   .catch((err) => console.log("database connection", err));
 
 
-  const mongoose = require('mongoose');
-const uri = process.env.DB_NAME;
+//   const mongoose = require('mongoose');
+// const uri = process.env.DB_NAME;
 
-mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+// mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+
+// const connection = mongoose.connection;
+// connection.once('open', () => {
+//   console.log('MongoDB database connection established successfully');
+// });
+ 
+const mongoose = require('mongoose');
+const mongoURI = process.env.DB_NAME;
+
+mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true });
 
 const connection = mongoose.connection;
 connection.once('open', () => {
