@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./routes/Home";
 import BuyPage from "./routes/BuyPage";
@@ -8,11 +8,13 @@ import Account from "./routes/Account";
 import Cart from "./routes/Cart";
 import { UserProvider } from "./context/userContext";
 import FullProductRoute from "./routes/FullProductRoute";
+import backend_ref from "./components/Backend_ref";
 function App() {
+  console.log(backend_ref);
   return (
     <>
       <UserProvider>
-        <BrowserRouter> 
+        <BrowserRouter>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/:category/:name/:id" element={<BuyPage />} />
