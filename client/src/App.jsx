@@ -8,9 +8,7 @@ import Account from "./routes/Account";
 import Cart from "./routes/Cart";
 import { UserProvider } from "./context/userContext";
 import FullProductRoute from "./routes/FullProductRoute";
-import backend_ref from "./components/Backend_ref";
 function App() {
-  console.log(backend_ref);
   return (
     <>
       <UserProvider>

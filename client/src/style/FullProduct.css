@@ -21,7 +21,6 @@
 
 }
 
-
 /* For triangle on the list  */
 .fullproduct-filter-section::after {
     content: '';
@@ -36,19 +35,14 @@
 
 .fullproduct-filter-section div {
     color: white;
-    padding: 13px 45px;
+    padding: 15px 45px;
     border: 1px solid grey;
-
     cursor: pointer;
 }
 
 .fullproduct-filter-section div:hover {
     background-color: rgb(64, 64, 64);
 }
-
-
-
-
 
 
 .fullproduct-sort-section {
@@ -73,7 +67,7 @@
 
 .fullproduct-sort-section div {
     color: white;
-    padding: 13px 45px;
+    padding: 15px 45px;
     border: 1px solid grey;
 
     cursor: pointer;
@@ -82,121 +76,6 @@
 .fullproduct-sort-section div:hover {
     background-color: rgb(64, 64, 64);
 }
-
-
-
-
-/* .fullproduct-list-filter-section {
-    border: 1px solid grey;
-    height: 100%;
-    padding: 0 20px;
-    margin: 5px 0px;
-    border-radius: 10px;
-
-
-}
-  
-
-
-.fullproduct-list-search {
-    border-bottom: 1px solid grey;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    padding: 40px 0;
-
-}
-
-.fullproduct-list-search div {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-}
-
-.fullproduct-list-search div p {
-    font-weight: bold;
-    margin-bottom: 20px;
-    font-size: 17px;
-}
-
-.fullproduct-list-search div input {
-    width: 250px;
-    padding: 10.2px 15px;
-}
-
-.fullproduct-list-search div i {
-    font-size: 20px;
-    text-align: center;
-    cursor: pointer;
-    padding: 7px 10px;
-    background-color: black;
-    color: white;
-    font-weight: bold;
-
-}
-
-.fullproduct-list-filter {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 2px solid red;
-    flex-direction: column;
-
-}
-
-.fullproduct-list-filter div p {
-    font-weight: bold;
-    font-size: 17px;
-    margin-top: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.fullproduct-list-filter div p i {
-    margin-right: 6px;
-    color: wheat;
-}
-
-.fullproduct-list-filter div span {
-    display: block;
-    font-weight: 600;
-    font-size: 15px;
-
-}
-
-.fullproduct-list-filter div input {
-    width: 290px;
-    margin: 10px 0;
-    padding: 10.2px 15px;
-}
-
-.fullproduct-list-filter div input[type="submit"] {
-    background-color: black;
-    border: none;
-    outline: none;
-    cursor: pointer;
-    color: white;
-    font-weight: bold;
-    font-size: 15px;
-    border-radius: 14px;
-
-}
-
- */
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
