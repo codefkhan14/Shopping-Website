@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import "../style/SellingPageStyle.css";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { TfiHeart } from "react-icons/tfi";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
@@ -93,7 +93,10 @@ function SellingPage() {
         </div>
 
         <div className="product-detailss">
-          <p>Home/{productInfo?.category}</p>
+          <p>
+            <Link to="/">Home</Link> / {productInfo?.category}
+          </p>
+
           <p>In Stock</p>
           <h2>{productInfo?.name}</h2>
           <p>

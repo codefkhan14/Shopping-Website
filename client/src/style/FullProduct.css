@@ -1,38 +1,92 @@
 .fullproduct-container {
     padding: 20px 50px;
-    /* border: 2px solid red; */
 }
-.fullproduct-heading{
-    /* border: 2px solid red; */
-    padding-bottom: 20px;
-    padding-left: 30px;
 
-
-}
-.fullproduct-heading p{
-    /* border: 2px solid red; */
-    padding: 0 0 20px 0;
-    font-size: 17px;
-    color: rgb(153, 153, 153);
-
-}
-.fullproduct-heading h2{
-    font-weight: bold;
-    font-size: 27px;
-    text-transform: none;
-
-}
 
 
 .fullproduct {
-    /* border: 2px solid red; */
     display: flex;
     justify-content: space-evenly;
 }
 
 
-/* SEARCH SECITON  */
-.fullproduct-list-filter-section {
+/* Styles for the filter section */
+.fullproduct-filter-section {
+    position: absolute;
+    top: 230px;
+    z-index: 1;
+    right: 280px;
+    background-color: black;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+}
+
+
+/* For triangle on the list  */
+.fullproduct-filter-section::after {
+    content: '';
+    position: absolute;
+    top: -5px;
+    right: 10px;
+    transition: border-color 0.3s ease;
+    border-width: 0 7px 7px 7px;
+    border-style: solid;
+    border-color: transparent transparent black transparent;
+}
+
+.fullproduct-filter-section div {
+    color: white;
+    padding: 13px 45px;
+    border: 1px solid grey;
+
+    cursor: pointer;
+}
+
+.fullproduct-filter-section div:hover {
+    background-color: rgb(64, 64, 64);
+}
+
+
+
+
+
+
+.fullproduct-sort-section {
+    position: absolute;
+    top: 230px;
+    z-index: 1;
+    right: 150px;
+    background-color: black;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* For triangle on the list  */
+.fullproduct-sort-section::after {
+    content: '';
+    position: absolute;
+    top: -5px;
+    right: 10px;
+    border-width: 0 7px 7px 7px;
+    border-style: solid;
+    border-color: transparent transparent black transparent;
+}
+
+.fullproduct-sort-section div {
+    color: white;
+    padding: 13px 45px;
+    border: 1px solid grey;
+
+    cursor: pointer;
+}
+
+.fullproduct-sort-section div:hover {
+    background-color: rgb(64, 64, 64);
+}
+
+
+
+
+/* .fullproduct-list-filter-section {
     border: 1px solid grey;
     height: 100%;
     padding: 0 20px;
@@ -41,6 +95,8 @@
 
 
 }
+  
+
 
 .fullproduct-list-search {
     border-bottom: 1px solid grey;
@@ -74,17 +130,17 @@
     text-align: center;
     cursor: pointer;
     padding: 7px 10px;
-    background-color:black;
+    background-color: black;
     color: white;
     font-weight: bold;
 
 }
 
-/* FILTER SECTION  */
 .fullproduct-list-filter {
     display: flex;
     align-items: center;
     justify-content: center;
+    border: 2px solid red;
     flex-direction: column;
 
 }
@@ -128,7 +184,7 @@
 
 }
 
-
+ */
 
 
 
@@ -146,10 +202,81 @@
 
 
 .fullproduct-list-container {
-    text-align:start;
+    text-align: start;
     padding: 0;
     /* border: 2px solid green; */
 }
+
+.fullproduct-heading {
+    /* border: 2px solid green; */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 70px;
+
+}
+
+.fullproduct-heading p {
+    /* padding: 0 0 20px 0; */
+    font-size: 17px;
+    color: rgb(153, 153, 153);
+
+}
+
+.fullproduct-heading p a {
+    color: rgb(153, 153, 153);
+
+}
+
+.fullproduct-heading p a:hover {
+    color: rgb(111, 110, 110);
+
+}
+
+.fullproduct-heading h2 {
+    margin: 20px 0 30px 0;
+    font-weight: bold;
+    font-size: 27px;
+    text-transform: none;
+
+}
+
+.fullproduct-heading-filter-icons {
+    /* border: 2px solid red; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.fullproduct-heading-filter-icons p {
+    font-weight: 600;
+    padding: 9px 12px;
+    border: 1px solid black;
+    cursor: pointer;
+    /* background-color: black; */
+    /* background-color: black; */
+    margin: 0 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-radius: 4px;
+    color: black;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.fullproduct-heading-filter-icons p i {
+    margin: 0 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+
 
 .fullproduct-list {
     display: flex;
@@ -198,7 +325,6 @@
 
 .whitelist-icon {
     position: absolute;
-
     top: 10px;
     right: 10px;
     color: black;
