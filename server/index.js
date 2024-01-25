@@ -14,14 +14,13 @@ require("./model/userSchema");
 require("./model/productSchema");
 app.use(require("./router/auth"));
 
-app.listen(process.env.PORT || 5000);
+app.listen(process.env.PORT);
 
-// function pingLink() {
-//   const linkToPing = "https://bandhejhub.onrender.com/api/allProductdata"; // Replace with the link you want to ping
-//   let data = axios.get(linkToPing);
-//   data.then((res) => {});
-// }
+function pingLink() {
+  const linkToPing = "https://bandhejhub.onrender.com/furkan";
+  let data = axios.get(linkToPing);
+  data.then((res) => {});
+}
 
-// // Ping the link every 11 minutes (10 minutes = 600,000 milliseconds)
-// const pingInterval = 11 * 60 * 1000;
-// setInterval(pingLink, pingInterval);
+const pingInterval = 11 * 60 * 1000;
+setInterval(pingLink, pingInterval);
