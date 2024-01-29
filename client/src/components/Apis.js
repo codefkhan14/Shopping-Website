@@ -2,6 +2,8 @@ import backend_ref from "./Backend_ref";
 
 export const USER_REGISTER = `${backend_ref}/user/register`;
 export const USER_LOGIN = `${backend_ref}/user/login`;
+export const USER_CHECK_EMAIL = `${backend_ref}/user/checkemail/forgotpassword`;
+export const USER_FORGOTPASSWORD = `${backend_ref}/user/forgotpassword`;
 
 // CART
 

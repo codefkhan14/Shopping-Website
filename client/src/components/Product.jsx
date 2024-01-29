@@ -10,7 +10,7 @@ function Product({ heading, allProductsData, summary, query }) {
   return (
     <div>
       <div className="app-container">
-        <h2>{heading}</h2>
+        <h2>{heading}</h2> 
         <p>{summary}</p>
 
         <div className="product-list-container">

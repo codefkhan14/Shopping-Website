@@ -117,7 +117,15 @@ const Cart = () => {
                   </Link>
                 </div>
                 <div>
-                  <button>Checkout</button>
+                  <button>
+                    <a
+                      href="https://wa.me/7740930250"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      Checkout
+                    </a>
+                  </button>
                 </div>
               </div>
             </div>

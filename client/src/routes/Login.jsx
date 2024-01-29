@@ -6,11 +6,11 @@ import LoginForm from "../components/LoginForm";
 import { useNavigate } from "react-router-dom";
 function Login() {
   const navigate = useNavigate();
-  
+
   const getUser = useCallback(async () => {
     let userExist = await localStorage.getItem("BandhejHub");
     if (userExist) {
-      navigate("/account");
+      navigate("/");
     }
   }, [navigate]);
   useEffect(() => {

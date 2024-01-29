@@ -37,10 +37,6 @@ function SellingPage() {
     getProductById();
   }, [id]);
 
-  // PURCHASE PRODUCT
-  const handlePurchase = async () => {
-    alert(`You purchased ${productInfo?.name} for $${productInfo?.price}`);
-  };
   // ADD TO CART
   const handleAddToCart = async () => {
     const { category, price, name, image } = productInfo;
@@ -121,8 +117,10 @@ function SellingPage() {
               <TfiHeart /> Add to Wishlist
             </i>
           </div>
-          <button className="purchase-button" onClick={handlePurchase}>
-            Buy it now
+          <button className="purchase-button">
+            <a href="https://wa.me/7740930250" target="_blank" rel="noreferrer">
+              Buy now
+            </a>
           </button>
           <button className="purchase-button" onClick={handleAddToCart}>
             add cart

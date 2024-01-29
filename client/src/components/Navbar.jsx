@@ -10,6 +10,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { UserContext } from "../context/userContext";
 
 function Navbar() {
+  let userExist = localStorage.getItem("BandhejHub");
+
   const navigate = useNavigate();
   const { itemCount } = useContext(UserContext);
   const [stickyClass, setStickyClass] = useState("");
@@ -70,11 +72,9 @@ function Navbar() {
           </div>
 
           <div className={clickMenu ? "nav-menu active" : "nav-menu"}>
-            <div 
-            onClick={ClickMenuIcons} className="navside-bar-menu-list">
+            <div onClick={ClickMenuIcons} className="navside-bar-menu-list">
               <i>
-              <RxCross1 />
-
+                <RxCross1 />
               </i>
             </div>
 
@@ -147,7 +147,10 @@ function Navbar() {
                 >
                   All Products
                 </div>
-                <div className="navside-bar-menu-list"  onClick={() => clickList("Saree")}>
+                <div
+                  className="navside-bar-menu-list"
+                  onClick={() => clickList("Saree")}
+                >
                   Saree
                 </div>
                 <div
@@ -180,17 +183,23 @@ function Navbar() {
         <div className="nav-items">
           <ul>
             <li className="nav-item-search">
-              <a href="">
+              <a href="/">
                 <TfiSearch />
               </a>
             </li>
             <li className="nav-item-user">
-              <Link to="/account/login" style={{ fontSize: "25px" }}>
-                <PiUserCircleLight />
-              </Link>
+              {userExist ? (
+                <Link to="/account" style={{ fontSize: "25px" }}>
+                  <PiUserCircleLight />
+                </Link>
+              ) : (
+                <Link to="/account/login" style={{ fontSize: "25px" }}>
+                  <PiUserCircleLight />
+                </Link>
+              )}
             </li>
             <li className="nav-item-whitlist">
-              <a href="">
+              <a href="/">
                 <TfiHeart />
               </a>
             </li>

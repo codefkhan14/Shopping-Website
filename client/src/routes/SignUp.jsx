@@ -10,7 +10,7 @@ function SignUp() {
   const getUser = useCallback(async () => {
     let userExist = await localStorage.getItem("BandhejHub");
     if (userExist) {
-      navigate("/account");
+      navigate("/");
     }
   }, [navigate]);
   useEffect(() => {

@@ -30,14 +30,14 @@ function Account() {
           {" "}
           <b>Phone</b> : {userInfo?.user?.phone}
         </li>
-        <hr />
+        {/* <hr />
         <li>
           {" "}
-          <b>Your Address</b> : ward no 2 sikar,rajasthan
-        </li>
+          <b>Address</b> : ward no 2 sikar,rajasthan
+        </li> */}
         <hr />
 
-        <button onClick={handleSignOut}>Sign Out</button>
+        <button onClick={handleSignOut}>LogOut</button>
       </ul>
     </div>
   );

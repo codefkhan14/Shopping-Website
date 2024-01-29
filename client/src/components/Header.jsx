@@ -3,7 +3,7 @@ import "../style/HeaderStyle.css";
 function Header() {
   return (
     <>
-      <div className="header"></div>
+      <div className="header"> slide photo section</div>
     </>
   );
 }

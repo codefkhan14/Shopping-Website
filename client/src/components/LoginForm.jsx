@@ -7,6 +7,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { USER_LOGIN } from "./Apis";
 
 function LoginForm() {
+  const [buttonLoader, setButtonLoader] = useState(false);
   const [userData, setUserData] = useState({
     email: "",
     password: "",
@@ -15,7 +16,7 @@ function LoginForm() {
   const toastOption = {
     position: "bottom-right",
     autoClose: 8000,
-    pauseOnHover: true, 
+    pauseOnHover: true,
     draggable: true,
     theme: "dark",
   };
@@ -28,16 +29,17 @@ function LoginForm() {
   };
   const SubmitForm = async (e) => {
     e.preventDefault();
+    setButtonLoader(true);
 
     try {
       const response = await axios.post(USER_LOGIN, userData);
-      window.alert("User Login Successfull");
       localStorage.setItem("BandhejHub", JSON.stringify(response.data));
       window.location.href = "/";
-
       toast.success("Login Successfully", toastOption);
+      setButtonLoader(false);
     } catch (error) {
       toast.error(error.response.data.error, toastOption);
+      setButtonLoader(false);
     }
 
     return true;
@@ -68,16 +70,20 @@ function LoginForm() {
               onChange={handleInput}
             />
 
-            <a href="" className="fogpass">
+            <Link to="/account/forgot-password" className="fogpass">
               Forgot Password?
-            </a>
+            </Link>
 
-            <input
-              type="submit"
-              name="button"
-              className="formbtn"
-              value="Login"
-            />
+            {buttonLoader ? (
+              <>
+                <button className="formbtn loading" disabled>
+                  Loading...
+                </button>
+              </>
+            ) : (
+              <button className="formbtn">Sign up</button>
+            )}
+
             <span>
               Don't have an account?{" "}
               <Link to="/account/register" className="formspana">

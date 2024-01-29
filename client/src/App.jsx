@@ -8,6 +8,7 @@ import Account from "./routes/Account";
 import Cart from "./routes/Cart";
 import { UserProvider } from "./context/userContext";
 import FullProductRoute from "./routes/FullProductRoute";
+import FogotePasswordRoute from "./routes/FogotePasswordRoute";
 function App() {
   return (
     <>
@@ -18,6 +19,10 @@ function App() {
             <Route path="/:category/:name/:id" element={<BuyPage />} />
             <Route path="/account/login" element={<Login />} />
             <Route path="/account/register" element={<SignUp />} />
+            <Route
+              path="/account/forgot-password"
+              element={<FogotePasswordRoute />}
+            />
             <Route path="/account" element={<Account />} />
             <Route path="/cart" element={<Cart />} />
             <Route path="/:category" element={<FullProductRoute />} />

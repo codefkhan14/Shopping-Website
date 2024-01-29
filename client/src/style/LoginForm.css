@@ -47,6 +47,7 @@
 .formspana {
   color: black;
 }
+
 .formspana:hover {
   color: rgb(88, 88, 88);
 }
@@ -54,11 +55,22 @@
 .formbtn {
   cursor: pointer;
   background-color: black;
+  width: 270px;
+  height: 33px;
+  border-radius: 5px;
+  outline: none;
+  border: 1px solid rgb(174, 171, 171);
+  margin-top: 20px;
   color: white;
 }
 
+.formbtn.loading {
+  cursor: not-allowed;
+  background-color: rgb(88, 88, 88);
+}
+
 .formbtn:hover {
-  background-color:rgb(88, 88, 88);
+  background-color: rgb(88, 88, 88);
 }
 
 ::placeholder {

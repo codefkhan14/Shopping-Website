@@ -5,8 +5,8 @@ import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { USER_REGISTER } from "./Apis";
-
 function SignUpForm() {
+  const [buttonLoader, setButtonLoader] = useState(false);
   const [userData, setUserData] = useState({
     name: "",
     email: "",
@@ -31,19 +31,23 @@ function SignUpForm() {
   };
 
   const SubmitForm = async (e) => {
+    setButtonLoader(true);
     e.preventDefault();
     if (userData?.password !== userData?.cpassword) {
       toast.error("Password and Confirm Password Must be Same.", toastOption);
+      setButtonLoader(false);
       return false;
     }
 
     try {
       const response = await axios.post(USER_REGISTER, userData);
-      window.alert("User Reigster Successfull");
-      localStorage.setItem("BandhejHub", JSON.stringify(response.data));
+      localStorage.setItem("BandhejHub", JSON.stringify(response?.data));
+
       window.location.href = "/"; // Redirect using anchor tag
+      setButtonLoader(false);
     } catch (error) {
       toast.error(error.response.data.error, toastOption);
+      setButtonLoader(false);
     }
     return true;
   };
@@ -98,16 +102,20 @@ function SignUpForm() {
             onChange={handleInput}
           />
 
-          <a href="/" className="fogpass">
+          <Link to="/account/forgot-password" className="fogpass">
             Forgot Password?
-          </a>
+          </Link>
 
-          <input
-            type="submit"
-            name="button"
-            className="formbtn"
-            value="Sign Up"
-          />
+          {buttonLoader ? (
+            <>
+              <button className="formbtn loading" disabled>
+                Loading...
+              </button>
+            </>
+          ) : (
+            <button className="formbtn">Sign up</button>
+          )}
+
           <span>
             Already have an account ?{" "}
             <Link to="/account/login" className="formspana">

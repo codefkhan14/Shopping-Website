@@ -13,7 +13,7 @@ function Footer() {
           <div className="left box">
             <div className="upper">
               <div className="topic">About us</div>
-              <p>
+              <p> 
                 Bandhej hub is a Biggest Manufacturer of bandhani products in
                 india, it sells 1000-2000 products per day with good customers
                 feedback and our customer's satisfaction rate is 99%.{" "}
@@ -41,29 +41,29 @@ function Footer() {
           <div className="middle box">
             <div className="topic">Categories</div>
             <div>
-              <a href="#">Dupattas</a>
+              <a href="/">Dupattas</a>
             </div>
             <div>
-              <a href="#">Saree</a>
+              <a href="/">Saree</a>
             </div>
             <div>
-              <a href="#">Lehengas</a>
+              <a href="/">Lehengas</a>
             </div>
             <div>
-              <a href="#">Suits</a>
+              <a href="/">Suits</a>
             </div>
             <div>
-              <a href="#">Ghatchola Saree</a>
+              <a href="/">Ghatchola Saree</a>
             </div>
             <div>
-              <a href="#">Marwad Pila Chunni</a>
+              <a href="/">Marwad Pila Chunni</a>
             </div>
 
-            <form action=""></form>
+            <form></form>
           </div>
           <div className="right box">
             <div className="topic">Subscribe us</div>
-            <form action="#">
+            <form>
               <input type="text" placeholder="Enter email address" />
               <input type="submit" name="" value="Send" />
               <div className="media-icons">
@@ -87,7 +87,7 @@ function Footer() {
                     <FaWhatsapp />
                   </i>
                 </a>
-                <a href="">
+                <a href="/">
                   <i>
                     <FaTwitter />
                   </i>
