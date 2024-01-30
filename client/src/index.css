@@ -1,14 +1,18 @@
 * {
-  margin: 0;
   padding: 0;
+  margin: 0;
   box-sizing: border-box;
-  transition: 0.2s;
+  font-style: sans-serif;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  -webkit-tap-highlight-color: transparent;
+  transition: outline 0.3s ease;
 }
+
 a {
   text-decoration: none;
   cursor: pointer;
 }
+
 button {
   cursor: pointer;
   text-transform: uppercase;
@@ -16,6 +20,7 @@ button {
   font-weight: bold;
   outline: none;
 }
+
 h1,
 h2,
 h3,

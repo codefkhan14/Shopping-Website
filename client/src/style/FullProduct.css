@@ -2,8 +2,6 @@
     padding: 20px 50px;
 }
 
-
-
 .fullproduct {
     display: flex;
     justify-content: space-evenly;
@@ -260,7 +258,7 @@
     color: rgb(73, 73, 73);
 }
 
-@media screen and (max-width: 1280px) {
+/* @media screen and (max-width: 1280px) {
     .product-card {
         width: 250px;
     }
@@ -466,4 +464,4 @@
     .view-icon {
         display: block;
     }
-}
+} */

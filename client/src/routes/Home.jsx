@@ -93,33 +93,33 @@ function Home() {
       <Navbar />
       <Product
         heading="Top Trending"
-        summary="Collections Of Most Selling Items "
+        summary="Collections Of Top Trending Items "
         allProductsData={topTrending}
         query="Top Trending"
       />
       <Product
         heading="bandhani saree"
-        summary="Collections Of Top Trending Bandhani Saree With Different Colors"
+        summary="Collections Of Bandhani Sarees"
         allProductsData={sareeData}
         query="Saree"
       />
 
       <Product
         heading="bandhani dupatta"
-        summary="Collections Of Top Trending Bandhani dupatta With Different Colors"
+        summary="Collections Of Bandhani Dupattas"
         allProductsData={dupattaData}
         query="Dupatta"
       />
 
       <Product
         heading="bandhani dress"
-        summary="Collections Of Top Trending Bandhani dress With Different Colors"
+        summary="Collections Of Bandhani Dresss"
         allProductsData={dressData}
         query="Dress"
       />
       <Product
         heading="bandhani lehanga"
-        summary="Collections Of Top Trending Bandhani lehanga With Different Colors"
+        summary="Collections Of Bandhani Lehangas"
         allProductsData={lehangaData}
         query="Lehanga"
       />

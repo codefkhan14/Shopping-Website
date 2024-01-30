@@ -42,7 +42,6 @@ function SignUpForm() {
     try {
       const response = await axios.post(USER_REGISTER, userData);
       localStorage.setItem("BandhejHub", JSON.stringify(response?.data));
-
       window.location.href = "/"; // Redirect using anchor tag
       setButtonLoader(false);
     } catch (error) {

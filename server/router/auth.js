@@ -114,8 +114,11 @@ router.post("/user/forgotpassword", async (req, res) => {
     const { email, password } = req.body;
     const hashedPassword = await bcrypt.hash(password, 10);
     const updatedUser = await User.findOneAndUpdate(
-      { email },
-      { password: hashedPassword },
+      // { email },
+      // { password: hashedPassword },
+      // { new: true }
+      { email: email },
+      { $set: { password: hashedPassword } },
       { new: true }
     );
 
@@ -241,7 +244,7 @@ router.post("/user/getproductbyid", async (req, res) => {
 // router.post('/user/updatename', async (req,res)=>{
 //   try {
 //     const { userId, name } = req.body;
-//     // const { userId, name } = req.body;
+//     // const { useraaaaaaaaaId, name } = req.body;
 //     console.log(userId)
 
 //     const updatedUser = await User.findByIdAndUpdate(userId, { name }, { new: true });

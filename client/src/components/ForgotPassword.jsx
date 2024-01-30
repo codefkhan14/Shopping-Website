@@ -33,7 +33,7 @@ const ForgotPassword = () => {
 
     try {
       await axios.post(USER_CHECK_EMAIL, userData);
-      toast.success("Check Mail Successfully", toastOption);
+      toast.success("Email fetch Successfully", toastOption);
       setNextStep(true);
       setButtonLoader(false);
     } catch (error) {

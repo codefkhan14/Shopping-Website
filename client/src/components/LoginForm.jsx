@@ -35,7 +35,6 @@ function LoginForm() {
       const response = await axios.post(USER_LOGIN, userData);
       localStorage.setItem("BandhejHub", JSON.stringify(response.data));
       window.location.href = "/";
-      toast.success("Login Successfully", toastOption);
       setButtonLoader(false);
     } catch (error) {
       toast.error(error.response.data.error, toastOption);

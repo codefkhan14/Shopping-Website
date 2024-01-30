@@ -9,9 +9,9 @@ import { PiShoppingCart } from "react-icons/pi";
 function Product({ heading, allProductsData, summary, query }) {
   return (
     <div>
-      <div className="app-container">
-        <h2>{heading}</h2> 
-        <p>{summary}</p>
+      <div className="allproduct-container">
+        <h2 className="allproduct-container-h2">{heading}</h2>
+        <p className="allproduct-container-p">{summary}</p>
 
         <div className="product-list-container">
           <div className="product-list">
