@@ -79,55 +79,68 @@ function SellingPage() {
 
   return (
     <>
-      <div className="product-details-containerr">
-        <div className="product-image-containerr">
-          <img
-            src={productInfo?.image}
-            alt={productInfo?.name}
-            className="product-imagee"
-          />
+      <div className="product-details-top-container">
+        <div className="product-details-top-container-navigation">
+          <p>
+            <Link to="/">Home</Link> |{" "}
+            <Link to={`/${productInfo?.category}`}>
+              {productInfo?.category}
+            </Link>{" "}
+            | {productInfo?.name}
+            {}
+          </p>
         </div>
 
-        <div className="product-detailss">
-          <p>
-            <Link to="/">Home</Link> / {productInfo?.category}
-          </p>
+        <div className="product-details-containerr">
+          <div className="product-image-containerr">
+            <img
+              src={productInfo?.image}
+              alt={productInfo?.name}
+              className="product-imagee"
+            />
+          </div>
 
-          <p>In Stock</p>
-          <h2>{productInfo?.name}</h2>
-          <p>
-            Price: ₹{productInfo?.price} (<i>Including all texes</i>)
-          </p>
+          <div className="product-detailss">
+            <p>In Stock</p>
+            <h2>{productInfo?.name}</h2>
+            <p>
+              Price: ₹{productInfo?.price} (<i>Including all texes</i>)
+            </p>
 
-          <div className="quantity-container">
-            <label>Quantity:</label>
-            <div className="quantity-control">
-              <button onClick={decreaseQuantity}>-</button>
-              <input
-                type="number"
-                min="1"
-                value={quantity}
-                onChange={handleQuantityChange}
-              />
-              <button onClick={increaseQuantity}>+</button>
+            <div className="quantity-container">
+              <label>Quantity:</label>
+              <div className="quantity-control">
+                <button onClick={decreaseQuantity}>-</button>
+                <input
+                  type="number"
+                  min="1"
+                  value={quantity}
+                  onChange={handleQuantityChange}
+                />
+                <button onClick={increaseQuantity}>+</button>
+              </div>
             </div>
+            <div className="add-icons-detaiils">
+              <i>
+                <TfiHeart /> Add to Wishlist
+              </i>
+            </div>
+            <button className="purchase-button">
+              <a
+                href="https://wa.me/7740930250"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Buy now
+              </a>
+            </button>
+            <button className="purchase-button" onClick={handleAddToCart}>
+              add cart
+            </button>
+            <div className="single-product-hashline"></div>
+            <h3>Discription</h3>
+            <p>{productInfo?.description}</p>
           </div>
-          <div className="add-icons-detaiils">
-            <i>
-              <TfiHeart /> Add to Wishlist
-            </i>
-          </div>
-          <button className="purchase-button">
-            <a href="https://wa.me/7740930250" target="_blank" rel="noreferrer">
-              Buy now
-            </a>
-          </button>
-          <button className="purchase-button" onClick={handleAddToCart}>
-            add cart
-          </button>
-          <hr />
-          <h3>Discription</h3>
-          <p>{productInfo?.description}</p>
         </div>
       </div>
 

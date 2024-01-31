@@ -29,7 +29,7 @@ function BuyPage() {
       <SellingPage />
       <Product
         heading="Recomonded Products"
-        summary="Collections Of Recommended Bandhani lehanga With Different Colors"
+        summary="Collections Of Recommended Items"
         allProductsData={recommended}
         query="Recomanded"
       />
