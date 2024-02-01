@@ -53,41 +53,37 @@ const Cart = () => {
                 <h2>{cartData?.length} Items</h2>
               </div>
             </div>
+
             <table>
               <thead>
                 <tr>
                   <th>PRODUCT</th>
-                  <th>PRICE</th>
                   <th>QUANTITY</th>
                   <th>SUBTOTAL</th>
-                  <th>REMOVE</th>
                 </tr>
               </thead>
+
               <tbody>
                 {cartData?.map((item) => (
                   <tr className="cart-content" key={item?._id}>
-                    <div className="cart-images-detail">
-                      <div>
-                        <td>
-                          <img src={item?.image} alt="" />
-                        </td>
-                      </div>
-                      <div className="cart-detail">
-                        <td>{item?.name}</td>
-                        <td>{item?.category}</td>
-                      </div>
-                    </div>
-                    <td>₹{item?.price}</td>
-                    <td>{item?.quantity}</td>
-                    <td>{item?.price * item?.quantity}</td>
                     <td>
-                      <i
-                        style={{ cursor: "pointer" }}
-                        onClick={() => removeCartData(item?._id)}
-                      >
-                        <RiDeleteBin6Line />
-                      </i>
+                      <div className="cart-images-detail">
+                        <div>
+                          <img src={item?.image} alt="" />
+                        </div>
+
+                        <div className="cart-detail">
+                          <p>{item?.name}</p>
+                          <p>Price: ₹{item?.price}</p>
+                          <p onClick={() => removeCartData(item?._id)}>
+                            Remove
+                          </p>
+                        </div>
+                      </div>
                     </td>
+
+                    <td>{item?.quantity}</td>
+                    <td>₹{item?.price * item?.quantity}</td>
                   </tr>
                 ))}
               </tbody>
