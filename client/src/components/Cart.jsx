@@ -1,5 +1,4 @@
 import React, { useContext } from "react";
-import { RiDeleteBin6Line } from "react-icons/ri";
 import "../style/Cart.css";
 import { UserContext } from "../context/userContext";
 import { Link } from "react-router-dom";

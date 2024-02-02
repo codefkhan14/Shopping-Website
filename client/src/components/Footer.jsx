@@ -1,19 +1,20 @@
 import React from "react";
-import "../style/FooterStyle.css";
+import "../style/Footer.css";
 import { BsFillTelephoneFill } from "react-icons/bs";
 import { MdEmail } from "react-icons/md";
 import { PiInstagramLogo } from "react-icons/pi";
 import { RiFacebookFill } from "react-icons/ri";
 import { FaWhatsapp, FaYoutube, FaTwitter } from "react-icons/fa";
+import { Link } from "react-router-dom";
 function Footer() {
   return (
     <>
-      <footer id="footer">
-        <div className="content">
-          <div className="left box">
+      <div className="footer">
+        <div className="footer-content">
+          <div className="footer-left-section footer-section">
             <div className="upper">
-              <div className="topic">About us</div>
-              <p> 
+              <div className="topic">𝕭𝖆𝖓𝖉𝖍𝖊𝖏 𝕳𝖚𝖇</div>
+              <p>
                 Bandhej hub is a Biggest Manufacturer of bandhani products in
                 india, it sells 1000-2000 products per day with good customers
                 feedback and our customer's satisfaction rate is 99%.{" "}
@@ -38,30 +39,33 @@ function Footer() {
             </div>
           </div>
 
-          <div className="middle box">
-            <div className="topic">Categories</div>
+          <div className="footer-middle-section footer-section">
+            <div className="topic">Quick Shop</div>
             <div>
-              <a href="/">Dupattas</a>
+              <Link to="/Top-Trending">Top Trending</Link>
             </div>
             <div>
-              <a href="/">Saree</a>
+              <Link to="/Recomanded">Recomanded Item</Link>
             </div>
             <div>
-              <a href="/">Lehengas</a>
+              <Link to="/">Super Sale</Link>
             </div>
             <div>
-              <a href="/">Suits</a>
+              <Link to="/Saree">Saree</Link>
             </div>
             <div>
-              <a href="/">Ghatchola Saree</a>
+              <Link to="/Dupatta">Dupatta</Link>
             </div>
             <div>
-              <a href="/">Marwad Pila Chunni</a>
+              <Link to="/Lehanga">Lehengas</Link>
+            </div>
+            <div>
+              <Link to="/Dress">Dress</Link>
             </div>
 
             <form></form>
           </div>
-          <div className="right box">
+          <div className="footer-right-section footer-section">
             <div className="topic">Subscribe us</div>
             <form>
               <input type="text" placeholder="Enter email address" />
@@ -97,10 +101,10 @@ function Footer() {
           </div>
         </div>
 
-        <p id="cright">
-          Copyright © 2023 All rights reserved | Bandhej Hub Sikar
-        </p>
-      </footer>
+        <div className="footer-copy-right">
+          <p>Copyright © 2023 All rights reserved | Bandhej Hub Sikar</p>
+        </div>
+      </div>
     </>
   );
 }

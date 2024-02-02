@@ -1,5 +1,3 @@
-// FullProduct.js
-
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { GET_PRODUCT_BY_CATEGORY, GET_PRODUCT_BY_TAG } from "./Apis";
@@ -19,7 +17,7 @@ const FullProduct = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        let response; 
+        let response;
         if (category === "Top-Trending" || category === "Recomanded") {
           const modifiedString = category.replace(/-/g, " ");
           response = await axios.post(GET_PRODUCT_BY_TAG, {

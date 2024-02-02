@@ -174,7 +174,6 @@ function Navbar() {
               </div>
             )}
           </div>
-
         </div>
 
         <div className="brand-name">

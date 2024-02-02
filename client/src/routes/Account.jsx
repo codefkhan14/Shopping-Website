@@ -1,12 +1,12 @@
-import React, { useCallback, useEffect } from 'react'
-import Navbar from '../components/Navbar'
-import Accountc from '../components/Account'
-import Footer from '../components/Footer'
-import { useNavigate } from 'react-router-dom';
+import React, { useCallback, useEffect } from "react";
+import Navbar from "../components/Navbar";
+import Accountc from "../components/Account";
+import Footer from "../components/Footer";
+import { useNavigate } from "react-router-dom";
 
 function Account() {
-   const navigate = useNavigate();
-  
+  const navigate = useNavigate();
+
   const getUser = useCallback(async () => {
     let userExist = await localStorage.getItem("BandhejHub");
     if (!userExist) {
@@ -18,12 +18,11 @@ function Account() {
   }, [getUser]);
   return (
     <>
-    <Navbar/>
-    <Accountc/>
-    <Footer/>
-      
+      <Navbar />
+      <Accountc />
+      <Footer />
     </>
-  )
+  );
 }
 
-export default Account
+export default Account;
