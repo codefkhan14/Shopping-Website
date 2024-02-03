@@ -33,48 +33,105 @@ const FullProduct = () => {
     };
     fetchData();
   }, [category]);
-
+  const handleFilterSelection = (filter) => {
+    console.log("Selected filter:", filter);
+    // Here you can perform any additional actions based on the selected filter
+  };
   return (
-    <div className="fullproduct-container">
-      <div className="fullproduct">
-        <div className="fullproduct-list-container">
+    <>
+      <div>
+        <div className="fullproduct-container">
+          <div className="product-details-top-container-navigation">
+            <p>
+              <Link to="/">Home</Link> |{" "}
+              <Link to={`/${category}`}>{category}</Link>
+              {}
+            </p>
+          </div>
+
           <div className="fullproduct-heading">
-            <div className="fullproduct-heading-heading">
-              <p>
-                <Link to="/">Home</Link> / {category}
-              </p>
-              <h2>Bandhani Sarees</h2>
+            <div>
+              <h2>{category}</h2>
             </div>
+
             <div className="fullproduct-heading-filter-icons">
-              <p onClick={() => setShowFilter(!showFilter)}>
-                {" "}
-                <i>
-                  <FiFilter />
-                </i>
-                Filter
-              </p>
-              <p onClick={() => setShowSort(!showSort)}>
-                <i>
-                  <TbArrowsSort />
-                </i>
-                Sort
-              </p>
+              <div>
+                <p onClick={() => setShowFilter(!showFilter)}>
+                  {" "}
+                  <i>
+                    <FiFilter />
+                  </i>
+                  Filter
+                </p>
+                {showFilter && (
+                  <div className="fullproduct-filter-section">
+                    <div onClick={() => handleFilterSelection("top-trending")}>
+                      Top Trending
+                    </div>
+                    <div onClick={() => handleFilterSelection("top-trending")}>
+                      Best Selling
+                    </div>
+                    <div onClick={() => handleFilterSelection("top-trending")}>
+                      Offered Item
+                    </div>
+                    <div onClick={() => handleFilterSelection("best-selling")}>
+                      Best Selling
+                    </div>
+                    <div onClick={() => handleFilterSelection("offered-item")}>
+                      Offered Item
+                    </div>
+                    <div onClick={() => handleFilterSelection("offered-item")}>
+                      Offered Item
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              <div>
+                <p onClick={() => setShowSort(!showSort)}>
+                  <i>
+                    <TbArrowsSort />
+                  </i>
+                  Sort
+                </p>
+                {showSort && (
+                  <div className="fullproduct-sort-section">
+                    <div onClick={() => handleFilterSelection("top-trending")}>
+                      Price, low to hight
+                    </div>
+                    <div onClick={() => handleFilterSelection("best-selling")}>
+                      Price, high to low
+                    </div>
+                    <div onClick={() => handleFilterSelection("offered-item")}>
+                      Alphabetically, A-Z
+                    </div>
+                    <div onClick={() => handleFilterSelection("offered-item")}>
+                      Alphabetically, Z-A
+                    </div>
+                    <div onClick={() => handleFilterSelection("offered-item")}>
+                      Date, old to new
+                    </div>
+                    <div onClick={() => handleFilterSelection("offered-item")}>
+                      Date, new to old
+                    </div>
+                  </div>
+                )}
+              </div>
             </div>
           </div>
-          {/* Filter section */}
-          {showFilter && (
+
+          {/* {showFilter && (
             <div className="fullproduct-filter-section">
-              {/* Add your filter options here */}
               <div>Top Trending</div>
               <div>Best Selling</div>
               <div>Offered Item</div>
               <div>Best Selling</div>
               <div>Best Selling</div>
             </div>
-          )}
-          {showSort && (
+          )} */}
+
+          {/* {showSort && (
             <div className="fullproduct-sort-section">
-              {/* Add your filter options here */}
               <div>Price, low to hight</div>
               <div>Price, high to low</div>
               <div>Alphabetically, A-Z</div>
@@ -82,44 +139,48 @@ const FullProduct = () => {
               <div>Date, old to new</div>
               <div>Date, new to old</div>
             </div>
-          )}
-          <div className="fullproduct-list">
-            {FullProductData?.map((item, index) => (
-              <div className="fullproduct-card" key={index}>
-                <i className="whitelist-icon">
-                  <TfiHeart />
-                </i>
-                <i className="addcart-icon">
-                  <PiShoppingCart />
-                </i>
-                <i className="view-icon">
-                  <TfiEye />
-                </i>
-                <div className="fullproduct-image-container">
-                  <Link
-                    to={`/${item?.category}/${item?.name.replace(
-                      /\s+/g,
-                      "-"
-                    )}/${item?._id}`}
-                  >
-                    <img
-                      src={item?.image}
-                      alt={item?.name}
-                      className="fullproduct-image"
-                    />
-                  </Link>
+          )} */}
+
+          <div className="fullproduct-list-container">
+            <div className="fullproduct-list">
+              {FullProductData?.map((item, index) => (
+                <div className="fullproduct-card" key={index}>
+                  <i className="fullproduct-whitelist-icon">
+                    <TfiHeart />
+                  </i>
+                  <i className="fullproduct-addcart-icon">
+                    <PiShoppingCart />
+                  </i>
+                  <i className="fullproduct-view-icon">
+                    <TfiEye />
+                  </i>
+
+                  <div className="fullproduct-image-container">
+                    <Link
+                      to={`/${item?.category}/${item?.name.replace(
+                        /\s+/g,
+                        "-"
+                      )}/${item?._id}`}
+                    >
+                      <img
+                        src={item?.image}
+                        alt={item?.name}
+                        className="fullproduct-image"
+                      />
+                    </Link>
+                  </div>
+                  <div className="fullproduct-info">
+                    <span>{item?.category}</span>
+                    <p className="productinfop1">{item?.name}</p>
+                    <p className="fullproduct-price">₹{item?.price}.00</p>
+                  </div>
                 </div>
-                <div className="fullproduct-info">
-                  <span>{item?.category}</span>
-                  <p className="fullproductinfop1">{item?.name}</p>
-                  <p className="fullproduct-price">₹{item?.price}.00</p>
-                </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
