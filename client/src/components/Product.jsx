@@ -7,6 +7,7 @@ import { TfiHeart, TfiEye } from "react-icons/tfi";
 import { PiShoppingCart } from "react-icons/pi";
 
 function Product({ heading, allProductsData, summary, query }) {
+  // console.log(allProductsData);
   return (
     <div>
       <div className="allproduct-container">
@@ -35,7 +36,7 @@ function Product({ heading, allProductsData, summary, query }) {
                     )}/${item?._id}`}
                   >
                     <img
-                      src={item?.image}
+                      src={item?.image[0]}
                       alt={item?.name}
                       className="product-image"
                     />

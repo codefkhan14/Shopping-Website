@@ -36,15 +36,15 @@ function SellingPage() {
     };
     getProductById();
   }, [id]);
-
   // ADD TO CART
   const handleAddToCart = async () => {
-    const { category, price, name, image } = productInfo;
+    const { category, price, name } = productInfo;
     const addToCartData = {
       name: name,
       category: category,
       price: price,
-      image: image,
+      image: showImageUrl,
+      image: showImageUrl || productInfo.image[0],
       quantity: quantity,
       userId: userInfo?.user?.userId,
     };
@@ -77,6 +77,11 @@ function SellingPage() {
     setQuantity((prevQuantity) => Math.max(prevQuantity - 1, 1));
   };
 
+  const [showImageUrl, setShowImageUrl] = useState("");
+  const handleShowImg = (imgurl) => {
+    setShowImageUrl(imgurl);
+  };
+
   return (
     <>
       <div className="product-details-top-container">
@@ -93,11 +98,25 @@ function SellingPage() {
 
         <div className="product-details-containerr">
           <div className="product-image-containerr">
-            <img
-              src={productInfo?.image}
-              alt={productInfo?.name}
-              className="product-imagee"
-            />
+            <div className="product-image-containerr-more-colors">
+              {productInfo?.image.map((imageUrl, index) => (
+                <div key={index} onClick={() => handleShowImg(imageUrl)}>
+                  <img
+                    className={imageUrl === showImageUrl ? "active" : ""}
+                    src={imageUrl}
+                    alt={productInfo?.name}
+                  />
+                </div>
+              ))}
+            </div>
+
+            <div className="product-image-containerr-top-show-img">
+              <img
+                src={showImageUrl ? showImageUrl : productInfo?.image[0]}
+                alt={productInfo?.name}
+                className="product-imagee"
+              />
+            </div>
           </div>
 
           <div className="product-detailss">

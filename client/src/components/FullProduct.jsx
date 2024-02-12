@@ -163,7 +163,7 @@ const FullProduct = () => {
                       )}/${item?._id}`}
                     >
                       <img
-                        src={item?.image}
+                        src={item?.image[0]}
                         alt={item?.name}
                         className="fullproduct-image"
                       />
