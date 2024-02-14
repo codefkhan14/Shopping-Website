@@ -47,6 +47,7 @@ function SellingPage() {
       image: showImageUrl || productInfo.image[0],
       quantity: quantity,
       userId: userInfo?.user?.userId,
+      productId:id
     };
 
     if (!userInfo) {

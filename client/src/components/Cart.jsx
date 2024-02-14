@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import "../style/Cart.css";
 import { UserContext } from "../context/userContext";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -9,6 +9,7 @@ import { REMOVE_CART_DATA } from "./Apis";
 
 const Cart = () => {
   const { cartData, userInfo, setRemoveCartData } = useContext(UserContext);
+  const navigate = useNavigate();
   const toastOption = {
     position: "bottom-right",
     autoClose: 8000,
@@ -26,6 +27,10 @@ const Cart = () => {
     );
   }
 
+  const handleOpen = (item) => {
+    let itemName = item?.name.replace(/\s+/g, "-");
+    navigate(`/${item.category}/${itemName}/${item?.productId}`);
+  };
   const removeCartData = async (postId) => {
     try {
       const requestBody = {
@@ -64,7 +69,11 @@ const Cart = () => {
 
               <tbody>
                 {cartData?.map((item) => (
-                  <tr className="cart-content" key={item?._id}>
+                  <tr
+                    className="cart-content"
+                    key={item?._id}
+                    onClick={() => handleOpen(item)}
+                  >
                     <td>
                       <div className="cart-images-detail">
                         <div>

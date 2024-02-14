@@ -129,13 +129,14 @@ router.post("/user/forgotpassword", async (req, res) => {
 });
 
 router.post("/user/addtocart", async (req, res) => {
-  const { name, category, price, quantity, userId, image } = req.body;
+  const { name, category, price, quantity, userId, image,productId } = req.body;
   const cartItem = {
     name: name,
     category: category,
     image: image,
     price: price,
     quantity: quantity,
+    productId:productId
   };
 
   try {

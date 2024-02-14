@@ -17,6 +17,23 @@
   align-items: center;
 }
 
+
+.password-container {
+  position: relative;
+}
+.password-toggle {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  cursor: pointer; 
+  /* font-size: 40px; */
+}
+
+
+
+
+
 .lform input {
   width: 270px;
   height: 33px;

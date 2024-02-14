@@ -18,7 +18,6 @@ export const UserProvider = ({ children }) => {
     }
   }, []);
 
-  
   // GET CART DATA
   useEffect(() => {
     const fetchData = async () => {

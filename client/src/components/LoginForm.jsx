@@ -5,9 +5,10 @@ import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { USER_LOGIN } from "./Apis";
-
+import { BiShow, BiHide } from "react-icons/bi";
 function LoginForm() {
   const [buttonLoader, setButtonLoader] = useState(false);
+  const [passwordVisible, setPasswordVisible] = useState(false);
   const [userData, setUserData] = useState({
     email: "",
     password: "",
@@ -50,24 +51,34 @@ function LoginForm() {
         <div className="loginform">
           <h3>WELCOME TO THE BANDHEJ HUB</h3>
           <form className="lform" method="POST" onSubmit={SubmitForm}>
-            <input
-              type="email"
-              placeholder="Enter email ID"
-              className="loginforminput"
-              name="email"
-              required
-              value={userData?.email}
-              onChange={handleInput}
-            />
-            <input
-              type="password"
-              placeholder="Enter password"
-              className="loginforminput"
-              name="password"
-              required
-              value={userData?.password}
-              onChange={handleInput}
-            />
+            <div>
+              <input
+                type="email"
+                placeholder="Enter email ID"
+                className="loginforminput"
+                name="email"
+                required
+                value={userData?.email}
+                onChange={handleInput}
+              />
+            </div>
+            <div className="password-container">
+              <input
+                type={passwordVisible ? "text" : "password"}
+                placeholder="Enter password"
+                className="loginforminput"
+                name="password"
+                required
+                value={userData?.password}
+                onChange={handleInput}
+              />
+              <span
+                className="password-toggle"
+                onClick={() => setPasswordVisible(!passwordVisible)}
+              >
+                {passwordVisible ? <BiHide size={16}/> : <BiShow size={16}/> }
+              </span>
+            </div>
 
             <Link to="/account/forgot-password" className="fogpass">
               Forgot Password?
