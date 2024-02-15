@@ -8,6 +8,7 @@ import {
   GET_PRODUCT_BY_TAG,
   GET_PRODUCT_BY_CATEGORY,
 } from "../components/Apis";
+import CarouselCmp from "../components/CarouselCmp";
 
 function Home() {
   const [topTrending, setTopTrending] = useState(null);
@@ -87,10 +88,19 @@ function Home() {
     };
     getProductByLehanga();
   }, []);
+
+  const images = [
+    "https://amounee.com/cdn/shop/files/product-banner_1800x.jpg?v=1652165756",
+    "https://www.onlinebandhej.com/cdn/shop/files/Bandhani_Banner_New_copy_c4f909c7-047f-4f5b-bd1b-874c17059812_2048x.jpg?v=1704643022",
+    "https://www.onlinebandhej.com/cdn/shop/files/Best_Seller_Bannenr_2048x.jpg?v=1704626298",
+    // Add more image URLs as needed
+  ];
+
   return (
     <>
       <TopHeader />
       <Navbar />
+      <CarouselCmp images={images} />
       <Product
         heading="Top Trending"
         summary="Collections Of Top Trending Items "
