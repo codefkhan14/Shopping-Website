@@ -9,7 +9,7 @@ import {
   GET_PRODUCT_BY_CATEGORY,
 } from "../components/Apis";
 import CarouselCmp from "../components/CarouselCmp";
-
+import WhatsappButton from "../components/WhatsappButton";
 function Home() {
   const [topTrending, setTopTrending] = useState(null);
   useEffect(() => {
@@ -94,13 +94,13 @@ function Home() {
   //   "https://www.onlinebandhej.com/cdn/shop/files/Bandhani_Banner_New_copy_c4f909c7-047f-4f5b-bd1b-874c17059812_2048x.jpg?v=1704643022",
   //   "https://www.onlinebandhej.com/cdn/shop/files/Best_Seller_Bannenr_2048x.jpg?v=1704626298",
   //   // Add more image URLs as needed
-  // ]; 
+  // ];
 
   return (
     <>
       <TopHeader />
       <Navbar />
-      <CarouselCmp/>
+      <CarouselCmp />
       <Product
         heading="Top Trending"
         summary="Collections Of Top Trending Items "
@@ -135,6 +135,7 @@ function Home() {
       />
 
       <Footer />
+      <WhatsappButton />
     </>
   );
 }

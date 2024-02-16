@@ -16,16 +16,28 @@ function TopHeader() {
 
         <div className="navtopbanner3">
           <p>Follow Us :</p>
-          <a href="https://www.instagram.com/bandhej_hub/">
+          <a
+            href="https://www.instagram.com/bandhej_hub/"
+            target="_blank"
+            rel="noreferrer"
+          >
             <PiInstagramLogo />
           </a>
-          <a href="https://www.facebook.com/bandhejhub14/">
+          <a
+            href="https://www.facebook.com/bandhejhub14/"
+            target="_blank"
+            rel="noreferrer"
+          >
             <RiFacebookFill />
           </a>
-          <a href="https://www.youtube.com/channel/UCXArGaNnUU_bJGYZJb-WlAA">
+          <a
+            href="https://www.youtube.com/channel/UCXArGaNnUU_bJGYZJb-WlAA"
+            target="_blank"
+            rel="noreferrer"
+          >
             <FaYoutube />
           </a>
-          <a href="https://wa.me/7740930250">
+          <a href="https://wa.me/7740930250" target="_blank" rel="noreferrer">
             <FaWhatsapp />
           </a>
           <a href="/">
