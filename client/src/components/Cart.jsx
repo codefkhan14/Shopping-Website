@@ -6,6 +6,7 @@ import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { REMOVE_CART_DATA } from "./Apis";
+import CartPic from "../assets/cart.png";
 
 const Cart = () => {
   const { cartData, userInfo, setRemoveCartData } = useContext(UserContext);
@@ -137,7 +138,23 @@ const Cart = () => {
           <ToastContainer />
         </>
       ) : (
-        <h3 className="cart-data-not-available">Cart Data Not Available!</h3>
+        <div className="cart-data-not-found">
+          <div>
+            <img src={CartPic} alt="" />
+          </div>
+          <div>
+            <h3 className="cart-data-not-available">Your cart is empty</h3>
+            <p>
+              You have no items in your shopping cart <br /> Let's go buy
+              something
+            </p>
+          </div>
+          <div>
+            <Link to="/">
+              <button>Shop Now</button>
+            </Link>
+          </div>
+        </div>
       )}
     </div>
   );
