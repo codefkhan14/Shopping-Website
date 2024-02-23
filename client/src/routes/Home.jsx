@@ -10,6 +10,7 @@ import {
 } from "../components/Apis";
 import CarouselCmp from "../components/CarouselCmp";
 import WhatsappButton from "../components/WhatsappButton";
+import ServiceHome from "../components/ServiceHome";
 function Home() {
   const [topTrending, setTopTrending] = useState(null);
   useEffect(() => {
@@ -133,7 +134,7 @@ function Home() {
         allProductsData={lehangaData}
         query="Lehanga"
       />
-
+      <ServiceHome />
       <Footer />
       <WhatsappButton />
     </>

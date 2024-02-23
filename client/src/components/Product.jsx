@@ -16,7 +16,7 @@ function Product({ heading, allProductsData, summary, query }) {
 
         <div className="product-list-container">
           <div className="product-list">
-            {allProductsData?.slice(0, 6).map((item, index) => (
+            {allProductsData?.slice(0, 4).map((item, index) => (
               <div className="product-card" key={index}>
                 <i className="whitelist-icon">
                   <TfiHeart />
