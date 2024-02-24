@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { GET_PRODUCT_BY_CATEGORY, GET_PRODUCT_BY_TAG } from "./Apis";
 import axios from "axios";
@@ -13,26 +13,43 @@ const FullProduct = () => {
   const [showSort, setShowSort] = useState(false);
   const { category } = useParams();
   const [FullProductData, setFullProductData] = useState(null);
+  const [page, setPage] = useState(1);
+  const [noofPages, setNoofPages] = useState(null);
+  const pageIncrease = () => {
+    if (page !== noofPages) setPage((page) => page + 1);
+  };
+  const pageDecrease = () => {
+    if (page !== 1) setPage((page) => page - 1);
+  };
+  const handleSetPage = (number) => {
+    setPage(number);
+  };
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        let response;
-        if (category === "Top-Trending" || category === "Recomanded") {
-          const modifiedString = category.replace(/-/g, " ");
-          response = await axios.post(GET_PRODUCT_BY_TAG, {
-            tag: modifiedString,
-          });
-        } else {
-          response = await axios.post(GET_PRODUCT_BY_CATEGORY, { category });
-        }
-        setFullProductData(response.data);
-      } catch (error) {
-        console.log("Error fetching product data:", error);
+  const FetchFullProductList = useCallback(async () => {
+    try {
+      let response;
+      if (category === "Top-Trending" || category === "Recomanded") {
+        const modifiedString = category.replace(/-/g, " ");
+        response = await axios.post(GET_PRODUCT_BY_TAG, {
+          tag: modifiedString,
+          page: page,
+        });
+      } else {
+        response = await axios.post(GET_PRODUCT_BY_CATEGORY, {
+          category,
+          page,
+        });
       }
-    };
-    fetchData();
-  }, [category]);
+      setFullProductData(response.data.products);
+      setNoofPages(response.data.no_of_pages);
+    } catch (error) {
+      console.log("Error fetching product data:", error);
+    }
+  });
+  useEffect(() => {
+    FetchFullProductList();
+  }, [page, category]);
+
   const handleFilterSelection = (filter) => {
     console.log("Selected filter:", filter);
     // Here you can perform any additional actions based on the selected filter
@@ -49,7 +66,7 @@ const FullProduct = () => {
             </p>
           </div>
 
-          <div className="fullproduct-heading">
+          <div className="fullproduct-heading" id="pageTop">
             <div>
               <h2>{category}</h2>
             </div>
@@ -120,27 +137,6 @@ const FullProduct = () => {
             </div>
           </div>
 
-          {/* {showFilter && (
-            <div className="fullproduct-filter-section">
-              <div>Top Trending</div>
-              <div>Best Selling</div>
-              <div>Offered Item</div>
-              <div>Best Selling</div>
-              <div>Best Selling</div>
-            </div>
-          )} */}
-
-          {/* {showSort && (
-            <div className="fullproduct-sort-section">
-              <div>Price, low to hight</div>
-              <div>Price, high to low</div>
-              <div>Alphabetically, A-Z</div>
-              <div>Alphabetically, Z-A</div>
-              <div>Date, old to new</div>
-              <div>Date, new to old</div>
-            </div>
-          )} */}
-
           <div className="fullproduct-list-container">
             <div className="fullproduct-list">
               {FullProductData?.map((item, index) => (
@@ -176,6 +172,24 @@ const FullProduct = () => {
                   </div>
                 </div>
               ))}
+            </div>
+          </div>
+
+          <div className="full-product-list-pages">
+            <div onClick={pageDecrease}>
+              <a href="#pageTop">Prev</a>
+            </div>
+            {[...Array(noofPages).keys()].map((num) => (
+              <div
+                onClick={() => handleSetPage(num + 1)}
+                key={num + 1}
+                className={page === num + 1 ? "active" : ""}
+              >
+                <a href="#pageTop">{num + 1}</a>
+              </div>
+            ))}
+            <div onClick={pageIncrease}>
+              <a href="#pageTop">Next</a>
             </div>
           </div>
         </div>

@@ -7,6 +7,9 @@
   -webkit-tap-highlight-color: transparent;
   transition: outline 0.3s ease;
 }
+html {
+  scroll-behavior: smooth;
+}
 
 a {
   text-decoration: none;

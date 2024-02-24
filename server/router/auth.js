@@ -129,14 +129,15 @@ router.post("/user/forgotpassword", async (req, res) => {
 });
 
 router.post("/user/addtocart", async (req, res) => {
-  const { name, category, price, quantity, userId, image,productId } = req.body;
+  const { name, category, price, quantity, userId, image, productId } =
+    req.body;
   const cartItem = {
     name: name,
     category: category,
     image: image,
     price: price,
     quantity: quantity,
-    productId:productId
+    productId: productId,
   };
 
   try {
@@ -215,19 +216,70 @@ router.post("/admin/addproduct", async (req, res) => {
 });
 
 router.post("/user/getproductbycategory", async (req, res) => {
-  const { category } = req.body;
+  const { category, page } = req.body;
   try {
     const product = await Product.find({ category: category });
-    return res.status(200).json(product);
+    if (page) {
+      let n = product.length;
+      let no_of_pages = 0;
+
+      if (n % 12 == 0) no_of_pages = Math.floor(n / 12);
+      else no_of_pages = Math.floor(n / 12) + 1;
+      let x = 12 * (page - 1);
+      let y = 12 * page - 1;
+      if (no_of_pages == page) {
+        let data = {
+          products: product.slice(x, n),
+          no_of_pages: no_of_pages,
+          current_page: page,
+        };
+        return res.status(200).json(data);
+      }
+      let data = {
+        products: product.slice(x, y + 1),
+        no_of_pages: no_of_pages,
+        current_page: page,
+      };
+
+      return res.status(200).json(data);
+    } else {
+      return res.status(200).json(product);
+    }
   } catch (error) {
     return res.status(401).json(error);
   }
 });
 router.post("/user/getproductbytag", async (req, res) => {
-  const { tag } = req.body;
+  const { tag, page } = req.body;
   try {
     const product = await Product.find({ tag: tag });
-    return res.status(200).json(product);
+    if (page) {
+      let n = product.length;
+      let no_of_pages = 0;
+
+      if (n % 12 == 0) no_of_pages = Math.floor(n / 12);
+      else no_of_pages = Math.floor(n / 12) + 1;
+      let x = 12 * (page - 1);
+      let y = 12 * page - 1;
+      if (no_of_pages == page) {
+        let data = {
+          products: product.slice(x, n),
+          no_of_pages: no_of_pages,
+          current_page: page,
+        };
+
+        return res.status(200).json(data);
+      }
+      let data = {
+        products: product.slice(x, y + 1),
+        no_of_pages: no_of_pages,
+        current_page: page,
+      };
+
+      return res.status(200).json(data);
+    } else {
+      return res.status(200).json(product);
+    }
   } catch (error) {
     return res.status(401).json(error);
   }

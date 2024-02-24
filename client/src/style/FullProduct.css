@@ -236,9 +236,39 @@
 } */
 
 
+.full-product-list-pages {
+    display: flex;
+    margin: 50px 0;
+    align-items: center;
+    justify-content: center;
 
+}
 
+.full-product-list-pages div {
+    margin: 0 20px;
+    cursor: pointer;
+    font-size: 17px;
 
+    transition: 0.3s;
+    color: #242424;
+}
+.full-product-list-pages div a{
+    color: #242424;
+}
+
+.full-product-list-pages div.active,.full-product-list-pages div.active:hover {
+    /* color: red; */
+    background-color: black;
+    padding: 5px 14px;
+    border-radius: 50%;
+    color: white;
+}
+
+.full-product-list-pages div:hover {
+    /* font-size: 20px; */
+    color: black;
+
+}
 
 
 @media screen and (max-width: 1280px) {
