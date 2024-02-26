@@ -140,7 +140,9 @@
   border-radius: 8px;
   font-size: 12px;
 }
-
+.cart-amount-buttons button a:visited{
+  color: white;
+}
 
 /* CART DATA NOT FOUND  */
 .cart-data-not-found {

@@ -185,7 +185,9 @@ const FullProduct = () => {
                 key={num + 1}
                 className={page === num + 1 ? "active" : ""}
               >
-                <a href="#pageTop">{num + 1}</a>
+                <a href="#pageTop" className="full-product-active">
+                  {num + 1}
+                </a>
               </div>
             ))}
             <div onClick={pageIncrease}>

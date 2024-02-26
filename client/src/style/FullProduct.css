@@ -252,11 +252,17 @@
     transition: 0.3s;
     color: #242424;
 }
-.full-product-list-pages div a{
+
+.full-product-list-pages div a {
     color: #242424;
 }
 
-.full-product-list-pages div.active,.full-product-list-pages div.active:hover {
+.full-product-list-pages div.active .full-product-active:visited {
+    color: white;
+}
+
+.full-product-list-pages div.active,
+.full-product-list-pages div.active:hover {
     /* color: red; */
     background-color: black;
     padding: 5px 14px;

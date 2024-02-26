@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import "../style/SellingPageStyle.css";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { TfiHeart } from "react-icons/tfi";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
@@ -9,7 +9,11 @@ import { ADD_TO_CART, GET_PRODUCT_BY_ID } from "./Apis";
 
 function SellingPage() {
   const { itemCount, setItemCount, userInfo } = useContext(UserContext);
+  const { productId } = useParams();
+  const productSHowImg = productId[productId.length - 1];
   const [quantity, setQuantity] = useState(1);
+  const navigate = useNavigate();
+  const [pproductId, setProductId] = useState("");
   let itemCountInc = itemCount;
   const toastOption = {
     position: "bottom-right",
@@ -43,11 +47,12 @@ function SellingPage() {
       name: name,
       category: category,
       price: price,
-      image: showImageUrl,
-      image: showImageUrl || productInfo.image[0],
+      // image: showImageUrl,
+      image: showImageUrl || productInfo.images[0]?.imgUrl,
       quantity: quantity,
       userId: userInfo?.user?.userId,
-      productId:id
+      itemId: id,
+      productId: pproductId,
     };
 
     if (!userInfo) {
@@ -80,7 +85,13 @@ function SellingPage() {
 
   const [showImageUrl, setShowImageUrl] = useState("");
   const handleShowImg = (imgurl) => {
-    setShowImageUrl(imgurl);
+    setProductId(imgurl?.productId);
+    setShowImageUrl(imgurl?.imgUrl);
+    navigate(
+      `/${productInfo?.category}/${productInfo?.name.replace(/\s+/g, "-")}/${
+        productInfo?._id
+      }/${imgurl?.productId}`
+    );
   };
 
   return (
@@ -100,11 +111,13 @@ function SellingPage() {
         <div className="product-details-containerr">
           <div className="product-image-containerr">
             <div className="product-image-containerr-more-colors">
-              {productInfo?.image.map((imageUrl, index) => (
+              {productInfo?.images.map((imageUrl, index) => (
                 <div key={index} onClick={() => handleShowImg(imageUrl)}>
                   <img
-                    className={imageUrl === showImageUrl ? "active" : ""}
-                    src={imageUrl}
+                    className={
+                      imageUrl?.imgUrl === showImageUrl ? "active" : ""
+                    }
+                    src={imageUrl?.imgUrl}
                     alt={productInfo?.name}
                   />
                 </div>
@@ -113,7 +126,11 @@ function SellingPage() {
 
             <div className="product-image-containerr-top-show-img">
               <img
-                src={showImageUrl ? showImageUrl : productInfo?.image[0]}
+                src={
+                  showImageUrl
+                    ? showImageUrl
+                    : productInfo?.images[productSHowImg]?.imgUrl
+                }
                 alt={productInfo?.name}
                 className="product-imagee"
               />

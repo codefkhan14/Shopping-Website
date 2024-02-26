@@ -24,7 +24,8 @@ const userSchema = new mongoose.Schema({
       price: Number,
       category: String,
       image: String,
-      productId:String
+      productId: String,
+      itemId: String,
     },
   ],
 });

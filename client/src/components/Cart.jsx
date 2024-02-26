@@ -30,7 +30,10 @@ const Cart = () => {
 
   const handleOpen = (item) => {
     let itemName = item?.name.replace(/\s+/g, "-");
-    navigate(`/${item.category}/${itemName}/${item?.productId}`);
+
+    navigate(
+      `/${item.category}/${itemName}/${item?.itemId}/${item?.productId}`
+    );
   };
   const removeCartData = async (postId) => {
     try {
@@ -70,15 +73,16 @@ const Cart = () => {
 
               <tbody>
                 {cartData?.map((item) => (
-                  <tr
-                    className="cart-content"
-                    key={item?._id}
-                    onClick={() => handleOpen(item)}
-                  >
+                  <tr className="cart-content" key={item?._id}>
                     <td>
                       <div className="cart-images-detail">
                         <div>
-                          <img src={item?.image} alt="" />
+                          <img
+                            style={{ cursor: "pointer" }}
+                            src={item?.image}
+                            onClick={() => handleOpen(item)}
+                            alt=""
+                          />
                         </div>
 
                         <div className="cart-detail">

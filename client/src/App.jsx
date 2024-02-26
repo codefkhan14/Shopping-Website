@@ -9,14 +9,17 @@ import Cart from "./routes/Cart";
 import { UserProvider } from "./context/userContext";
 import FullProductRoute from "./routes/FullProductRoute";
 import FogotePasswordRoute from "./routes/FogotePasswordRoute";
+import ScrollTop from "./components/ScrollTop";
 function App() {
   return (
     <>
       <UserProvider>
         <BrowserRouter>
+          <ScrollTop />
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/:category/:name/:id" element={<BuyPage />} />
+            <Route path="/:category/:name/:id/:productId" element={<BuyPage />} />
             <Route path="/account/login" element={<Login />} />
             <Route path="/account/register" element={<SignUp />} />
             <Route

@@ -16,10 +16,10 @@ const productSchema = new mongoose.Schema({
     type: String,
     require: true,
   },
-  image: [
+  images: [
     {
-      type: String,
-      require: true,
+      productId: String,
+      imgUrl: String,
     },
   ],
   tag: {

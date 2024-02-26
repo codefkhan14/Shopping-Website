@@ -129,7 +129,7 @@ router.post("/user/forgotpassword", async (req, res) => {
 });
 
 router.post("/user/addtocart", async (req, res) => {
-  const { name, category, price, quantity, userId, image, productId } =
+  const { name, category, price, quantity, userId, image, productId, itemId } =
     req.body;
   const cartItem = {
     name: name,
@@ -138,6 +138,7 @@ router.post("/user/addtocart", async (req, res) => {
     price: price,
     quantity: quantity,
     productId: productId,
+    itemId: itemId,
   };
 
   try {
@@ -150,6 +151,8 @@ router.post("/user/addtocart", async (req, res) => {
         price: price,
         quantity: quantity,
         image: image,
+        productId: productId,
+        itemId: itemId,
       },
     };
     res.status(200).json(response);
@@ -186,14 +189,14 @@ router.post("/user/removefromcart", async (req, res) => {
 });
 
 router.post("/admin/addproduct", async (req, res) => {
-  const { name, category, price, description, image, tag } = req.body;
+  const { name, category, price, description, images, tag } = req.body;
   try {
     const product = new Product({
       name: name,
       category: category,
       price: price,
       description: description,
-      image: image,
+      images: images,
       tag: tag,
     });
     await product.save();
@@ -205,7 +208,7 @@ router.post("/admin/addproduct", async (req, res) => {
         category: category,
         price: price,
         description: description,
-        image: image,
+        images: images,
         tag: tag,
       },
     };
