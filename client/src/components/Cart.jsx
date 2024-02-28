@@ -30,6 +30,7 @@ const Cart = () => {
 
   const handleOpen = (item) => {
     let itemName = item?.name.replace(/\s+/g, "-");
+    console.log(item);
 
     navigate(
       `/${item.category}/${itemName}/${item?.itemId}/${item?.productId}`

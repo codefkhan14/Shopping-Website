@@ -10,6 +10,8 @@ import { ADD_TO_CART, GET_PRODUCT_BY_ID } from "./Apis";
 function SellingPage() {
   const { itemCount, setItemCount, userInfo } = useContext(UserContext);
   const { productId } = useParams();
+  const { id } = useParams();
+
   const productSHowImg = productId[productId.length - 1];
   const [quantity, setQuantity] = useState(1);
   const navigate = useNavigate();
@@ -23,7 +25,6 @@ function SellingPage() {
     theme: "dark",
   };
 
-  const { id } = useParams();
   const [productInfo, setProductInfo] = useState(null);
 
   useEffect(() => {
@@ -43,16 +44,16 @@ function SellingPage() {
   // ADD TO CART
   const handleAddToCart = async () => {
     const { category, price, name } = productInfo;
+
     const addToCartData = {
       name: name,
       category: category,
       price: price,
-      // image: showImageUrl,
       image: showImageUrl || productInfo.images[0]?.imgUrl,
       quantity: quantity,
       userId: userInfo?.user?.userId,
       itemId: id,
-      productId: pproductId,
+      productId: productId,
     };
 
     if (!userInfo) {

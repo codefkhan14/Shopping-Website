@@ -114,9 +114,6 @@ router.post("/user/forgotpassword", async (req, res) => {
     const { email, password } = req.body;
     const hashedPassword = await bcrypt.hash(password, 10);
     const updatedUser = await User.findOneAndUpdate(
-      // { email },
-      // { password: hashedPassword },
-      // { new: true }
       { email: email },
       { $set: { password: hashedPassword } },
       { new: true }
@@ -131,6 +128,8 @@ router.post("/user/forgotpassword", async (req, res) => {
 router.post("/user/addtocart", async (req, res) => {
   const { name, category, price, quantity, userId, image, productId, itemId } =
     req.body;
+
+  console.log(productId);
   const cartItem = {
     name: name,
     category: category,
@@ -140,26 +139,53 @@ router.post("/user/addtocart", async (req, res) => {
     productId: productId,
     itemId: itemId,
   };
-
   try {
-    await User.updateOne({ _id: userId }, { $push: { cart: cartItem } });
-    let response = {
-      message: "Cart item added successfully",
-      result: {
-        name: name,
-        category: category,
-        price: price,
-        quantity: quantity,
-        image: image,
-        productId: productId,
-        itemId: itemId,
-      },
-    };
-    res.status(200).json(response);
+    const user = await User.findById(userId);
+    const existingProductIndex = user.cart.findIndex(
+      (item) => item.productId === productId
+    );
+    if (existingProductIndex !== -1) {
+      user.cart[existingProductIndex].quantity += quantity;
+      let response = {
+        message: "Cart item added successfully",
+        result: {
+          name: name,
+          category: category,
+          price: price,
+          quantity: quantity,
+          image: image,
+          productId: productId,
+          itemId: itemId,
+        },
+      };
+      console.log(response);
+      await user.save();
+      res.status(200).json(response);
+    } else {
+      console.log("this is null", cartItem.productId);
+      await User.updateOne({ _id: userId }, { $push: { cart: cartItem } });
+      let response = {
+        message: "Cart item added successfully",
+        result: {
+          name: name,
+          category: category,
+          price: price,
+          quantity: quantity,
+          image: image,
+          productId: cartItem.productId,
+          itemId: itemId,
+        },
+      };
+
+      await user.save();
+      res.status(200).json(response);
+    }
   } catch (error) {
-    return res.status(401).json(error);
+    console.error("Error adding to cart:", error);
+    return res.status(500).json({ message: "Internal server error" });
   }
 });
+
 router.post("/user/cart", async (req, res) => {
   const { userId } = req.body;
   try {

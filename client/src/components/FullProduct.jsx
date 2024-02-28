@@ -52,7 +52,6 @@ const FullProduct = () => {
 
   const handleFilterSelection = (filter) => {
     console.log("Selected filter:", filter);
-    // Here you can perform any additional actions based on the selected filter
   };
   return (
     <>
@@ -156,10 +155,10 @@ const FullProduct = () => {
                       to={`/${item?.category}/${item?.name.replace(
                         /\s+/g,
                         "-"
-                      )}/${item?._id}`}
+                      )}/${item?._id}/${item?.images[0]?.productId}`}
                     >
                       <img
-                        src={item?.image[0]}
+                        src={item?.images[0]?.imgUrl}
                         alt={item?.name}
                         className="fullproduct-image"
                       />

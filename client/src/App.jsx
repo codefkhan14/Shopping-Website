@@ -18,17 +18,22 @@ function App() {
           <ScrollTop />
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/:category/:name/:id" element={<BuyPage />} />
-            <Route path="/:category/:name/:id/:productId" element={<BuyPage />} />
+            {/* <Route path="/:category/:name/:id" element={<BuyPage />} /> */}
+            <Route
+              path="/:category/:name/:id/:productId"
+              element={<BuyPage />}
+            />
+            <Route path="/:category" element={<FullProductRoute />} />
+
             <Route path="/account/login" element={<Login />} />
             <Route path="/account/register" element={<SignUp />} />
             <Route
               path="/account/forgot-password"
               element={<FogotePasswordRoute />}
             />
+
             <Route path="/account" element={<Account />} />
             <Route path="/cart" element={<Cart />} />
-            <Route path="/:category" element={<FullProductRoute />} />
           </Routes>
         </BrowserRouter>
       </UserProvider>
