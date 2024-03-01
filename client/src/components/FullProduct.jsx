@@ -2,17 +2,16 @@ import React, { useCallback, useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { GET_PRODUCT_BY_CATEGORY, GET_PRODUCT_BY_TAG } from "./Apis";
 import axios from "axios";
-import { FiFilter } from "react-icons/fi";
-import { TbArrowsSort } from "react-icons/tb";
 import { TfiHeart, TfiEye } from "react-icons/tfi";
 import { PiShoppingCart } from "react-icons/pi";
 import "../style/FullProduct.css";
-
+ 
 const FullProduct = () => {
-  const [showFilter, setShowFilter] = useState(false);
-  const [showSort, setShowSort] = useState(false);
   const { category } = useParams();
+
+  const [sortOption, setSortOption] = useState("Featured");
   const [FullProductData, setFullProductData] = useState(null);
+
   const [page, setPage] = useState(1);
   const [noofPages, setNoofPages] = useState(null);
   const pageIncrease = () => {
@@ -23,6 +22,31 @@ const FullProduct = () => {
   };
   const handleSetPage = (number) => {
     setPage(number);
+  };
+
+  const sortProducts = (data) => {
+    switch (sortOption) {
+      case "Featured":
+        return [...data];
+      case "priceAccending":
+        return [...data].sort((a, b) => a.price - b.price);
+      case "priceDecending":
+        return [...data].sort((a, b) => b.price - a.price);
+      case "AtoZ":
+        return [...data].sort((a, b) => a.name.localeCompare(b.name));
+      case "ZtoA":
+        return [...data].sort((a, b) => b.name.localeCompare(a.name));
+      case "NewToOld":
+        return [...data].sort(
+          (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
+        );
+      case "OldToNew":
+        return [...data].sort(
+          (a, b) => new Date(a.createdAt) - new Date(b.createdAt)
+        );
+      default:
+        return data;
+    }
   };
 
   const FetchFullProductList = useCallback(async () => {
@@ -40,18 +64,20 @@ const FullProduct = () => {
           page,
         });
       }
-      setFullProductData(response.data.products);
+      setFullProductData(sortProducts(response.data.products));
+
       setNoofPages(response.data.no_of_pages);
     } catch (error) {
       console.log("Error fetching product data:", error);
     }
-  });
+  }, [page, category, sortOption]);
+
   useEffect(() => {
     FetchFullProductList();
-  }, [page, category]);
+  }, [FetchFullProductList, sortOption]);
 
-  const handleFilterSelection = (filter) => {
-    console.log("Selected filter:", filter);
+  const handleSortSelection = (e) => {
+    setSortOption(e.target.value);
   };
   return (
     <>
@@ -71,7 +97,7 @@ const FullProduct = () => {
             </div>
 
             <div className="fullproduct-heading-filter-icons">
-              <div>
+              {/* <div>
                 <p onClick={() => setShowFilter(!showFilter)}>
                   {" "}
                   <i>
@@ -101,38 +127,17 @@ const FullProduct = () => {
                     </div>
                   </div>
                 )}
-              </div>
+              </div> */}
 
-              <div>
-                <p onClick={() => setShowSort(!showSort)}>
-                  <i>
-                    <TbArrowsSort />
-                  </i>
-                  Sort
-                </p>
-                {showSort && (
-                  <div className="fullproduct-sort-section">
-                    <div onClick={() => handleFilterSelection("top-trending")}>
-                      Price, low to hight
-                    </div>
-                    <div onClick={() => handleFilterSelection("best-selling")}>
-                      Price, high to low
-                    </div>
-                    <div onClick={() => handleFilterSelection("offered-item")}>
-                      Alphabetically, A-Z
-                    </div>
-                    <div onClick={() => handleFilterSelection("offered-item")}>
-                      Alphabetically, Z-A
-                    </div>
-                    <div onClick={() => handleFilterSelection("offered-item")}>
-                      Date, old to new
-                    </div>
-                    <div onClick={() => handleFilterSelection("offered-item")}>
-                      Date, new to old
-                    </div>
-                  </div>
-                )}
-              </div>
+              <select name="" id="" onChange={handleSortSelection}>
+                <option value="Featured">Featured</option>
+                <option value="priceAccending">Price, low to hight</option>
+                <option value="priceDecending"> Price, high to low</option>
+                <option value="AtoZ">Alphabetically, A-Z</option>
+                <option value="ZtoA">Alphabetically, Z-A</option>
+                <option value="NewToOld"> Date, new to old</option>
+                <option value="OldToNew"> Date, old to new</option>
+              </select>
             </div>
           </div>
 

@@ -47,10 +47,11 @@
 .nav-item-user a:hover::after {
   content: "User";
   position: absolute;
-  bottom: -17px;
+  bottom: -21px;
   color: white;
   left: 20px;
-  height: 20px;
+  line-height: 24px;
+  height: 25px;
   width: 40px;
   font-size: 13px;
   text-align: center;
@@ -76,11 +77,12 @@
 .nav-item-cart a:hover::after {
   content: "Cart";
   position: absolute;
-  bottom: -17px;
+  bottom: -21px;
   color: white;
   left: 20px;
-  height: 20px;
+  height: 25px;
   width: 38px;
+  line-height: 25px;
   font-size: 13px;
   text-align: center;
   background-color: rgb(71, 71, 71);
