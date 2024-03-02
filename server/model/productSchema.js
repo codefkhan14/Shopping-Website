@@ -12,10 +12,6 @@ const productSchema = new mongoose.Schema({
     type: Number,
     require: true,
   },
-  description: {
-    type: String,
-    require: true,
-  },
   images: [
     {
       productId: String,
@@ -26,6 +22,22 @@ const productSchema = new mongoose.Schema({
     type: String,
     require: true,
   },
+  details: {
+    productDetails: [
+      {
+        type: String,
+        require: true,
+      },
+    ],
+    description: {
+      type: String,
+      require: true,
+    },
+  },
+  // description: {
+  //   type: String,
+  //   require: true,
+  // },
 });
 
 const Product = mongoose.model("PRODUCT", productSchema);

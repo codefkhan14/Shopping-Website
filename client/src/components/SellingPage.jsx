@@ -94,6 +94,10 @@ function SellingPage() {
       }/${imgurl?.productId}`
     );
   };
+  const [option, setOption] = useState("productDetails");
+  const handleOption = (option) => {
+    setOption(option);
+  };
 
   return (
     <>
@@ -139,9 +143,9 @@ function SellingPage() {
           </div>
 
           <div className="product-detailss">
-            <p>In Stock</p>
+            <p className="product-details-stock">In Stock</p>
             <h2>{productInfo?.name}</h2>
-            <p>
+            <p className="product-details-price">
               Price: ₹{productInfo?.price} (<i>Including all texes</i>)
             </p>
 
@@ -175,9 +179,52 @@ function SellingPage() {
             <button className="purchase-button" onClick={handleAddToCart}>
               add cart
             </button>
+
             <div className="single-product-hashline"></div>
-            <h3>Discription</h3>
-            <p>{productInfo?.description}</p>
+            <div className="single-product-options">
+              <p
+                // className="active"
+                className={option === "productDetails" ? "active" : ""}
+                onClick={() => handleOption("productDetails")}
+              >
+                Product Details
+              </p>
+              <p
+                className={option === "description" ? "active" : ""}
+                onClick={() => handleOption("description")}
+              >
+                Description
+              </p>
+              <p
+                className={option === "reviews" ? "active" : ""}
+                onClick={() => handleOption("reviews")}
+              >
+                Reviews
+              </p>
+              <p
+                className={option === "returnPolicy" ? "active" : ""}
+                onClick={() => handleOption("returnPolicy")}
+              >
+                {" "}
+                Return Policy
+              </p>
+            </div>
+            {option === "productDetails" && (
+              <div>
+                {productInfo?.details?.productDetails?.map((item, index) => {
+                  return (
+                    <p className="product-details-desc" key={index}>
+                      {item}
+                    </p>
+                  );
+                })}
+              </div>
+            )}
+            {option === "description" && (
+              <p className="product-details-desc">
+                {productInfo?.details?.description}
+              </p>
+            )}
           </div>
         </div>
       </div>

@@ -215,13 +215,13 @@ router.post("/user/removefromcart", async (req, res) => {
 });
 
 router.post("/admin/addproduct", async (req, res) => {
-  const { name, category, price, description, images, tag } = req.body;
+  const { name, category, price, details, images, tag } = req.body;
   try {
     const product = new Product({
       name: name,
       category: category,
       price: price,
-      description: description,
+      details: details,
       images: images,
       tag: tag,
     });
@@ -233,7 +233,7 @@ router.post("/admin/addproduct", async (req, res) => {
         name: name,
         category: category,
         price: price,
-        description: description,
+        details: details,
         images: images,
         tag: tag,
       },
