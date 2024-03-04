@@ -117,7 +117,7 @@ const Cart = () => {
               </div>
               <div className="cart-amount-rupee">
                 <h3>Total</h3>
-                <h3>₹{subtotal * 0.18 + subtotal}</h3>
+                <h3>₹{Math.round(subtotal * 0.18 + subtotal)}</h3>
               </div>
 
               <div className="cart-amount-buttons">

@@ -78,10 +78,12 @@
   cursor: pointer;
   transition: 0.3s;
 }
-.cart-detail p:nth-child(3):hover{
+
+.cart-detail p:nth-child(3):hover {
   font-size: 17px;
   transition: 0.3s;
 }
+
 .cart-content {
   margin: 20px;
 }
@@ -141,10 +143,11 @@
   padding: 10px 10px;
   border: none;
   outline: none;
-  border-radius: 8px;
+  border-radius: 5px;
   font-size: 12px;
 }
-.cart-amount-buttons button a:visited{
+
+.cart-amount-buttons button a {
   color: white;
 }
 

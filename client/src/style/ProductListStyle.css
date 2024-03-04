@@ -113,14 +113,17 @@
   color: rgb(167, 167, 167);
 }
 
-.product-info p {
+.product-info p:nth-child(2) {
   font-size: 16px;
-  color: rgb(73, 73, 73);
+  color: rgb(63, 63, 63);
 }
 
-.product-price {
-  font-size: 17px;
-  color: rgb(73, 73, 73);
+.product-info p:nth-child(3) {
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 3px;
+  color: rgb(58, 58, 58);
+
 }
 
 .view-btn {
@@ -208,13 +211,14 @@
     top: 90px;
   }
 
-  .product-info p {
-    margin: 2px 0;
-    font-size: 15px;
+
+  .product-info p:nth-child(2) {
+    font-size: 13px;
   }
 
-  .product-price {
-    font-size: 14px;
+  .product-info p:nth-child(3) {
+    font-size: 16px;
+
   }
 
   .product-card {
@@ -297,10 +301,20 @@
     text-align: start;
   }
 
-  .product-info p {
+  /* .product-info p {
     margin: 2px 0;
     font-size: 14px;
+  } */
+
+  .product-info p:nth-child(2) {
+    font-size: 12px;
   }
+
+  .product-info p:nth-child(3) {
+    font-size: 13.5px;
+
+  }
+
 
   .product-info span {
     font-size: 12.5px;

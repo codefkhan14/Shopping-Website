@@ -13,7 +13,7 @@ require("./model/userSchema");
 require("./model/productSchema");
 app.use(require("./router/auth"));
 
-app.listen(process.env.PORT);
+app.listen(process.env.PORT); 
 
 function pingLink() {
   const linkToPing = "https://bandhejhub.onrender.com/furkan";
