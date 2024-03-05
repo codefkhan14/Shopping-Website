@@ -8,11 +8,8 @@ import { PiShoppingCart } from "react-icons/pi";
 
 function Product({ heading, allProductsData, summary, query }) {
   const truncateText = (text, maxWords) => {
-    const words = text.split(" ");
-    if (words.length <= maxWords) {
-      return text;
-    }
-    return words.slice(0, maxWords).join(" ") + "...";
+    if (text.lenth < maxWords) return text;
+    return text.slice(0, maxWords) + "...";
   };
   return (
     <div>
@@ -50,7 +47,9 @@ function Product({ heading, allProductsData, summary, query }) {
                 </div>
                 <div className="product-info">
                   <span>{item?.category}</span>
-                  <p className="productinfop1">{truncateText(item?.name, 5)}</p>
+                  <p className="productinfop1">
+                    {truncateText(item?.name, 33)}
+                  </p>
                   <p className="product-price">₹ {item?.price}.00</p>
                 </div>
               </div>

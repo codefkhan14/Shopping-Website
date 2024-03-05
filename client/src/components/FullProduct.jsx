@@ -5,7 +5,7 @@ import axios from "axios";
 import { TfiHeart, TfiEye } from "react-icons/tfi";
 import { PiShoppingCart } from "react-icons/pi";
 import "../style/FullProduct.css";
- 
+
 const FullProduct = () => {
   const { category } = useParams();
 
@@ -78,6 +78,10 @@ const FullProduct = () => {
 
   const handleSortSelection = (e) => {
     setSortOption(e.target.value);
+  };
+  const truncateText = (text, maxWords) => {
+    if (text.lenth < maxWords) return text;
+    return text.slice(0, maxWords) + "...";
   };
   return (
     <>
@@ -171,8 +175,10 @@ const FullProduct = () => {
                   </div>
                   <div className="fullproduct-info">
                     <span>{item?.category}</span>
-                    <p className="productinfop1">{item?.name}</p>
-                    <p className="fullproduct-price">₹{item?.price}.00</p>
+                    <p className="productinfop1">
+                      {truncateText(item?.name, 33)}
+                    </p>
+                    <p className="fullproduct-price">₹ {item?.price}.00</p>
                   </div>
                 </div>
               ))}
