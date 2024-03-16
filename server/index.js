@@ -3,7 +3,7 @@ const express = require("express");
 const app = express();
 const axios = require("axios");
 const cors = require("cors");
-
+const Razorpay = require("razorpay");
 dotenv.config();
 app.use(cors());
 app.use(express.json());
@@ -12,8 +12,28 @@ require("./database/connection");
 require("./model/userSchema");
 require("./model/productSchema");
 app.use(require("./router/auth"));
+// const instance = new Razorpay({
+//   key_id: "rzp_test_VIMg5R33m4Tjpx",
+//   key_secret: "FEKNXvr9Kr8xEfKckNIKh7jr",
+// });
 
-app.listen(process.env.PORT); 
+// var instance = new Razorpay({
+//   key_id: "rzp_test_VIMg5R33m4Tjpx",
+//   key_secret: "FEKNXvr9Kr8xEfKckNIKh7jr",
+// });
+
+// instance.orders.create({
+//   amount: 50000,
+//   currency: "INR",
+//   // receipt: "receipt#1",
+//   // notes: {
+//   //   key1: "value3",
+//   //   key2: "value2",
+//   // },
+// });
+
+// module.exports = instance;
+app.listen(process.env.PORT);
 
 function pingLink() {
   const linkToPing = "https://bandhejhub.onrender.com/furkan";

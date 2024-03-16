@@ -8,7 +8,8 @@ import { UserContext } from "../context/userContext";
 import { ADD_TO_CART, GET_PRODUCT_BY_ID } from "./Apis";
 
 function SellingPage() {
-  const { itemCount, setItemCount, userInfo } = useContext(UserContext);
+  const { itemCount, setItemCount, userInfo, setCheckoutData } =
+    useContext(UserContext);
   const { productId } = useParams();
   const { id } = useParams();
 
@@ -42,6 +43,7 @@ function SellingPage() {
     getProductById();
   }, [id]);
   // ADD TO CART
+
   const handleAddToCart = async () => {
     const { category, price, name } = productInfo;
 
@@ -97,6 +99,25 @@ function SellingPage() {
   const [option, setOption] = useState("productDetails");
   const handleOption = (option) => {
     setOption(option);
+  };
+  const handleCheckout = () => {
+    // console.log(addToCartData);
+    const { category, price, name } = productInfo;
+
+    const addToCartData = [
+      {
+        name: name,
+        category: category,
+        price: price,
+        image: showImageUrl || productInfo.images[0]?.imgUrl,
+        quantity: quantity,
+        userId: userInfo?.user?.userId,
+        itemId: id,
+        productId: productId,
+      },
+    ];
+    console.log(addToCartData);
+    setCheckoutData(addToCartData);
   };
 
   return (
@@ -167,14 +188,15 @@ function SellingPage() {
                 <TfiHeart /> Add to Wishlist
               </i>
             </div>
-            <button className="purchase-button">
-              <a
+            <button className="purchase-button" onClick={handleCheckout}>
+              {/* <a
                 href="https://wa.me/7740930250"
                 target="_blank"
                 rel="noreferrer"
               >
                 Buy now
-              </a>
+              </a> */}
+              Buy now
             </button>
             <button className="purchase-button" onClick={handleAddToCart}>
               add cart

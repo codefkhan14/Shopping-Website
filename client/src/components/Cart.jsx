@@ -9,7 +9,8 @@ import { REMOVE_CART_DATA } from "./Apis";
 import CartPic from "../assets/cart.png";
 
 const Cart = () => {
-  const { cartData, userInfo, setRemoveCartData } = useContext(UserContext);
+  const { cartData, userInfo, setRemoveCartData, setCheckoutData } =
+    useContext(UserContext);
   const navigate = useNavigate();
   const toastOption = {
     position: "bottom-right",
@@ -30,8 +31,6 @@ const Cart = () => {
 
   const handleOpen = (item) => {
     let itemName = item?.name.replace(/\s+/g, "-");
-    console.log(item);
-
     navigate(
       `/${item.category}/${itemName}/${item?.itemId}/${item?.productId}`
     );
@@ -48,6 +47,11 @@ const Cart = () => {
     } catch (error) {
       toast.error(error.response.data.error, toastOption);
     }
+  };
+  const handleCheckout = () => {
+    setCheckoutData(cartData);
+    console.log(cartData);
+    navigate("/checkout");
   };
   return (
     <div className="cart-main-section">
@@ -122,20 +126,22 @@ const Cart = () => {
 
               <div className="cart-amount-buttons">
                 <div>
-                  <Link to="/">
-                    <button>Continue Shopping</button>
-                  </Link>
-                </div>
-                <div>
-                  <button>
-                    <a
+                  <button onClick={handleCheckout}>
+                    {/* <a
                       href="https://wa.me/7740930250"
                       target="_blank"
                       rel="noreferrer"
                     >
                       Checkout
-                    </a>
+                    </a> */}
+                    Checkout
                   </button>
+                </div>
+                <div>
+                  {" "}
+                  <Link to="/">
+                    <button>Continue Shopping</button>
+                  </Link>
                 </div>
               </div>
             </div>

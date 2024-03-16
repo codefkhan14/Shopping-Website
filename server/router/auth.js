@@ -4,12 +4,36 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const cookieParser = require("cookie-parser");
 const app = express();
+const Razorpay = require("razorpay");
+
 app.use(cookieParser());
 
 const User = require("../model/userSchema");
 const Product = require("../model/productSchema");
+// const instance = require("../index.js");
 
 require("../database/connection");
+
+router.post("/payment", async (req, res) => {
+  const { payment, receipt } = req.body;
+  const instance = new Razorpay({
+    key_id: "rzp_test_VIMg5R33m4Tjpx",
+    key_secret: "FEKNXvr9Kr8xEfKckNIKh7jr",
+  });
+  const options = {
+    amount: payment,
+    currency: "INR",
+    receipt: receipt,
+  };
+  try {
+    const order = await instance.orders.create(options);
+    console.log(order);
+    res.status(200).json(order);
+  } catch (error) {
+    console.error("Error creating order:", error);
+    res.status(500).json({ error: "Internal server error" });
+  }
+});
 
 router.get("/furkan", (req, res) => {
   res.send("how are you");

@@ -1,0 +1,158 @@
+.checkout-section {
+    border-top: 1px solid rgb(179, 179, 179);
+    padding: 30px 0;
+    margin: 0 20px;
+    display: flex;
+    flex-wrap: wrap-reverse;
+    justify-content: space-evenly;
+
+}
+
+.checkout-delivery-section {
+    width: 550px;
+}
+
+.checkout-delivery-section h4 {
+    font-size: 22px;
+    margin-bottom: 20px;
+    text-transform: none;
+
+}
+
+.checkout-delivery-section form {}
+
+.checkout-delivery-section form input {
+    width: 100%;
+    padding: 13px;
+    border: 1px solid rgb(189, 189, 189);
+    margin: 10px 0;
+    border-radius: 5px;
+}
+
+.checkout-delivery-section form input::placeholder {
+    color: rgb(86, 86, 86);
+    font-size: 13px;
+}
+
+.name {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+
+}
+
+.name input {}
+
+.landmark {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.landmark input {}
+
+.submit input {
+    background-color: black;
+    cursor: pointer;
+    color: white;
+    font-weight: bold;
+
+}
+
+
+
+.checkout-cart-section {
+    width: 100%;
+    max-width: 600px;
+    /* max-width: 900px; */
+}
+
+.checkout-cart-section table {
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 900px;
+    margin: auto;
+}
+
+.checkout-cart-section table thead tr th {
+    text-align: center;
+    background-color: rgb(0, 0, 0);
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 8px 0;
+}
+
+.checkout-cart-section table tbody tr td {
+    padding: 8px;
+    text-align: center;
+}
+
+.checkout-cart-images-detail {
+    display: flex;
+    width: 100%;
+}
+
+.checkout-cart-images-detail img {
+    width: 50px;
+    margin-right: 5px;
+
+}
+
+.checkout-cart-detail {
+    margin-left: 5px;
+    line-height: 1.5;
+    text-align: start;
+}
+
+.checkout-cart-detail p:nth-child(2),
+.checkout-cart-detail p:nth-child(3) {
+    font-size: 13px;
+    color: #585858;
+}
+
+
+.checkout-cart-content {
+    margin: 20px;
+}
+
+
+@media screen and (max-width: 1250px) {
+    .checkout-delivery-section {
+        width: 450px;
+    }
+
+    .checkout-cart-section {
+        max-width: 500px;
+    }
+
+}
+
+@media screen and (max-width: 1070px) {
+    .checkout-delivery-section {
+        width: 400px;
+    }
+
+    .checkout-cart-section {
+        max-width: 460px;
+    }
+
+}
+
+@media screen and (max-width: 903px) {
+    .checkout-delivery-section {
+        width: 760px;
+        margin-top: 30px;
+
+    }
+
+    .checkout-cart-section {
+        max-width: 760px;
+    }
+
+    .checkout-delivery-section h4 {
+        text-align: center;
+
+    }
+}

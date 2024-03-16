@@ -8,6 +8,7 @@ export const UserProvider = ({ children }) => {
   const [itemCount, setItemCount] = useState(0);
   const [cartData, setCartData] = useState(null);
   const [removeCartData, setRemoveCartData] = useState(null);
+  const [checkoutData, setCheckoutData] = useState(null);
 
   // STORE USER INFO
   useEffect(() => {
@@ -47,6 +48,8 @@ export const UserProvider = ({ children }) => {
         setItemCount,
         cartData,
         setRemoveCartData,
+        checkoutData,
+        setCheckoutData,
       }}
     >
       {children}

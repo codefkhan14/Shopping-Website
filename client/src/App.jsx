@@ -10,6 +10,7 @@ import { UserProvider } from "./context/userContext";
 import FullProductRoute from "./routes/FullProductRoute";
 import FogotePasswordRoute from "./routes/FogotePasswordRoute";
 import ScrollTop from "./components/ScrollTop";
+import Checkout from "./routes/Checkout";
 function App() {
   return (
     <>
@@ -34,6 +35,7 @@ function App() {
 
             <Route path="/account" element={<Account />} />
             <Route path="/cart" element={<Cart />} />
+            <Route path="/checkout" element={<Checkout />} />
           </Routes>
         </BrowserRouter>
       </UserProvider>
