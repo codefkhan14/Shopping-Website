@@ -188,16 +188,9 @@ function SellingPage() {
                 <TfiHeart /> Add to Wishlist
               </i>
             </div>
-            <button className="purchase-button" onClick={handleCheckout}>
-              {/* <a
-                href="https://wa.me/7740930250"
-                target="_blank"
-                rel="noreferrer"
-              >
-                Buy now
-              </a> */}
+            {/* <button className="purchase-button" onClick={handleCheckout}>
               Buy now
-            </button>
+            </button> */}
             <button className="purchase-button" onClick={handleAddToCart}>
               add cart
             </button>

@@ -19,8 +19,6 @@
 
 }
 
-.checkout-delivery-section form {}
-
 .checkout-delivery-section form input {
     width: 100%;
     padding: 13px;
@@ -34,7 +32,7 @@
     font-size: 13px;
 }
 
-.name {
+.checkout-delivery-section-name-input {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -42,17 +40,14 @@
 
 }
 
-.name input {}
-
-.landmark {
+.checkout-delivery-section-landmark-input {
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.landmark input {}
 
-.submit input {
+.checkout-delivery-section-submit-input input {
     background-color: black;
     cursor: pointer;
     color: white;
@@ -65,7 +60,6 @@
 .checkout-cart-section {
     width: 100%;
     max-width: 600px;
-    /* max-width: 900px; */
 }
 
 .checkout-cart-section table {
@@ -92,11 +86,27 @@
 .checkout-cart-images-detail {
     display: flex;
     width: 100%;
+    position: relative;
 }
 
 .checkout-cart-images-detail img {
     width: 50px;
+    height: 70px;
+    border: 1px solid rgb(195, 195, 195);
     margin-right: 5px;
+
+}
+
+.checkout-cart-images-detail span {
+    position: absolute;
+    top: -10px;
+    left: 40px;
+    border-radius: 50%;
+    background-color: rgb(90, 90, 90);
+    color: white;
+    padding: 3px 6px;
+    font-size: 10px;
+
 
 }
 
@@ -117,6 +127,19 @@
     margin: 20px;
 }
 
+.checkout-cart-section-payment-detail {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 5px;
+    margin-top: 10px;
+}
+
+.checkout-cart-section-payment-detail div p {
+    font-size: 15px;
+    color: rgb(35, 35, 35);
+    margin: 17px 0;
+}
 
 @media screen and (max-width: 1250px) {
     .checkout-delivery-section {
