@@ -1,8 +1,21 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import "../style/Checkout.css";
+import axios from "axios";
+// import Razorpay from "razorpay";
 import { UserContext } from "../context/userContext";
+import { PAYMENT, PAYMENTVERIFY } from "./Apis";
 const CheckoutSection = () => {
-  const { cartData } = useContext(UserContext);
+  const { cartData, userInfo } = useContext(UserContext);
+
+  const [deliveryFrom, setDeliveryFrom] = useState({
+    country: "india",
+    name: "",
+    address: "",
+    city: "",
+    state: "",
+    pincode: "",
+    phone: "",
+  });
   const truncateText = (text, maxWords) => {
     if (text.lenth < maxWords) return text;
     return text.slice(0, maxWords) + "...";
@@ -11,59 +24,118 @@ const CheckoutSection = () => {
   let shipping = 0;
   let total = 0;
 
-  // Calculate subtotal for all items in the cart
   if (cartData && cartData.length > 0) {
     subtotal = cartData.reduce(
       (acc, item) => acc + item.price * item.quantity,
       0
     );
+    total = Math.round(subtotal * 0.18 + subtotal);
   }
+  const handleInput = (e) => {
+    setDeliveryFrom({
+      ...deliveryFrom,
+      [e.target.name]: e.target.value,
+    });
+  };
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const requestBody = {
+      payment: total,
+      receipt: "sfojwoejfo30",
+      userId: userInfo?.user?.userId,
+    };
+    const response = await axios.post(PAYMENT, requestBody);
+    const options = {
+      key: "rzp_test_VIMg5R33m4Tjpx",
+      amount: response.data.amount,
+      currency: "INR",
+      name: "Bandhej Hub",
+      description: "Test Transaction",
+      image:
+        "https://startupxplore.com/uploads/ff8080817278850f01727a13a9ac00e9-large.png",
+      order_id: response.data.id,
+      callback_url: PAYMENTVERIFY,
+      prefill: {
+        name: deliveryFrom.name,
+        email: "gaurav.kumar@example.com",
+        contact: deliveryFrom.phone,
+      },
+      notes: {
+        address: "Razorpay Corporate Office",
+      },
+      theme: {
+        color: "#3399cc",
+      },
+    };
+    const razor = new window.Razorpay(options);
+    razor.open();
+  };
   return (
     <div className="checkout-section">
       <div className="checkout-delivery-section">
         <h4>Delivery Details</h4>
-        <form>
+        <form method="POST" onSubmit={handleSubmit}>
           <div>
             <input type="text" required value="India" disabled />
           </div>
 
-          <div className="checkout-delivery-section-name-input">
-            <input
-              style={{ marginRight: "10px" }}
-              type="text"
-              required
-              placeholder="First name"
-              name="firstname"
-            />
+          <div>
             <input
               type="text"
               required
-              placeholder="Last name"
-              name="lastname"
+              placeholder="Full Name"
+              name="name"
+              value={deliveryFrom.name}
+              onChange={handleInput}
             />
           </div>
 
           <div>
-            <input type="text" required placeholder="Address" name="address" />
+            <input
+              type="text"
+              required
+              placeholder="Address"
+              name="address"
+              value={deliveryFrom.address}
+              onChange={handleInput}
+            />
           </div>
 
           <div className="checkout-delivery-section-landmark-input">
-            <input type="text" required placeholder="City" name="city" />
+            <input
+              type="text"
+              required
+              placeholder="City"
+              name="city"
+              value={deliveryFrom.city}
+              onChange={handleInput}
+            />
             <input
               style={{ margin: "0 10px" }}
               type="text"
               required
               placeholder="State"
               name="state"
+              value={deliveryFrom.state}
+              onChange={handleInput}
             />
-            <input type="text" required placeholder="PIN code" name="pincode" />
+            <input
+              type="text"
+              required
+              placeholder="PIN code"
+              name="pincode"
+              value={deliveryFrom.pincode}
+              onChange={handleInput}
+            />
           </div>
           <div>
             <input
               type="text"
               required
               placeholder="Phone Number"
-              name="phoneNumber"
+              name="phone"
+              value={deliveryFrom.phone}
+              onChange={handleInput}
             />
           </div>
 

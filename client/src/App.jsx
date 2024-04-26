@@ -11,6 +11,8 @@ import FullProductRoute from "./routes/FullProductRoute";
 import FogotePasswordRoute from "./routes/FogotePasswordRoute";
 import ScrollTop from "./components/ScrollTop";
 import Checkout from "./routes/Checkout";
+import PaymentThankYouPage from "./routes/PaymentThankYouPage";
+import MyOrderPage from "./routes/MyOrderPage";
 function App() {
   return (
     <>
@@ -35,7 +37,9 @@ function App() {
 
             <Route path="/account" element={<Account />} />
             <Route path="/cart" element={<Cart />} />
+            <Route path="/myorders" element={<MyOrderPage />} />
             <Route path="/checkout" element={<Checkout />} />
+            <Route path="/paymentsuccess" element={<PaymentThankYouPage />} />
           </Routes>
         </BrowserRouter>
       </UserProvider>

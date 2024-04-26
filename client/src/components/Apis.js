@@ -15,3 +15,7 @@ export const REMOVE_CART_DATA = `${backend_ref}/user/removefromcart`;
 export const GET_PRODUCT_BY_ID = `${backend_ref}/user/getproductbyid`;
 export const GET_PRODUCT_BY_TAG = `${backend_ref}/user/getproductbytag`;
 export const GET_PRODUCT_BY_CATEGORY = `${backend_ref}/user/getproductbycategory`;
+
+// PAYMENT
+export const PAYMENT = `${backend_ref}/payment`;
+export const PAYMENTVERIFY = `${backend_ref}/payment/verification`;

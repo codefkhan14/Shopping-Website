@@ -7,11 +7,16 @@ const Razorpay = require("razorpay");
 dotenv.config();
 app.use(cors());
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 require("./database/connection");
 require("./model/userSchema");
 require("./model/productSchema");
 app.use(require("./router/auth"));
+app.use(require("./router/payment"));
+app.use(require("./router/admin"));
+app.use(require("./router/product"));
+
 // const instance = new Razorpay({
 //   key_id: "rzp_test_VIMg5R33m4Tjpx",
 //   key_secret: "FEKNXvr9Kr8xEfKckNIKh7jr",
@@ -35,11 +40,11 @@ app.use(require("./router/auth"));
 // module.exports = instance;
 app.listen(process.env.PORT);
 
-function pingLink() {
-  const linkToPing = "https://bandhejhub.onrender.com/furkan";
-  let data = axios.get(linkToPing);
-  data.then((res) => {});
-}
+// function pingLink() {
+//   const linkToPing = "https://bandhejhub.onrender.com/furkan";
+//   let data = axios.get(linkToPing);
+//   data.then((res) => {});
+// }
 
-const pingInterval = 11 * 60 * 1000;
-setInterval(pingLink, pingInterval);
+// const pingInterval = 11 * 60 * 1000;
+// setInterval(pingLink, pingInterval);

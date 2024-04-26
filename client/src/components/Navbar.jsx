@@ -105,20 +105,34 @@ function Navbar() {
                   Recommanded Item
                 </div>
                 <div className="navside-bar-menu-list">Super Sale</div>
-                <div className="navside-bar-menu-list">Blogs</div>
-                <div className="navside-bar-menu-list">Search</div>
-                <div className="navside-bar-menu-list">Wishlist</div>
                 <div
+                  className="navside-bar-menu-list"
+                  onClick={() => clickList("myorders")}
+                >
+                  Orders
+                </div>
+                <div className="navside-bar-menu-list">Blogs</div>
+                <div className="navside-bar-menu-list">
+                  <TfiSearch />
+                  Search
+                </div>
+                <div className="navside-bar-menu-list">
+                  {" "}
+                  <TfiHeart />
+                  Wishlist
+                </div>
+                {/* <div
                   className="navside-bar-menu-list"
                   onClick={() => clickList("cart")}
                 >
                   Cart
-                </div>
+                </div> */}
                 {userLogin ? (
                   <div
                     className="navside-bar-menu-list"
                     onClick={() => clickList("account")}
                   >
+                    <PiUserCircleLight />
                     Account
                   </div>
                 ) : (
@@ -126,6 +140,7 @@ function Navbar() {
                     className="navside-bar-menu-list"
                     onClick={() => clickList("account/login")}
                   >
+                    <PiUserCircleLight />
                     Login/Register
                   </div>
                 )}

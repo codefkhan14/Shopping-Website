@@ -1,5 +1,8 @@
 const mongoose = require("mongoose");
-const DB = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASS}@cluster0.yoqmgpi.mongodb.net/BandhejHub?retryWrites=true&w=majority`;
+// const DB = "mongodb+srv://furkanrangrej200:furkan123@cluster0.yoqmgpi.mongodb.net/BandhejHub?retryWrites=true&w=majority"
+   const DB = "mongodb+srv://furkanrangrej200:furkan123@cluster0.yoqmgpi.mongodb.net/BandhejHub?retryWrites=true&w=majority";
+
+// const DB = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASS}@cluster0.yoqmgpi.mongodb.net/BandhejHub?retryWrites=true&w=majority`;
 
 mongoose
   .connect(DB, {})
@@ -7,3 +10,4 @@ mongoose
     console.log("connection successful");
   })
   .catch((err) => console.log("database connection", err));
+ 
