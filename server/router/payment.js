@@ -5,11 +5,19 @@ const crypto = require("crypto");
 require("../database/connection");
 const User = require("../model/userSchema");
 const paysuc = process.env.paymentsucess;
+
 let userTheId = "";
+const orderObj = {
+  date: "",
+  orderDetails: "",
+  productDetails: "",
+};
 
 router.post("/payment", async (req, res) => {
-  const { payment, receipt, userId } = req.body;
-  // req.params.userId = userId;
+  const { payment, receipt, userId, order } = req.body;
+  orderObj.date = order?.data;
+  orderObj.orderDetails = order?.orderDetails;
+  orderObj.productDetails = order?.productDetails;
   userTheId = userId;
   const instance = new Razorpay({
     key_id: process.env.PAYMENT_GATEWAY_KEY_ID,
@@ -38,45 +46,38 @@ router.post("/payment/verification", async (req, res) => {
     "sha256",
     process.env.PAYMENT_GATEWAY_SECRET_KEY
   );
-
   hmac.update(razorpay_order_id + "|" + razorpay_payment_id);
-
   const generated_signature = hmac.digest("hex");
 
   if (generated_signature === razorpay_signature) {
-    //store here order details
-    res.redirect(`${paysuc}?reference=${razorpay_payment_id}`); //thank you page
+    // Perform the database update before redirect
+    User.findOneAndUpdate(
+      { _id: userTheId },
+      {
+        $push: {
+          orders: {
+            orderId: razorpay_order_id,
+            date: orderObj.date,
+            orderDetails: orderObj.orderDetails, // Assuming you have access to orderObj
+            productDetails: orderObj.productDetails, // Assuming you have access to orderObj
+          },
+        },
+      },
+      { new: true }
+    )
+      .then((result) => {
+        res.redirect(`${paysuc}?reference=${razorpay_payment_id}`); // thank you page
+      })
+      .catch((err) => {
+        console.error(err);
+        res.status(500).json({ error: "Internal server error" });
+      });
   } else {
     res.status(400).json({
       success: false,
       message: "Payment verification failed",
     });
   }
-});
-router.post("/order/update", (req, res) => {
-  const { orderId, orderDetails, productDetails } = req.body;
-
-  User.findOneAndUpdate(
-    { _id: "" },
-    {
-      $push: {
-        orders: {
-          orderId: orderId,
-          date: new Date(),
-          orderDetails: orderDetails,
-          productDetails: productDetails,
-        },
-      },
-    },
-    { new: true }
-  )
-    .then((result) => {
-      res.status(200).json(result);
-    })
-    .catch((err) => {
-      console.error(err);
-      res.status(500).json({ error: "Internal server error" });
-    });
 });
 
 module.exports = router;

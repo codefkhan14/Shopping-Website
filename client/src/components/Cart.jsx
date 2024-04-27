@@ -50,7 +50,6 @@ const Cart = () => {
   };
   const handleCheckout = () => {
     setCheckoutData(cartData);
-    console.log(cartData);
     navigate("/checkout");
   };
   return (

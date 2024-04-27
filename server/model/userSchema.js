@@ -49,22 +49,20 @@ const userSchema = new mongoose.Schema({
             require: true,
           },
           address: {
-            address: {
-              type: String,
-              require: true,
-            },
-            city: {
-              type: String,
-              require: true,
-            },
-            state: {
-              type: String,
-              require: true,
-            },
-            pincode: {
-              type: String,
-              require: true,
-            },
+            type: String,
+            require: true,
+          },
+          city: {
+            type: String,
+            require: true,
+          },
+          state: {
+            type: String,
+            require: true,
+          },
+          pincode: {
+            type: String,
+            require: true,
           },
         },
 

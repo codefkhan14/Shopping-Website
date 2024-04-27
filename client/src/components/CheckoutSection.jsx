@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "../style/Checkout.css";
 import axios from "axios";
 // import Razorpay from "razorpay";
@@ -6,8 +6,14 @@ import { UserContext } from "../context/userContext";
 import { PAYMENT, PAYMENTVERIFY } from "./Apis";
 const CheckoutSection = () => {
   const { cartData, userInfo } = useContext(UserContext);
-
-  const [deliveryFrom, setDeliveryFrom] = useState({
+  const [prices, setPrices] = useState({
+    subtotal: "",
+    shipping: "",
+    tax: "",
+    total: "",
+  });
+  console.log(prices);
+  const [shippingDetails, setshippingDetails] = useState({
     country: "india",
     name: "",
     address: "",
@@ -20,30 +26,49 @@ const CheckoutSection = () => {
     if (text.lenth < maxWords) return text;
     return text.slice(0, maxWords) + "...";
   };
-  let subtotal = 0;
-  let shipping = 0;
-  let total = 0;
 
-  if (cartData && cartData.length > 0) {
-    subtotal = cartData.reduce(
-      (acc, item) => acc + item.price * item.quantity,
-      0
-    );
-    total = Math.round(subtotal * 0.18 + subtotal);
-  }
+  useEffect(() => {
+    if (cartData && cartData.length > 0) {
+      const subtotal = cartData.reduce(
+        (acc, item) => acc + item.price * item.quantity,
+        0
+      );
+      let tax1 = subtotal * 0.18;
+      let shipping = 20;
+      let total1 = Math.round(subtotal + tax1 + shipping);
+      setPrices({
+        subtotal: subtotal,
+        shipping: shipping,
+        tax: tax1,
+        total: total1,
+      });
+    }
+  }, [cartData]);
   const handleInput = (e) => {
-    setDeliveryFrom({
-      ...deliveryFrom,
+    setshippingDetails({
+      ...shippingDetails,
       [e.target.name]: e.target.value,
     });
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    const orderDetails = {
+      shippingDetails: shippingDetails,
+      prices: prices,
+    };
+    const order = {
+      date: new Date(),
+      orderDetails: orderDetails,
+      productDetails: cartData,
+    };
     const requestBody = {
-      payment: total,
+      payment: prices?.total,
       receipt: "sfojwoejfo30",
       userId: userInfo?.user?.userId,
+      order: order,
     };
+
     const response = await axios.post(PAYMENT, requestBody);
     const options = {
       key: "rzp_test_VIMg5R33m4Tjpx",
@@ -56,9 +81,9 @@ const CheckoutSection = () => {
       order_id: response.data.id,
       callback_url: PAYMENTVERIFY,
       prefill: {
-        name: deliveryFrom.name,
+        name: shippingDetails.name,
         email: "gaurav.kumar@example.com",
-        contact: deliveryFrom.phone,
+        contact: shippingDetails.phone,
       },
       notes: {
         address: "Razorpay Corporate Office",
@@ -85,7 +110,7 @@ const CheckoutSection = () => {
               required
               placeholder="Full Name"
               name="name"
-              value={deliveryFrom.name}
+              value={shippingDetails.name}
               onChange={handleInput}
             />
           </div>
@@ -96,7 +121,7 @@ const CheckoutSection = () => {
               required
               placeholder="Address"
               name="address"
-              value={deliveryFrom.address}
+              value={shippingDetails.address}
               onChange={handleInput}
             />
           </div>
@@ -107,7 +132,7 @@ const CheckoutSection = () => {
               required
               placeholder="City"
               name="city"
-              value={deliveryFrom.city}
+              value={shippingDetails.city}
               onChange={handleInput}
             />
             <input
@@ -116,7 +141,7 @@ const CheckoutSection = () => {
               required
               placeholder="State"
               name="state"
-              value={deliveryFrom.state}
+              value={shippingDetails.state}
               onChange={handleInput}
             />
             <input
@@ -124,7 +149,7 @@ const CheckoutSection = () => {
               required
               placeholder="PIN code"
               name="pincode"
-              value={deliveryFrom.pincode}
+              value={shippingDetails.pincode}
               onChange={handleInput}
             />
           </div>
@@ -134,7 +159,7 @@ const CheckoutSection = () => {
               required
               placeholder="Phone Number"
               name="phone"
-              value={deliveryFrom.phone}
+              value={shippingDetails.phone}
               onChange={handleInput}
             />
           </div>
@@ -178,12 +203,10 @@ const CheckoutSection = () => {
             <p style={{ fontSize: "17px" }}>Total</p>
           </div>
           <div>
-            <p>₹{subtotal}.00</p>
-            <p>₹{shipping}.00</p>
-            <p>₹{Math.round(subtotal * 0.18)}.00</p>
-            <p style={{ fontSize: "17px" }}>
-              ₹{Math.round(subtotal * 0.18 + subtotal)}.00
-            </p>
+            <p>₹{prices?.subtotal}.00</p>
+            <p>₹{prices?.shipping}.00</p>
+            <p>₹{Math.round(prices?.tax)}.00</p>
+            <p style={{ fontSize: "17px" }}>₹{Math.round(prices?.total)}.00</p>
           </div>
         </div>
       </div>
