@@ -41,7 +41,8 @@ router.post("/user/addtocart", async (req, res) => {
           itemId: itemId,
         },
       };
-      await user.save();
+
+      const x = await user.save();
       res.status(200).json(response);
     } else {
       await User.updateOne({ _id: userId }, { $push: { cart: cartItem } });

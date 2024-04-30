@@ -58,7 +58,7 @@ router.post("/payment/verification", async (req, res) => {
           orders: {
             orderId: razorpay_order_id,
             date: orderObj.date,
-            orderDetails: orderObj.orderDetails, // Assuming you have access to orderObj
+            orderDetails: orderObj.orderDetails, 
             productDetails: orderObj.productDetails, // Assuming you have access to orderObj
           },
         },
