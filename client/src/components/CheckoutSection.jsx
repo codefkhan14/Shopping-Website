@@ -12,7 +12,6 @@ const CheckoutSection = () => {
     tax: "",
     total: "",
   });
-  console.log(prices);
   const [shippingDetails, setshippingDetails] = useState({
     country: "india",
     name: "",
@@ -52,7 +51,6 @@ const CheckoutSection = () => {
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     const orderDetails = {
       shippingDetails: shippingDetails,
       prices: prices,
