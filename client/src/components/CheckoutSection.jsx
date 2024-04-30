@@ -71,7 +71,7 @@ const CheckoutSection = () => {
 
     const response = await axios.post(PAYMENT, requestBody);
     const options = {
-      key: "rzp_test_VIMg5R33m4Tjpx",
+      key: process.env.REACT_APP_PAYMENT_GATEWAY_KEY_ID,
       amount: response.data.amount,
       currency: "INR",
       name: "Bandhej Hub",
