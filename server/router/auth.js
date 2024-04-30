@@ -11,7 +11,7 @@ const Product = require("../model/productSchema");
 require("../database/connection");
 
 router.get("/furkan", (req, res) => {
-  res.send("how are you");
+  res.send("how are sfdsfyou");
 });
 
 router.post("/user/register", async (req, res) => {
