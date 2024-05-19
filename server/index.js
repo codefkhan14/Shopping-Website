@@ -1,10 +1,7 @@
-const dotenv = require("dotenv");
+require("dotenv").config();
 const express = require("express");
 const app = express();
-const axios = require("axios");
 const cors = require("cors");
-const Razorpay = require("razorpay");
-dotenv.config();
 app.use(
   cors({
     origin: ["http://localhost:3000", "https://bandhejhub.netlify.app"],
@@ -16,9 +13,10 @@ app.use(express.urlencoded({ extended: true }));
 require("./database/connection");
 require("./model/userSchema");
 require("./model/productSchema");
-app.use(require("./router/auth"));
-app.use(require("./router/payment"));
-app.use(require("./router/admin"));
-app.use(require("./router/product"));
+
+app.use("/user", require("./routes/authRoute"));
+app.use("/admin", require("./routes/adminRoute"));
+app.use("/user", require("./routes/productRoute"));
+app.use("/payment", require("./routes/paymentRoute"));
 
 app.listen(process.env.PORT);
