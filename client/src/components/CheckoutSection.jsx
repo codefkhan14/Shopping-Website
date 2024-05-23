@@ -63,7 +63,7 @@ const CheckoutSection = () => {
     const requestBody = {
       payment: prices?.total,
       receipt: "sfojwoejfo30",
-      userId: userInfo?.user?.userId,
+      userId: userInfo?.finalData?.user?.userId,
       order: order,
     };
 

@@ -53,7 +53,7 @@ function SellingPage() {
       price: price,
       image: showImageUrl || productInfo.images[0]?.imgUrl,
       quantity: quantity,
-      userId: userInfo?.user?.userId,
+      userId: userInfo?.finalData?.user?.userId,
       itemId: id,
       productId: productId,
     };
@@ -111,7 +111,7 @@ function SellingPage() {
         price: price,
         image: showImageUrl || productInfo.images[0]?.imgUrl,
         quantity: quantity,
-        userId: userInfo?.user?.userId,
+        userId: userInfo?.finalData?.user?.userId,
         itemId: id,
         productId: productId,
       },

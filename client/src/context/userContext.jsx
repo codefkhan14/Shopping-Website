@@ -24,7 +24,7 @@ export const UserProvider = ({ children }) => {
     const fetchData = async () => {
       try {
         const requestBody = {
-          userId: userInfo?.user?.userId,
+          userId: userInfo?.finalData?.user?.userId,
         };
 
         const response = await axios.post(GET_CART_DATA, requestBody);
@@ -35,7 +35,7 @@ export const UserProvider = ({ children }) => {
       }
     };
 
-    if (userInfo?.token) {
+    if (userInfo?.finalData?.token) {
       fetchData();
     }
   }, [userInfo, itemCount, removeCartData]);

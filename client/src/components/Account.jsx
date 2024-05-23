@@ -3,7 +3,6 @@ import "../style/Account.css";
 import { UserContext } from "../context/userContext";
 function Account() {
   const { userInfo } = useContext(UserContext);
-
   const handleSignOut = () => {
     localStorage.removeItem("BandhejHub");
     window.location.href = "/"; // Redirect using anchor tag
@@ -18,17 +17,17 @@ function Account() {
         <hr />
         <li>
           {" "}
-          <b>Name</b> : {userInfo?.user?.name}
+          <b>Name</b> : {userInfo?.finalData?.user?.name}
         </li>
         <hr />
         <li>
           {" "}
-          <b>Email Address</b> : {userInfo?.user?.email}
+          <b>Email</b> : {userInfo?.finalData?.user?.email}
         </li>
         <hr />
         <li>
           {" "}
-          <b>Phone</b> : {userInfo?.user?.phone}
+          <b>Phone</b> : {userInfo?.finalData?.user?.phone}
         </li>
         {/* <hr />
         <li>

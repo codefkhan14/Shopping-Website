@@ -1,0 +1,40 @@
+.thankyou-page {
+    padding: 50px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.thankyou-page div:nth-child(1) img {
+    width: 80px;
+}
+
+.thankyou-page div:nth-child(2) h2 {
+    font-size: 35px;
+    margin-top: 13px;
+}
+
+.thankyou-page div:nth-child(3) {
+    margin: 20px 0;
+    color: rgb(69, 69, 69);
+    line-height: 1.5;
+    text-align: center;
+}
+
+
+.thankyou-page div:nth-child(4) button {
+    background-color: black;
+    color: wheat;
+    padding: 10px 15px;
+    border-radius: 50px;
+    font-size: 13px;
+    margin-top: 12px;
+}
+
+.thankyou-page div:nth-child(5) p {
+    text-decoration: underline;
+    color: rgb(70, 70, 70);
+    margin-top: 55px;
+    cursor: pointer;
+}

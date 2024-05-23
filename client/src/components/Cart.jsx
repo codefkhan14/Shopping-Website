@@ -39,7 +39,7 @@ const Cart = () => {
     try {
       const requestBody = {
         postId: postId,
-        userId: userInfo?.user?.userId,
+        userId: userInfo?.finalData?.user?.userId,
       };
       const response = await axios.post(REMOVE_CART_DATA, requestBody);
       setRemoveCartData(response.data);
