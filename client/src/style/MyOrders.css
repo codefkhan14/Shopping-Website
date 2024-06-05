@@ -1,0 +1,162 @@
+.myorders-page {
+    /* border: 2px solid red; */
+
+}
+
+.myorders-category {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    /* border: 2px solid blue; */
+    /* gap: 10; */
+    margin: 40px 0;
+
+}
+
+.myorders-category div {
+    margin: 0 20px;
+    /* gap: 10; */
+}
+
+.myorders-category div button {
+    width: 107px;
+    height: 37px;
+    border-radius: 60px;
+    border: 1px solid black;
+    outline: none;
+    font-size: 14px;
+    background-color: #EDEDED;
+    text-transform: none;
+
+
+}
+
+.btn-active {
+    background-color: black !important;
+    color: white;
+
+}
+
+.myorders-horiline {
+    border-bottom: 1px solid black;
+}
+
+.myorders-list {
+    /* border: 2px solid blue; */
+    margin: 30px 0;
+}
+
+.myorders-container {
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    border: 1px solid rgb(217, 217, 217);
+    border-radius: 10px;
+    max-width: 1091px;
+    margin: 30px auto;
+    /* margin: 10px ; */
+
+    padding: 0 48px;
+
+}
+
+.myorders-cotainer1 {
+    /* border: 2px solid green; */
+    padding: 15px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+.myorders-cotainer1 div:nth-child(1) p:nth-child(1) {
+    font-weight: bold;
+    font-size: 18px;
+
+}
+
+.myorders-cotainer1 div:nth-child(1) p:nth-child(1) span {
+    color: #FF800A;
+    margin-left: 10px;
+    background-color: #ffd5ae;
+    padding: 7px 10px;
+    font-size: 13px;
+    border-radius: 20px;
+
+}
+
+.myorders-cotainer1 div:nth-child(1) p:nth-child(1) span::before {
+    content: "•";
+    margin: auto;
+    color: #FF800A;
+    display: inline-block;
+    width: 12px;
+    font-size: 20px;
+}
+
+.myorders-cotainer1 div:nth-child(1) p:nth-child(2) {
+    font-size: 16px;
+    color: #7e7e7e;
+    margin-top: 3px;
+
+}
+
+.myorders-cotainer1 div:nth-child(2) {
+    font-size: 18px;
+
+}
+
+.myorders-cotainer2 {
+    display: flex;
+    justify-content: space-between;
+    /* border: 2px solid red; */
+    padding: 15px 0;
+    align-items: center;
+
+}
+
+.myorders-container2-left {
+    display: flex;
+    /* align-items: center; */
+
+
+}
+
+.myorders-container2-right i {
+    font-size: 25px;
+
+}
+
+.myorders-container2-left div:nth-child(1) {
+    /* border: 1px solid black; */
+}
+
+
+.myorders-container2-left div:nth-child(1) img {
+    width: 55px;
+
+
+}
+
+.myorders-container2-left div:nth-child(2) {
+
+    margin-left: 13px;
+}
+
+.myorders-container2-left div:nth-child(2) p:nth-child(1) {
+
+    font-weight: bold;
+    font-size: 17px;
+}
+
+.myorders-container2-left div:nth-child(2) p:nth-child(2) {
+
+    font-size: 15px;
+    margin: 4px 0;
+    color: #757575;
+}
+
+.myorders-container2-left div:nth-child(2) p:nth-child(3) {
+
+    color: #757575;
+    font-size: 15px;
+}

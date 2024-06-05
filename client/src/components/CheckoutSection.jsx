@@ -12,6 +12,17 @@ const CheckoutSection = () => {
     tax: "",
     total: "",
   });
+
+  const formatDate = (isoDate) => {
+    const date = new Date(isoDate);
+
+    const day = date.getDate();
+    const month = date.toLocaleString("default", { month: "long" });
+    const year = date.getFullYear();
+
+    return `${day} ${month} ${year}`;
+  };
+  
   const [shippingDetails, setshippingDetails] = useState({
     country: "india",
     name: "",
@@ -56,7 +67,7 @@ const CheckoutSection = () => {
       prices: prices,
     };
     const order = {
-      date: new Date(),
+      date: formatDate(new Date()),
       orderDetails: orderDetails,
       productDetails: cartData,
     };

@@ -19,3 +19,6 @@ export const GET_PRODUCT_BY_CATEGORY = `${backend_ref}/user/getproductbycategory
 // PAYMENT
 export const PAYMENT = `${backend_ref}/payment`;
 export const PAYMENTVERIFY = `${backend_ref}/payment/verification`;
+
+//USER ORDER
+export const GET_ORDER = `${backend_ref}/order/user-order`;
