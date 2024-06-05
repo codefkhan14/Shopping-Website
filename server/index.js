@@ -18,5 +18,6 @@ app.use("/user", require("./routes/authRoute"));
 app.use("/admin", require("./routes/adminRoute"));
 app.use("/user", require("./routes/productRoute"));
 app.use("/payment", require("./routes/paymentRoute"));
+app.use("/order", require("./routes/orderRoute"));
 
 app.listen(process.env.PORT);

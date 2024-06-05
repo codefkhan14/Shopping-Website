@@ -13,7 +13,7 @@ const orderObj = {
 
 const payment = async (req, res, next) => {
   const { payment, receipt, userId, order } = req.body;
-  orderObj.date = order?.data;
+  orderObj.date = order?.date;
   orderObj.orderDetails = order?.orderDetails;
   orderObj.productDetails = order?.productDetails;
   userTheId = userId;
@@ -54,6 +54,7 @@ const paymentVerification = async (req, res) => {
         $push: {
           orders: {
             orderId: razorpay_order_id,
+            status:"Placed",
             date: orderObj.date,
             orderDetails: orderObj.orderDetails,
             productDetails: orderObj.productDetails, // Assuming you have access to orderObj

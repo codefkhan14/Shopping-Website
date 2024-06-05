@@ -35,7 +35,11 @@ const userSchema = new mongoose.Schema({
         require: true,
       },
       date: {
-        type: Date,
+        type: String,
+        require: true,
+      },
+      status: {
+        type: String,
         require: true,
       },
       orderDetails: {
