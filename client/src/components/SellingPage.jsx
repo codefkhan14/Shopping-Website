@@ -116,7 +116,6 @@ function SellingPage() {
         productId: productId,
       },
     ];
-    console.log(addToCartData);
     setCheckoutData(addToCartData);
   };
 

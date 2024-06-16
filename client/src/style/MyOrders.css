@@ -52,6 +52,7 @@
     border: 1px solid rgb(217, 217, 217);
     border-radius: 10px;
     max-width: 1091px;
+    cursor: pointer;
     margin: 30px auto;
     /* margin: 10px ; */
 
@@ -74,7 +75,7 @@
 
 }
 
-.myorders-cotainer1 div:nth-child(1) p:nth-child(1) span {
+.myorder-status {
     color: #FF800A;
     margin-left: 10px;
     background-color: #ffd5ae;
@@ -84,14 +85,17 @@
 
 }
 
-.myorders-cotainer1 div:nth-child(1) p:nth-child(1) span::before {
-    content: "•";
-    margin: auto;
-    color: #FF800A;
-    display: inline-block;
-    width: 12px;
-    font-size: 20px;
+.myorder-status-cancel {
+    color: rgb(255, 57, 57);
+    background-color: #ffd3d3;
+
 }
+
+.myorder-status-delivered {
+    color: #2dff68;
+    background-color: #e2ffeb;
+}
+
 
 .myorders-cotainer1 div:nth-child(1) p:nth-child(2) {
     font-size: 16px;

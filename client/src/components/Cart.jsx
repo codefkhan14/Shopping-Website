@@ -114,26 +114,33 @@ const Cart = () => {
                 <h3>Subtotal</h3>
                 <h3>₹{subtotal}</h3>
               </div>
-              <div className="cart-amount-rupee">
+              {/* <div className="cart-amount-rupee">
                 <h3>GST(%)</h3>
                 <h3>18%</h3>
               </div>
               <div className="cart-amount-rupee">
+                <h3>Shipping</h3>
+                <h3>₹60</h3>
+              </div> */}
+              <div className="cart-amount-rupee">
                 <h3>Total</h3>
-                <h3>₹{Math.round(subtotal * 0.18 + subtotal)}</h3>
+                <h3>₹{subtotal}</h3>
+                {/* <h3>₹{Math.round(subtotal * 0.18 + subtotal)}</h3> */}
               </div>
 
               <div className="cart-amount-buttons">
                 <div>
-                  <button onClick={handleCheckout}>
-                    {/* <a
+                  <button
+                  // onClick={handleCheckout}
+                  >
+                    <a
                       href="https://wa.me/7740930250"
                       target="_blank"
                       rel="noreferrer"
                     >
-                      Checkout
-                    </a> */}
-                    Checkout
+                      Order Now
+                    </a>
+                    {/* Checkout */}
                   </button>
                 </div>
                 <div>

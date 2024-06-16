@@ -1,8 +1,8 @@
 import React from "react";
 import "../style/ServiceHome.css";
 import { LiaShippingFastSolid } from "react-icons/lia";
-import { GiShoppingCart } from "react-icons/gi";
-import { RiCustomerServiceLine } from "react-icons/ri";
+import { IoMdHeartEmpty } from "react-icons/io";
+import { HiOutlineArrowPathRoundedSquare } from "react-icons/hi2";
 
 const ServiceHome = () => {
   return (
@@ -17,33 +17,33 @@ const ServiceHome = () => {
           <h3>Free Shipping</h3>
         </div>
         <div>
-          <p>For Orders Above $999</p>
+          <p>Free shipping on Orders above ₹999</p>
         </div>
       </div>
       <div className="service-sections">
         <div>
           <i>
-            <GiShoppingCart />
+            <IoMdHeartEmpty />
           </i>
         </div>
         <div>
-          <h3>Free Shipping</h3>
+          <h3>PROUDLY MADE IN INDIA</h3>
         </div>
         <div>
-          <p>For Orders Above $999</p>
+          <p>Crafted by local artisans and in-house karigars</p>
         </div>
       </div>
       <div className="service-sections">
         <div>
           <i>
-            <RiCustomerServiceLine />
+            <HiOutlineArrowPathRoundedSquare />
           </i>
         </div>
         <div>
-          <h3>Free Shipping</h3>
+          <h3>EASY RETURN POLICY</h3>
         </div>
         <div>
-          <p>For Orders Above $999</p>
+          <p>Simple return and refund policy</p>
         </div>
       </div>
     </div>

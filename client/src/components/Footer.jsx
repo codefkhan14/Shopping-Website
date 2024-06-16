@@ -30,29 +30,27 @@ function Footer() {
 
           <div className="footer-middle-section footer-section">
             <div>
-              <h2>Quick Shop</h2>
+              <h2>Customer help</h2>
             </div>
 
             <div>
-              <Link to="/Top-Trending">Top Trending</Link>
+              <Link to="/">Shipping Policy</Link>
             </div>
             <div>
-              <Link to="/Recomanded">Recomanded Item</Link>
+              <Link to="/">Refund & Return</Link>
+            </div>
+
+            <div>
+              <Link to="/">Terms & Conditions</Link>
             </div>
             <div>
-              <Link to="/">Super Sale</Link>
+              <Link to="/">Privacy Policy</Link>
             </div>
             <div>
-              <Link to="/Saree">Saree</Link>
+              <Link to="/">About Us</Link>
             </div>
             <div>
-              <Link to="/Dupatta">Dupatta</Link>
-            </div>
-            <div>
-              <Link to="/Lehanga">Lehengas</Link>
-            </div>
-            <div>
-              <Link to="/Dress">Dress</Link>
+              <Link to="/">FAQ's</Link>
             </div>
           </div>
 
@@ -93,13 +91,16 @@ function Footer() {
               <i>
                 <IoLocationOutline />
               </i>
-              <span> 168, Sarat Base Road, Kolkata - 332001</span>
+              <span>
+                {" "}
+                New Roshan Ganj, Ward No.2, Sikar, Rajasthan - 332001
+              </span>
             </div>
             <div>
               <i>
                 <AiOutlineMail />
               </i>
-              <span>customercare@gmail.com</span>
+              <span>bandhejhub@gmail.com</span>
             </div>
             <div>
               <i>

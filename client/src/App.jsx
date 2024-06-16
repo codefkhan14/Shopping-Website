@@ -13,6 +13,7 @@ import ScrollTop from "./components/ScrollTop";
 import Checkout from "./routes/Checkout";
 import PaymentThankYouPage from "./routes/PaymentThankYouPage";
 import MyOrderPage from "./routes/MyOrderPage";
+import OrderDetailsPage from "./routes/OrderDetailsPage";
 function App() {
   return (
     <>
@@ -38,6 +39,7 @@ function App() {
             <Route path="/account" element={<Account />} />
             <Route path="/cart" element={<Cart />} />
             <Route path="/myorders" element={<MyOrderPage />} />
+            <Route path="/myorders/:orderId" element={<OrderDetailsPage />} />
             <Route path="/checkout" element={<Checkout />} />
             <Route path="/paymentsuccess" element={<PaymentThankYouPage />} />
           </Routes>

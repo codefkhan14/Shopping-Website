@@ -8,7 +8,7 @@ function TopHeader() {
     <>
       <section className="navtopbanner">
         <div className="navtopbanner1">
-          <p>Bandhej Hub A Collections Of Bandhani Items</p>
+          <p>Bandhej Hub : A Collections Of Bandhani Items</p>
         </div>
         <div className="navtopbanner2">
           <p>Up To 20% Off For Re-sellers </p>

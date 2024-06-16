@@ -14,8 +14,8 @@ Our shopping website allows users to browse through a wide range of products, ad
 - **Frontend:** React.js, HTML, CSS (with media queries for responsiveness), JavaScript
 - **Backend:** Node.js, Express.js, MongoDB
 - **Authentication:** JSON Web Tokens (JWT), Sessions
-- **Payment Integration:** Stripe (or any other payment gateway)
-- **Deployment:** Render (for backend), Netlify (for frontend)
+- **Payment Integration:** Razorpay payment gateway,
+- **Deployment:** Vercel (for backend), Netlify (for frontend)
 
 
 ## Features

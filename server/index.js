@@ -4,7 +4,7 @@ const app = express();
 const cors = require("cors");
 app.use(
   cors({
-    origin: ["http://localhost:3000", "https://bandhejhub.netlify.app"],
+    origin: [process.env.FRONTEND_LOCAL_URL, process.env.FRONTEND_HOSTED_URL],
   })
 );
 app.use(express.json());

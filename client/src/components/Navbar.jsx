@@ -105,34 +105,34 @@ function Navbar() {
                   Recommanded Item
                 </div>
                 <div className="navside-bar-menu-list">Super Sale</div>
-                <div
+                {/* <div
                   className="navside-bar-menu-list"
                   onClick={() => clickList("myorders")}
                 >
                   Orders
-                </div>
-                <div className="navside-bar-menu-list">Blogs</div>
-                <div className="navside-bar-menu-list">
+                </div> */}
+                {/* <div className="navside-bar-menu-list">Blogs</div> */}
+                {/* <div className="navside-bar-menu-list">
                   <TfiSearch />
                   Search
-                </div>
-                <div className="navside-bar-menu-list">
+                </div> */}
+                {/* <div className="navside-bar-menu-list">
                   {" "}
                   <TfiHeart />
                   Wishlist
-                </div>
-                {/* <div
+                </div> */}
+                <div
                   className="navside-bar-menu-list"
                   onClick={() => clickList("cart")}
                 >
                   Cart
-                </div> */}
+                </div>
                 {userLogin ? (
                   <div
                     className="navside-bar-menu-list"
                     onClick={() => clickList("account")}
                   >
-                    <PiUserCircleLight />
+                    {/* <PiUserCircleLight /> */}
                     Account
                   </div>
                 ) : (
@@ -149,8 +149,8 @@ function Navbar() {
                   style={{ cursor: "auto" }}
                 >
                   <p>
-                    Need Help? <br /> +9177409456 <br />
-                    customercare@gmail.com
+                    Need Help? <br /> +917740930250 <br />
+                    bandhejhub@gmail.com
                   </p>
                 </div>
               </div>
