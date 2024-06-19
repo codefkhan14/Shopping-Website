@@ -20,7 +20,7 @@ function Home() {
           tag: "Top Trending",
         };
         const response = await axios.post(GET_PRODUCT_BY_TAG, requestBody);
-        setTopTrending(response.data);
+        setTopTrending(response.data.reverse());
       } catch (error) {
         console.log("top trending data error", error);
       }
@@ -36,7 +36,7 @@ function Home() {
           category: "Saree",
         };
         const response = await axios.post(GET_PRODUCT_BY_CATEGORY, requestBody);
-        setSareeData(response.data);
+        setSareeData(response.data.reverse());
       } catch (error) {
         console.log("saree data error", error);
       }
@@ -51,7 +51,7 @@ function Home() {
           category: "Dupatta",
         };
         const response = await axios.post(GET_PRODUCT_BY_CATEGORY, requestBody);
-        setDupattaData(response.data);
+        setDupattaData(response.data.reverse());
       } catch (error) {
         console.log("dupatta data error", error);
       }
@@ -67,7 +67,7 @@ function Home() {
           category: "Dress",
         };
         const response = await axios.post(GET_PRODUCT_BY_CATEGORY, requestBody);
-        setDressData(response.data);
+        setDressData(response.data.reverse());
       } catch (error) {
         console.log("dress data error", error);
       }
@@ -82,7 +82,7 @@ function Home() {
           category: "Lehanga",
         };
         const response = await axios.post(GET_PRODUCT_BY_CATEGORY, requestBody);
-        setLehangaData(response.data);
+        setLehangaData(response.data.reverse());
       } catch (error) {
         console.log("Lehanga data error", error);
       }
