@@ -21,12 +21,13 @@
 .password-container {
   position: relative;
 }
+
 .password-toggle {
   position: absolute;
   top: 50%;
   right: 10px;
   transform: translateY(-50%);
-  cursor: pointer; 
+  cursor: pointer;
   /* font-size: 40px; */
 }
 
@@ -98,4 +99,73 @@
 
 .loginforminput {
   padding: 0 13px;
+}
+
+
+
+
+.social-login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.social-login-divider {
+  width: 100%;
+  text-align: center;
+  margin: 10px 0;
+  position: relative;
+}
+
+.social-login-divider::before,
+.social-login-divider::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 43%;
+  height: 1px;
+  background-color: #ccc;
+}
+
+.social-login-divider::before {
+  left: 0;
+}
+
+.social-login-divider::after {
+  right: 0;
+}
+
+.social-login-divider span {
+  background-color: #fff;
+  padding: 0 10px;
+}
+
+.social-login-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 270px;
+  height: 37px;
+  border-radius: 5px;
+  text-transform: none;
+  margin: 5px 0;
+  border: none;
+  cursor: pointer;
+  font-size: 17px;
+}
+
+.social-icon {
+  margin-right: 10px;
+}
+
+
+.google-login {
+  background-color: #fff;
+  color: #757575;
+  border: 1px solid #ddd;
+}
+
+.google-login:hover {
+  background-color: #f7f7f7;
 }

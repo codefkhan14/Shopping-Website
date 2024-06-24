@@ -1,5 +1,7 @@
 import backend_ref from "./Backend_ref";
 
+export const USER_GOOGLE = `${backend_ref}/auth/google`;
+export const USER_GOOGLE_SUCCESS = `${backend_ref}/auth/login/success`;
 export const USER_REGISTER = `${backend_ref}/user/register`;
 export const USER_LOGIN = `${backend_ref}/user/login`;
 export const USER_CHECK_EMAIL = `${backend_ref}/user/checkemail/forgotpassword`;
