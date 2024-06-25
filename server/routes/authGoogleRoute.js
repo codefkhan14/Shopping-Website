@@ -36,8 +36,13 @@ router.get(
 );
 
 // router.get("/google", passport.authenticate("google", { scope: ["profile"] }));
+
 router.get(
   "/google",
+  (req, res, next) => {
+    console.log("Google Auth Route Hit");
+    next();
+  },
   passport.authenticate("google", { scope: ["email", "profile"] })
 );
 

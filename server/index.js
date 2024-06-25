@@ -11,7 +11,7 @@ app.use(
     secret: "bandhejhub",
     resave: false,
     saveUninitialized: true, // Ensure saveUninitialized is false to avoid creating empty sessions
-    // cookie: { maxAge: 24 * 60 * 60 * 1000 }, // 24 hours
+    cookie: { maxAge: 24 * 60 * 60 * 1000 }, // 24 hours
   })
 );
 
