@@ -15,13 +15,30 @@ router.get("/login/success", (req, res) => {
   }
 });
 
+// router.get(
+//   "/google/callback",
+//   passport.authenticate("google", {
+//     successRedirect: process.env.FRONTEND_LOCAL_URL,
+//     failureRedirect: "/auth/login/failed",
+//   })
+// );
 router.get(
   "/google/callback",
-  passport.authenticate("google", {
-    successRedirect: process.env.FRONTEND_LOCAL_URL,
-    failureRedirect: "/auth/login/failed",
-  })
+  passport.authenticate("google", { failureRedirect: "/auth/login/failed" }),
+  (req, res) => {
+    req.session.save((err) => {
+      if (err) {
+        console.log("Session save error:", err);
+      }
+      res.redirect(process.env.FRONTEND_LOCAL_URL);
+    });
+  }
 );
-router.get("/google", passport.authenticate("google", { scope: ["profile"] }));
+
+// router.get("/google", passport.authenticate("google", { scope: ["profile"] }));
+router.get(
+  "/google",
+  passport.authenticate("google", { scope: ["email", "profile"] })
+);
 
 module.exports = router;

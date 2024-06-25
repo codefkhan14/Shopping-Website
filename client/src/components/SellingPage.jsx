@@ -43,7 +43,7 @@ function SellingPage() {
     getProductById();
   }, [id]);
   // ADD TO CART
-
+console.log(userInfo); 
   const handleAddToCart = async () => {
     const { category, price, name } = productInfo;
 
