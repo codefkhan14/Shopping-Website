@@ -34,7 +34,7 @@ const addToCart = async (req, res) => {
         },
       };
 
-      const x = await user.save();
+      await user.save();
       res
         .status(201)
         .json({ message: "Cart item added successfully", response });

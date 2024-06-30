@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import "../style/ProductStyle.css";
 import { Link } from "react-router-dom";
 import "../style/ProductListStyle.css";
+import "../style/ProductStyle.css";
 import "../style/ViewProductModal.css";
 
 import { TfiHeart, TfiEye } from "react-icons/tfi";
@@ -57,26 +57,16 @@ function Product({ heading, allProductsData, summary, query }) {
   return (
     <div>
       <div className="allproduct-container">
-        <h2 className="allproduct-container-h2">{heading}</h2>
-        <p className="allproduct-container-p">{summary}</p>
+        <div>
+          <h2 className="allproduct-container-h2">{heading}</h2>
+          <p className="allproduct-container-p">{summary}</p>
+        </div>
 
         <div className="product-list-container">
           <div className="product-list">
             {allProductsData?.slice(0, 4).map((item, index) => (
               <div className="product-card" key={index}>
-                <i className="whitelist-icon " style={{ cursor: "pointer" }}>
-                  <TfiHeart />
-                </i>
-                <i className="addcart-icon" style={{ cursor: "pointer" }}>
-                  <PiShoppingCart />
-                </i>
-                <i
-                  className="view-icon"
-                  style={{ cursor: "pointer" }}
-                  onClick={() => openModal(item)}
-                >
-                  <TfiEye />
-                </i>
+                <p className="product-card-tag">Save 20%</p>
 
                 <div className="product-image-container">
                   <Link
@@ -91,13 +81,41 @@ function Product({ heading, allProductsData, summary, query }) {
                       className="product-image"
                     />
                   </Link>
+                  <button
+                    className="addcart-icon"
+                    onClick={() => openModal(item)}
+                  >
+                    Quick view
+                  </button>
                 </div>
                 <div className="product-info">
                   <span>{item?.category}</span>
                   <p className="productinfop1">
-                    {truncateText(item?.name, 33)}
+                    {truncateText(item?.name, 30)}
                   </p>
-                  <p className="product-price">₹ {item?.price}.00</p>
+
+                  <div className="product-info-price-cart">
+                    <div>
+                      <p className="product-price">Rs.{item?.price}.00</p>
+                    </div>
+
+                    <div className="product-info-price-cart-buttons">
+                      <div>
+                        <button>
+                          {" "}
+                          <i>
+                            <PiShoppingCart />
+                          </i>{" "}
+                          Add Cart
+                        </button>
+                      </div>
+                      <div>
+                        <button>
+                          <TfiHeart />
+                        </button>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             ))}
