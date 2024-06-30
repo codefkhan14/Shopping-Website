@@ -2,9 +2,9 @@ import React, { useCallback, useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { GET_PRODUCT_BY_CATEGORY, GET_PRODUCT_BY_TAG } from "./Apis";
 import axios from "axios";
-import { TfiHeart, TfiEye } from "react-icons/tfi";
-import { PiShoppingCart } from "react-icons/pi";
+import { TfiHeart } from "react-icons/tfi";
 import "../style/FullProduct.css";
+import ProductCard from "./ProductCard";
 
 const FullProduct = () => {
   const { category } = useParams();
@@ -79,10 +79,49 @@ const FullProduct = () => {
   const handleSortSelection = (e) => {
     setSortOption(e.target.value);
   };
-  const truncateText = (text, maxWords) => {
-    if (text.lenth < maxWords) return text;
-    return text.slice(0, maxWords) + "...";
+
+  // Modal
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedProduct, setSelectedProduct] = useState(null);
+  const [quantity, setQuantity] = useState(1);
+
+  const openModal = (product) => {
+    setSelectedProduct(product);
+    setIsModalOpen(true);
   };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setSelectedProduct(null);
+  };
+
+  const handleQuantityChange = (e) => {
+    const value = parseInt(e.target.value);
+    setQuantity(value);
+  };
+
+  const increaseQuantity = () => {
+    setQuantity((prevQuantity) => prevQuantity + 1);
+  };
+
+  const decreaseQuantity = () => {
+    setQuantity((prevQuantity) => Math.max(prevQuantity - 1, 1));
+  };
+
+  const [showImg, setShowImg] = useState(null);
+  const handleShowImg = (imgDetail) => {
+    // console.log(imgUrl.imgUrl);
+    setShowImg(imgDetail?.imgUrl);
+  };
+
+  useEffect(() => {
+    if (isModalOpen) {
+      document.body.classList.add("modal-open");
+    } else {
+      document.body.classList.remove("modal-open");
+    }
+  }, [isModalOpen]);
+
   return (
     <>
       <div>
@@ -148,39 +187,7 @@ const FullProduct = () => {
           <div className="fullproduct-list-container">
             <div className="fullproduct-list">
               {FullProductData?.map((item, index) => (
-                <div className="fullproduct-card" key={index}>
-                  <i className="fullproduct-whitelist-icon">
-                    <TfiHeart />
-                  </i>
-                  <i className="fullproduct-addcart-icon">
-                    <PiShoppingCart />
-                  </i>
-                  <i className="fullproduct-view-icon">
-                    <TfiEye />
-                  </i>
-
-                  <div className="fullproduct-image-container">
-                    <Link
-                      to={`/${item?.category}/${item?.name.replace(
-                        /\s+/g,
-                        "-"
-                      )}/${item?._id}/${item?.images[0]?.productId}`}
-                    >
-                      <img
-                        src={item?.images[0]?.imgUrl}
-                        alt={item?.name}
-                        className="fullproduct-image"
-                      />
-                    </Link>
-                  </div>
-                  <div className="fullproduct-info">
-                    <span>{item?.category}</span>
-                    <p className="productinfop1">
-                      {truncateText(item?.name, 33)}
-                    </p>
-                    <p className="fullproduct-price">₹ {item?.price}.00</p>
-                  </div>
-                </div>
+                <ProductCard key={index} item={item} openModal={openModal} />
               ))}
             </div>
           </div>
@@ -205,6 +212,104 @@ const FullProduct = () => {
             </div>
           </div>
         </div>
+        {isModalOpen && (
+          <div
+            className="product-detail-modal"
+            style={{ display: isModalOpen ? "block" : "none" }}
+          >
+            <div className="product-detail-modal-content">
+              <span className="close" onClick={closeModal}>
+                &times;
+              </span>
+
+              {selectedProduct && (
+                <div className="modal-product-details-container">
+                  <div className="modal-product-image-container">
+                    <div>
+                      <img
+                        src={
+                          showImg ? showImg : selectedProduct?.images[0]?.imgUrl
+                        }
+                        alt={selectedProduct?.name}
+                      />
+                    </div>
+
+                    <div>
+                      <button>
+                        <Link
+                          to={`/${
+                            selectedProduct?.category
+                          }/${selectedProduct?.name.replace(/\s+/g, "-")}/${
+                            selectedProduct?._id
+                          }/${selectedProduct?.images[0]?.productId}`}
+                        >
+                          view more details
+                        </Link>
+                      </button>
+                    </div>
+                  </div>
+
+                  <div className="modal-product-details">
+                    <div className="modal-product-basic-details">
+                      <p>In Stock</p>
+                      <h2>{selectedProduct?.name}</h2>
+                      <p>
+                        Price: ₹{selectedProduct?.price} (
+                        <i>Including all texes</i> )
+                      </p>
+                    </div>
+
+                    <div className="modal-quantity-container">
+                      <label>Quantity:</label>
+                      <div className="modal-quantity-control">
+                        <button onClick={decreaseQuantity}>-</button>
+                        <input
+                          type="number"
+                          min="1"
+                          value={quantity}
+                          onChange={handleQuantityChange}
+                        />
+                        <button onClick={increaseQuantity}>+</button>
+                      </div>
+                    </div>
+
+                    <div className="modal-add-icons-detaiils">
+                      <i>
+                        <TfiHeart /> Add to Wishlist
+                      </i>
+                    </div>
+
+                    <div className="modal-add-to-cart-button">
+                      <button
+
+                      // onClick={handleAddToCart}
+                      >
+                        add cart
+                      </button>
+                    </div>
+
+                    <div className="modal-product-image-container-more-colors">
+                      {selectedProduct?.images.map((imageUrl, index) => (
+                        <div
+                          key={index}
+                          onClick={() => handleShowImg(imageUrl)}
+                        >
+                          <img
+                            className={
+                              imageUrl?.imgUrl === showImg ? "active" : ""
+                            }
+                            src={imageUrl?.imgUrl}
+                            alt={selectedProduct?.name}
+                          />
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
+        )}
       </div>
     </>
   );
