@@ -88,11 +88,15 @@ function Product({ heading, allProductsData, summary, query }) {
                     Quick view
                   </button>
                 </div>
+
                 <div className="product-info">
-                  <span>{item?.category}</span>
-                  <p className="productinfop1">
-                    {truncateText(item?.name, 30)}
-                  </p>
+                  <div>
+                    <span>{item?.category}</span>
+                    <p className="productinfop1">
+                      {truncateText(item?.name, 25)}
+                      {/* {item?.name}... */}
+                    </p>
+                  </div>
 
                   <div className="product-info-price-cart">
                     <div>
@@ -102,11 +106,8 @@ function Product({ heading, allProductsData, summary, query }) {
                     <div className="product-info-price-cart-buttons">
                       <div>
                         <button>
-                          {" "}
-                          <i>
-                            <PiShoppingCart />
-                          </i>{" "}
-                          Add Cart
+                          <PiShoppingCart />
+                          {/* Add Car t */}
                         </button>
                       </div>
                       <div>
@@ -115,7 +116,10 @@ function Product({ heading, allProductsData, summary, query }) {
                         </button>
                       </div>
                     </div>
+
                   </div>
+
+
                 </div>
               </div>
             ))}

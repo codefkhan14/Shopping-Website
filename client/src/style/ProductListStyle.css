@@ -92,7 +92,7 @@
 }
 
 .product-info {
-  padding: 15px 10px;
+  padding: 10px 10px 15px 10px;
   text-align: start;
 }
 
@@ -103,7 +103,7 @@
 
 .product-info p:nth-child(2) {
   font-size: 17px;
-  font-weight: 300;
+  font-weight: 400;
   margin: 3px 0;
 }
 
@@ -116,7 +116,6 @@
 .product-info-price-cart div p {
   font-size: 19px;
   font-weight: bold;
-  margin-top: 3px;
   color: rgb(28, 85, 95);
 }
 
@@ -127,28 +126,28 @@
   gap: 5px;
 }
 
-.product-info-price-cart-buttons div:nth-child(1) button {
+.product-info-price-cart-buttons div button {
   display: flex;
-  gap: 5px;
-  background-color: rgb(28, 85, 95);
-  color: white;
-  border: none;
-  outline: none;
   border-radius: 5px;
-  padding: 10px 20px;
-  font-size: 14px;
-  text-transform: none;
-}
-
-.product-info-price-cart-buttons div:nth-child(2) button {
-  display: flex;
-  background-color: white;
-  color: black;
-  border-radius: 5px;
-  border: 1px solid black;
   outline: none;
   padding: 8px 12px;
   font-size: 19px;
+}
+
+.product-info-price-cart-buttons div:nth-child(1) button {
+  background-color: rgb(28, 85, 95);
+  color: white;
+  border: 1px solid rgb(28, 85, 95);
+}
+
+.product-info-price-cart-buttons div button {
+  font-size: 17px;
+}
+
+.product-info-price-cart-buttons div:nth-child(2) button {
+  background-color: white;
+  color: black;
+  border: 1px solid black;
 }
 
 .view-btn {
@@ -169,7 +168,7 @@
   transform: scale(0.98);
 }
 
-@media screen and (max-width: 1280px) {
+@media screen and (max-width: 1270px) {
   .product-card {
     width: 250px;
   }
@@ -182,34 +181,22 @@
     font-size: 10px;
   }
 
-  .product-info {
-    padding: 8px 10px;
-  }
-
   .product-info p:nth-child(2) {
-    font-size: 14px;
+    font-size: 16px;
     margin: 3px 0;
   }
 
 
   .product-info-price-cart div p {
-    font-size: 16px;
-    margin-top: 3px;
+    font-size: 18px;
   }
 
-  .product-info-price-cart-buttons div:nth-child(1) button {
-    padding: 10px 13px;
-    font-size: 12px;
-  }
-
-  .product-info-price-cart-buttons div:nth-child(2) button {
+  .product-info-price-cart-buttons div button {
     font-size: 17px;
-
-
   }
 }
 
-@media screen and (max-width: 720px) {
+@media screen and (max-width: 780px) {
   .allproduct-container {
     padding: 15px 0;
     line-height: 1.6;
@@ -228,11 +215,11 @@
   }
 
   .product-card {
-    width: 200px;
+    width: 210px;
   }
 
   .product-image {
-    height: 300px;
+    height: 280px;
   }
 
   .product-card .product-card-tag {
@@ -250,43 +237,38 @@
 
   .product-info p:nth-child(2) {
     font-size: 14px;
-    margin: 0px;
+    margin: 0px 0 3px 0;
   }
 
 
   .product-info-price-cart div p {
-    font-size: 14px;
+    font-size: 16px;
   }
 
-  .product-info-price-cart-buttons div:nth-child(1) button {
-    padding: 10px 10px;
-    font-size: 7px;
-    gap: 3px;
-  }
-
-  .product-info-price-cart-buttons div:nth-child(2) button {
+  .product-info-price-cart-buttons div button {
     font-size: 15px;
-    padding: 6px 9px;
+    padding: 7px 10px;
   }
+
 }
 
 
-@media screen and (max-width: 630px) {
+@media screen and (max-width: 670px) {
   .product-card {
     width: 280px;
   }
 
   .product-image {
-    height: 400px;
+    height: 370px;
   }
 
-  .product-info {
-    padding: 8px 10px;
+  .product-card .product-card-tag {
+    font-size: 11px;
   }
+
 
   .product-info p:nth-child(2) {
-    font-size: 15px;
-    margin: 3px 0;
+    font-size: 16px;
   }
 
 
@@ -294,14 +276,11 @@
     font-size: 18px;
   }
 
-  .product-info-price-cart-buttons div:nth-child(1) button {
-    padding: 10px 13px;
-    font-size: 12px;
+  .product-info-price-cart-buttons div button {
+    font-size: 17px;
+    padding: 8px 12px
   }
 
-  .product-info-price-cart-buttons div:nth-child(2) button {
-    font-size: 17px;
-  }
 }
 
 @media screen and (max-width: 580px) {
@@ -320,31 +299,13 @@
   }
 
   .product-image {
-    height: 370px;
-  }
-
-  .product-info {
-    /* padding: 8px 10px; */
+    height: 340px;
   }
 
   .product-info p:nth-child(2) {
-    font-size: 15px;
-    margin: 3px 0;
+    font-size: 15.5px;
   }
 
-
-  .product-info-price-cart div p {
-    font-size: 16px;
-  }
-
-  .product-info-price-cart-buttons div:nth-child(1) button {
-    /* padding: 10px 13px; */
-    font-size: 11px;
-  }
-
-  .product-info-price-cart-buttons div:nth-child(2) button {
-    font-size: 17px;
-  }
 }
 
 @media screen and (max-width: 500px) {
@@ -356,32 +317,19 @@
     height: 300px;
   }
 
-  .product-info {
-    /* padding: 8px 10px; */
-  }
-
   .product-info p:nth-child(2) {
     font-size: 14px;
-    margin: 2px 0;
   }
-
 
   .product-info-price-cart div p {
+    font-size: 16px;
+  }
+
+  .product-info-price-cart-buttons div button {
     font-size: 15px;
+    padding: 7px 10px;
   }
 
-  .product-info-price-cart-buttons {
-    gap: 3px;
-  }
-
-  .product-info-price-cart-buttons div:nth-child(1) button {
-    padding: 9px 8px;
-    font-size: 10px;
-  }
-
-  .product-info-price-cart-buttons div:nth-child(2) button {
-    font-size: 15px;
-  }
 }
 
 @media screen and (max-width: 440px) {
@@ -398,7 +346,7 @@
   }
 
   .product-info {
-    padding: 8px 7px;
+    padding: 0px 7px 8px 7px;
   }
 
   .product-info span {
@@ -411,23 +359,14 @@
 
 
   .product-info-price-cart div p {
-    font-size: 14px;
+    font-size: 15px;
   }
 
-  .product-info-price-cart-buttons {
-    gap: 3px;
+  .product-info-price-cart-buttons div button {
+    font-size: 13px;
+    padding: 6px 8px;
   }
 
-  .product-info-price-cart-buttons div:nth-child(1) button {
-    padding: 8px 6px;
-    font-size: 9px;
-    gap: 3px;
-  }
-
-  .product-info-price-cart-buttons div:nth-child(2) button {
-    font-size: 14px;
-    padding: 5.8px 8px;
-  }
 }
 
 @media screen and (max-width: 400px) {
@@ -452,29 +391,13 @@
   }
 
   .product-info p:nth-child(2) {
-    font-size: 11px;
-    margin: 0px;
-  }
-
-
-  .product-info-price-cart div p {
     font-size: 12px;
   }
 
-  .product-info-price-cart-buttons {
-    gap: 2px;
+  .product-info-price-cart div p {
+    font-size: 13.5px;
   }
 
-  .product-info-price-cart-buttons div:nth-child(1) button {
-    padding: 7.5px 6px;
-    font-size: 9px;
-    gap: 3px;
-  }
-
-  .product-info-price-cart-buttons div:nth-child(2) button {
-    font-size: 14px;
-    padding: 5px 7px;
-  }
 }
 
 @media screen and (max-width: 360px) {
@@ -500,22 +423,7 @@
 
 
   .product-info-price-cart div p {
-    font-size: 11px;
-  }
-
-  .product-info-price-cart-buttons {
-    gap: 1px;
-  }
-
-  .product-info-price-cart-buttons div:nth-child(1) button {
-    padding: 8px 6px;
-    font-size: 7px;
-    gap: 1px;
-  }
-
-  .product-info-price-cart-buttons div:nth-child(2) button {
     font-size: 12px;
-    padding: 5px 7px;
   }
 }
 
