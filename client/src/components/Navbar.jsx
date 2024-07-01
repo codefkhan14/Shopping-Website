@@ -8,12 +8,18 @@ import { RxCross1 } from "react-icons/rx";
 
 import { Link, useNavigate } from "react-router-dom";
 import { UserContext } from "../context/userContext";
+const currencyOptions = [
+  { value: "INR ₹", label: "India (INR ₹)", flag: "🇮🇳" },
+  { value: "USD $", label: "USA (USD $)", flag: "🇺🇸" },
+  { value: "EUR €", label: "Euro (EUR €)", flag: "🇪🇺" },
+  { value: "GBP £", label: "UK (GBP £)", flag: "🇬🇧" },
+];
 
 function Navbar() {
   let userExist = localStorage.getItem("BandhejHub");
 
   const navigate = useNavigate();
-  const { itemCount } = useContext(UserContext);
+  const { itemCount, currency, setCurrency } = useContext(UserContext);
   const [stickyClass, setStickyClass] = useState("");
   //  FOR MENU ICON CLICK HIDE AND SHOW
   const [clickMenu, setClickMenu] = useState(false);
@@ -61,6 +67,18 @@ function Navbar() {
     getUser();
   }, [getUser]);
 
+  const handleCurrencyChange = async (event) => {
+    const selectedCurrency = currencyOptions.find(
+      (option) => option.value === event.target.value
+    );
+    await localStorage.setItem(
+      "BandhejHubCurrency",
+      JSON.stringify(selectedCurrency.value)
+    );
+    setCurrency(selectedCurrency.value);
+  };
+  console.log(currency);
+
   return (
     <>
       <div className={`navbar-item ${stickyClass}`}>
@@ -82,7 +100,22 @@ function Navbar() {
               <button onClick={() => ListChange("1")}>Menu</button>
               <button onClick={() => ListChange("2")}>Categories</button>
             </div>
-
+            <div className="navside-bar-menu-list currency-navbarlist">
+              <ul>
+                <li className="nav-item-currency">
+                  <select
+                    value={currency.value}
+                    onChange={handleCurrencyChange}
+                  >
+                    {currencyOptions.map((option) => (
+                      <option key={option.value} value={option.value}>
+                        {option.flag} {option.label}
+                      </option>
+                    ))}
+                  </select>
+                </li>
+              </ul>
+            </div>
             {listChange ? (
               <div className="menu-list">
                 <div
@@ -197,6 +230,15 @@ function Navbar() {
 
         <div className="nav-items">
           <ul>
+            <li className="nav-item-currency">
+              <select value={currency} onChange={handleCurrencyChange}>
+                {currencyOptions.map((option) => (
+                  <option key={option.value} value={option.value}>
+                    {option.flag} {option.value}
+                  </option>
+                ))}
+              </select>
+            </li>
             <li className="nav-item-search">
               <a href="/">
                 <TfiSearch />

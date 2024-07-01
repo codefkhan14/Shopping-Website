@@ -9,13 +9,21 @@ export const UserProvider = ({ children }) => {
   const [cartData, setCartData] = useState(null);
   const [removeCartData, setRemoveCartData] = useState(null);
   const [checkoutData, setCheckoutData] = useState(null);
-
+  const [currency, setCurrency] = useState("INR ₹");
   // STORE USER INFO
   useEffect(() => {
     const storeUserData = localStorage.getItem("BandhejHub");
     if (storeUserData) {
       const parsedUserData = JSON.parse(storeUserData);
       setUserInfo(parsedUserData);
+    }
+  }, []);
+  useEffect(() => {
+    const storeUserData = localStorage.getItem("BandhejHubCurrency");
+    if (storeUserData) {
+      const parsedUserData = JSON.parse(storeUserData);
+      setCurrency(parsedUserData);
+      
     }
   }, []);
 
@@ -50,6 +58,8 @@ export const UserProvider = ({ children }) => {
         setRemoveCartData,
         checkoutData,
         setCheckoutData,
+        currency,
+        setCurrency,
       }}
     >
       {children}

@@ -115,7 +115,8 @@
 
 /* MIDDLE BRAND NAME  */
 .brand-name a {
-  margin-left: 155px;
+  margin-left: 185px;
+  text-align: center;
   font-weight: 400;
   color: black;
   text-transform: uppercase;
@@ -212,7 +213,55 @@
   background-color: rgb(225, 225, 225);
 }
 
+.navside-bar-menu-list ul {
+  text-decoration: none;
+  list-style: none;
+}
+
+.nav-item-currency select {
+  padding: 5px;
+  width: 100%;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  border-radius: 4px;
+  font-size: 12px;
+}
+
+.nav-item-currency select option {
+  background-color: #fff;
+}
+.currency-navbarlist {
+  display: none;
+}
+
+@media screen and (max-width: 800px) {
+  .nav-item-user {
+    display: none;
+
+  }
+
+  .nav-item-whitlist {
+    display: none;
+  }
+
+}
+
+
 @media screen and (max-width: 650px) {
+
+  /* remove currency from front  */
+  .nav-items ul .nav-item-currency {
+    display: none;
+  }
+
+  .currency-navbarlist {
+    display: block;
+  }
+  .nav-item-currency select {
+    padding: 10px;
+    font-size: 14px;
+  }
+
   .navbar-item {
     padding: 25px 30px;
   }
@@ -244,6 +293,8 @@
     padding: 20px;
     font-size: 17px;
   }
+
+
 
 
   .btn-list-navbar button {
