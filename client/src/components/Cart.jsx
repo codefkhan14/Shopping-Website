@@ -9,9 +9,24 @@ import { REMOVE_CART_DATA } from "./Apis";
 import CartPic from "../assets/cart.png";
 
 const Cart = () => {
-  const { cartData, userInfo, setRemoveCartData, setCheckoutData } =
+  const { currency, cartData, userInfo, setRemoveCartData, setCheckoutData } =
     useContext(UserContext);
   const navigate = useNavigate();
+  const check = (price) => {
+    if (currency === "USD $") return `$${price} USD`;
+    else if (currency === "EUR €") return `€${price} EUR`;
+    else if (currency === "GBP £") return `£${price} GBP`;
+    else return `Rs.${price * 1000}.00`;
+  };
+
+  const CurrencyPrice = (price) => {
+    if (currency === "USD $") return `$${(price / 84 + 4).toFixed(2)} USD`;
+    else if (currency === "EUR €")
+      return `€${(price / 90 + 3.8).toFixed(2)} EUR`;
+    else if (currency === "GBP £")
+      return `£${(price / 106 + 3.5).toFixed(2)} GBP`;
+    else return `Rs.${price}.00`;
+  };
   const toastOption = {
     position: "bottom-right",
     autoClose: 8000,
@@ -22,11 +37,15 @@ const Cart = () => {
   let subtotal = 0;
 
   // Calculate subtotal for all items in the cart
+
   if (cartData && cartData.length > 0) {
-    subtotal = cartData.reduce(
-      (acc, item) => acc + item.price * item.quantity,
-      0
-    );
+    subtotal = cartData.reduce((acc, item) => {
+      const price = parseFloat(
+        CurrencyPrice(item?.price).replace(/[^0-9.]+/g, "")
+      );
+      return acc + price * item?.quantity;
+    }, 0);
+    subtotal = check(subtotal);
   }
 
   const handleOpen = (item) => {
@@ -48,10 +67,10 @@ const Cart = () => {
       toast.error(error.response.data.error, toastOption);
     }
   };
-  const handleCheckout = () => {
-    setCheckoutData(cartData);
-    navigate("/checkout");
-  };
+  // const handleCheckout = () => {
+  //   setCheckoutData(cartData);
+  //   navigate("/checkout");
+  // };
   return (
     <div className="cart-main-section">
       {cartData?.length > 0 ? (
@@ -91,7 +110,7 @@ const Cart = () => {
 
                         <div className="cart-detail">
                           <p>{item?.name}</p>
-                          <p>Price: ₹{item?.price}</p>
+                          <p>Price: {CurrencyPrice(item?.price)}</p>
                           <p onClick={() => removeCartData(item?._id)}>
                             Remove
                           </p>
@@ -100,7 +119,13 @@ const Cart = () => {
                     </td>
 
                     <td>{item?.quantity}</td>
-                    <td>₹{item?.price * item?.quantity}</td>
+                    <td>
+                      {check(
+                        parseFloat(
+                          CurrencyPrice(item?.price).replace(/[^0-9.]+/g, "")
+                        ) * item?.quantity
+                      )}
+                    </td>
                   </tr>
                 ))}
               </tbody>
@@ -112,7 +137,7 @@ const Cart = () => {
             <div className="cart-amount">
               <div className="cart-amount-rupee">
                 <h3>Subtotal</h3>
-                <h3>₹{subtotal}</h3>
+                <h3>{subtotal}</h3>
               </div>
               {/* <div className="cart-amount-rupee">
                 <h3>GST(%)</h3>
@@ -124,7 +149,7 @@ const Cart = () => {
               </div> */}
               <div className="cart-amount-rupee">
                 <h3>Total</h3>
-                <h3>₹{subtotal}</h3>
+                <h3>{subtotal}+Ship</h3>
                 {/* <h3>₹{Math.round(subtotal * 0.18 + subtotal)}</h3> */}
               </div>
 

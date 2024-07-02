@@ -1,5 +1,5 @@
 .navtopbanner {
-  background-color: rgb(28, 85, 95);
+  background-color: black;
   height: 40px;
   font-size: 15px;
   display: flex;
@@ -15,17 +15,21 @@
   align-items: center;
   width: 230px;
 }
+
 .navtopbanner3 a {
   text-align: center;
   font-size: 15px;
   color: white;
 }
-.navtopbanner3 a:visited{
+
+.navtopbanner3 a:visited {
   color: white;
 }
+
 .navtopbanner3 a:hover {
   color: rgb(186, 186, 186);
 }
+
 @media screen and (max-width: 1150px) {
   .navtopbanner1 {
     display: none;

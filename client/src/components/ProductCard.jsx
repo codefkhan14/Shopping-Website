@@ -1,13 +1,25 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { TfiHeart } from "react-icons/tfi";
 import { PiShoppingCart } from "react-icons/pi";
+import { UserContext } from "../context/userContext";
 
 const ProductCard = ({ item, index, openModal }) => {
+  const { currency } = useContext(UserContext);
+
   const truncateText = (text, maxWords) => {
     if (text.lenth < maxWords) return text;
     return text.slice(0, maxWords) + "...";
   };
+  const CurrencyPrice = (price) => {
+    if (currency === "USD $") return `$${(price / 84 + 4).toFixed(2)} USD`;
+    else if (currency === "EUR €")
+      return `€${(price / 90 + 3.8).toFixed(2)} EUR`;
+    else if (currency === "GBP £")
+      return `£${(price / 106 + 3.5).toFixed(2)} GBP`;
+    else return `Rs.${price}.00`;
+  };
+
   return (
     <div className="product-card" key={index}>
       <p className="product-card-tag">Save 20%</p>
@@ -37,7 +49,9 @@ const ProductCard = ({ item, index, openModal }) => {
 
         <div className="product-info-price-cart">
           <div>
-            <p className="product-price">Rs.{item?.price}.00</p>
+            <p className="product-price">
+              {CurrencyPrice(item?.price)}
+            </p>
           </div>
 
           <div className="product-info-price-cart-buttons">

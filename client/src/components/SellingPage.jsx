@@ -8,8 +8,16 @@ import { UserContext } from "../context/userContext";
 import { ADD_TO_CART, GET_PRODUCT_BY_ID } from "./Apis";
 
 function SellingPage() {
-  const { itemCount, setItemCount, userInfo, setCheckoutData } =
+  const { currency, itemCount, setItemCount, userInfo, setCheckoutData } =
     useContext(UserContext);
+  const CurrencyPrice = (price) => {
+    if (currency === "USD $") return `$${(price / 84 + 4).toFixed(2)} USD`;
+    else if (currency === "EUR €")
+      return `€${(price / 90 + 3.8).toFixed(2)} EUR`;
+    else if (currency === "GBP £")
+      return `£${(price / 106 + 3.5).toFixed(2)} GBP`;
+    else return `Rs.${price}.00`;
+  };
   const { productId } = useParams();
   const { id } = useParams();
 
@@ -165,7 +173,8 @@ function SellingPage() {
             <p className="product-details-stock">In Stock</p>
             <h2>{productInfo?.name}</h2>
             <p className="product-details-price">
-              Price: ₹{productInfo?.price} (<i>Including all texes</i>)
+              Price: {CurrencyPrice(productInfo?.price)} (
+              <i>Including all texes</i>)
             </p>
 
             <div className="quantity-container">

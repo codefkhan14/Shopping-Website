@@ -17,7 +17,6 @@ const currencyOptions = [
 
 function Navbar() {
   let userExist = localStorage.getItem("BandhejHub");
-
   const navigate = useNavigate();
   const { itemCount, currency, setCurrency } = useContext(UserContext);
   const [stickyClass, setStickyClass] = useState("");
@@ -76,8 +75,8 @@ function Navbar() {
       JSON.stringify(selectedCurrency.value)
     );
     setCurrency(selectedCurrency.value);
+    setClickMenu(!clickMenu);
   };
-  console.log(currency);
 
   return (
     <>
@@ -103,10 +102,7 @@ function Navbar() {
             <div className="navside-bar-menu-list currency-navbarlist">
               <ul>
                 <li className="nav-item-currency">
-                  <select
-                    value={currency.value}
-                    onChange={handleCurrencyChange}
-                  >
+                  <select value={currency} onChange={handleCurrencyChange}>
                     {currencyOptions.map((option) => (
                       <option key={option.value} value={option.value}>
                         {option.flag} {option.label}
